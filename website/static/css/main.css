@@ -127,6 +127,11 @@ h2 {
   letter-spacing: -2px;
 }
 
+h2.landing-page {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 h3 {
   font-size: 1.7em;
   font-weight: 100;
@@ -262,7 +267,7 @@ color: gray;
   background-color: #0057B7;
   border: none;
   animation: dropdown;
-  animation-duration: 0.5s;
+  animation-duration: 0.0s;
 }
 
 @keyframes dropdown {
