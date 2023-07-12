@@ -1,11 +1,80 @@
+/* style for landing page and form preview bubbles */
+
 div.form-preview {
   padding-top: 10px;
   left: 10px;
   text-align:center;
   font-style: italic;
   font-weight: bold;
+  cursor: default;
 }
 
-div.layout-one ul {
+.button-home {
+  bottom: 0px;
+  border: 0;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  transition: background-color .3s;
+}
+
+.button-home:active {
+  background-color: #0057b794;
+}
+
+.form-preview-container {
+  height: 40px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-shadow:
+    inset 0 2px 9px  rgba(255,255,255,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  vertical-align: middle;
+  width: 240px;
+  margin-top: auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.form-preview-container:hover {
+  height:auto;
+  margin-top: auto;
+  vertical-align: top;
+  margin-bottom: -160px;
+}
+
+div.form-preview-container ul {
   width: 75%
+}
+
+#stageone {
+  background-color: #F3CFC6;
+  z-index: 999;
+}
+
+#stagetwo {
+  background-color: #C2EFEB;
+  z-index: 998;
+}
+
+#stagethree {
+  background-color: #ED7E63;
+  z-index: 997;
+}
+
+.arrow {
+  font-size: 20px;
+}
+
+#hidden {
+  visibility: hidden;
 }
