@@ -488,32 +488,22 @@ justify-content: center;
 }
 
 .layout-one:hover {
-  height:160px;
+  height:auto;
   margin-top: auto;
   vertical-align: top;
   margin-bottom: -160px;
 }
 
 #stageone {
-  background-color: #9FB59E;
+  background-color: #F3CFC6;
 }
 
 #stagetwo {
-  background-color: #9DA1B2;
+  background-color: #C2EFEB;
 }
 
 #stagethree {
-  background-color: #AF9CA1;
-}
-
-.layout-one a{
-  text-align: left;
-  vertical-align: middle;
-    display: flex;
-  position: relative;
-  vertical-align: center;
-  padding-top: 10px;
-  margin-bottom: -10px;
+  background-color: #ED7E63;
 }
 
 .arrow-long {
