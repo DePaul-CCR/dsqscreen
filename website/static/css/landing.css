@@ -1,0 +1,11 @@
+div.form-preview {
+  padding-top: 10px;
+  left: 10px;
+  text-align:center;
+  font-style: italic;
+  font-weight: bold;
+}
+
+div.layout-one ul {
+  width: 75%
+}
