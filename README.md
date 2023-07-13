@@ -1,5 +1,4 @@
-->Need Python3 installed w/ pip and also mysql
-
+->Need Python3 installed w/ pip and also mysql  
 MacOS:  
 `> brew install mysql`
 `> pip install virtualenv`
