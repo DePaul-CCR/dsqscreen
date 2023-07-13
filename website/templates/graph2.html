@@ -40,16 +40,8 @@
 </header>
    <h3 class="ariel">Short Form Questionnaire Results</h3>
    <hr>
-<div class="container" style="align: center;" >
-        <div id="stageone" style="font: Ariel;" class="layout-one"><a><b>Screener</b></a>
-        <ul><li>4 Questions</li>
-            <li>Prompts you to continue to next step based on your scores</li></ul></div>
-        <span class="arrow "></span><div id="stagetwo" style="font: Ariel;" class="layout-one"><a><b>Short Form</b></a>
-        <ul><li>Optional</li><li>11 more questions</li><li>Assesses Two Case Definitions</li></ul></div>
-       <span class="arrow "></span><div id="stagethree" style="font: Ariel;" class="layout-one"
-                                        onclick="window.location.href='{{ url_for('viral') }}'"><a><b>Full Form</b></a>
-        <ul><li>Optional</li><li>41 more questions</li><li>Reassesses Case Definitions</li></ul></div>
-    </div> <br>
+
+   {% include "partials/_form_previews.html" %}
 
 <div style="" class="results" >
 
