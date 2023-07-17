@@ -11,7 +11,7 @@ div.form-preview {
 
 .button-home {
   bottom: 0px;
-  border: 0;
+  border-width: 1px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 8px;
@@ -22,8 +22,12 @@ div.form-preview {
   transition: background-color .3s;
 }
 
+.button-home:hover {
+  background-color: #F3CFC6;
+}
+
 .button-home:active {
-  background-color: #0057b794;
+  background-color: #fc8263;
 }
 
 .form-preview-container {
