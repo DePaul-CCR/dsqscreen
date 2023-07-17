@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post">
+<form method="post" class="single-question">
   <div class="question-header">
     <p class="instructions">
       <i
@@ -15,8 +15,8 @@
       level?
     </h3>
   </div>
-  <div style="display:height:200px;">
-    <fieldset style="align: center; padding-left: 5%">
+  <div class="single-question-container">
+    <fieldset>
       <ol start="0">
         <li>
           <input type="radio" id="f0" name="reduction" value="0" />
@@ -34,7 +34,7 @@
     </fieldset>
   </div>
 
-  <button type="submit" name="result" value="result">Submit</button>
+  <button type="submit" name="result" value="result" class="next-question-button">Submit</button>
 </form>
 
 <div class="container">
