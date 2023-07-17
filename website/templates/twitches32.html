@@ -2,7 +2,7 @@
 
 {% block content %}
 <form method="post">
-  <div>
+  <div class="question-header">
     <p class="instructions">
       <i
         >For each question below, please select
@@ -12,16 +12,7 @@
     <h3>{{ pagenum }}. Muscle twitches</h3>
   </div>
 
-  <div
-    id="left"
-    style="
-      display: inline-block;
-      width: 50%;
-      height: 200px;
-      float: left;
-      left: 20px;
-    "
-  >
+<div id="left">
     <fieldset>
       <legend>
         <b>Frequency: </b>Throughout the past 6 months, how often have you had
@@ -52,16 +43,7 @@
     </fieldset>
   </div>
 
-  <div
-    id="right"
-    style="
-      display: inline-block;
-      width: 50%;
-      height: 200px;
-      float: right;
-      right: 20px;
-    "
-  >
+  <div id="right">
     <fieldset>
       <legend>
         <b>Severity: </b>Throughout the past 6 months, how much has this symptom
@@ -91,7 +73,7 @@
       </ol>
     </fieldset>
   </div>
-  <button type="submit" name="result" value="result">Next</button>
+  <button class="next-question-button" type="submit" name="result" value="result">Next</button>
 </form>
 <div class="container">
   <p class="typed"><i>{{ message }} </i></p>
