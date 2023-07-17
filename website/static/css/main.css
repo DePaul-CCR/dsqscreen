@@ -1,3 +1,10 @@
+/* 
+DePaul blue: #0057B7
+Screener: #F3CFC6
+Short Form: #C2EFEB
+DSQ: #ED7E63
+*/
+
 body {
   font-family: 'Figtree', sans-serif;
   color: #444;
@@ -459,53 +466,6 @@ footer {
   bottom: 10px;
   width: 100%;
   padding: 20px;
-}
-
-.meter {
-  height: 20px;
-  position: absolute;
-  bottom: 10px;
-  right: 1%;
-  background: #555;
-  border-radius: 25px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  width: 98%;
-  box-sizing: border-box;
-  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-}
-
-#meter2span {
-  background-color: #C2EFEB;
-}
-
-#meter3span {
-  background-color: #ED7E63;
-}
-
-.meter > span {
-  margin-left: 0;
-  margin-right: 0;
-  display: block;
-  height: 100%;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  background-color: #F3CFC6;
-  box-shadow:
-    inset 0 2px 9px  rgba(255,255,255,0.3),
-    inset 0 -2px 6px rgba(0,0,0,0.4);
-  overflow: hidden;
-  animation: progress;
-  animation-duration: 0.5s;
-}
-
-@keyframes progress {
-  from { width: var(--start);}
-  to { width: attr(data);}
 }
 
 .typed {
