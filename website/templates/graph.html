@@ -40,7 +40,7 @@
 </header>
    <h3 class="ariel">Screener Results</h3>
    <hr>
-   {% include "partials/_form_previews.html" %}
+   {% include "partials/_form_previews.html" with stage=1 %}
 
 </div>
 <div class="container">
@@ -59,14 +59,13 @@
 <br>
 
 </div>
-<div class="container" style="margin: 50px auto;">
-<ul style="display: inline-block;"> <li style="display: inline-block;">
 
-  <li style="display: inline-block; "><button onclick="window.location.href='{{ url_for('short_form.expem1') }}'">
-   <b>
-    Continue</b></button></li>
-</ul>
+<div class="container" style="margin: 50px auto;">
+  <button onclick="window.location.href='{{ url_for('short_form.expem1') }}'">
+    Continue
+  </button>
 </div>
+
 <div style="display: none;" class="results" >
 
         <h3 style="margin:0;">Institute of Medicine (IOM) Case Definition Assessment</h3><hr>

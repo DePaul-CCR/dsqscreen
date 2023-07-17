@@ -1,7 +1,11 @@
 <div class="container">
   <div id="stageone" class="form-preview-container">
-    <div class="form-preview">Screener (4 questions)</div>
-    <ul>
+    {% if stage == 0 %}
+      <div class="form-preview">Screener (4 questions)</div>
+    {% else %}
+      <div class="form-preview strikethrough">Screener (4 questions)</div>
+    {% endif %}
+    <ul class="form-preview-list">
       <li>DSQ-Screener</li>
       <li>4 Questions</li>
       <li>Prompts you to continue to next step based on your scores</li>
@@ -9,8 +13,12 @@
   </div>
   <span class="arrow">⇨</span>
   <div id="stagetwo" class="form-preview-container">
-    <div class="form-preview">Short Form (11 questions)</div>
-    <ul>
+    {% if stage <= 1 %}
+      <div class="form-preview">Short Form (11 questions)</div>
+    {% else %}
+      <div class="form-preview strikethrough">Short Form (11 questions)</div>
+    {% endif %}
+    <ul class="form-preview-list">
       <li>DSQ-SF</li>
       <li>11 additional questions for increased accuracy</li>
       <li>Assesses two case definitions</li>
@@ -18,8 +26,12 @@
   </div>
   <span class="arrow">⇨</span>
   <div id="stagethree" class="form-preview-container">
-    <div class="form-preview">Full Form (41 questions)</div>
-    <ul>
+    {% if stage <= 2 %}
+      <div class="form-preview">Full Form (41 questions)</div>
+    {% else %}
+      <div class="form-preview strikethrough">Full Form (41 questions)</div>
+    {% endif %}
+    <ul class="form-preview-list">
       <li>DSQ</li>
       <li>41 additional questions for highest accuracy</li>
       <li>Reassesses case definitions</li>

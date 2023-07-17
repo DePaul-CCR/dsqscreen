@@ -56,8 +56,9 @@ div.form-preview {
   margin-bottom: -160px;
 }
 
-div.form-preview-container ul {
-  width: 75%
+.form-preview-list {
+  width: 75%;
+  cursor: default;
 }
 
 #stageone {
@@ -81,4 +82,8 @@ div.form-preview-container ul {
 
 #hidden {
   visibility: hidden;
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }
