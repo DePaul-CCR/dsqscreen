@@ -1,5 +1,12 @@
 /* style for landing page and form preview bubbles */
 
+h2.landing-page {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Proxima-Nova-Condensed;
+  letter-spacing: .03rem;
+}
+
 div.form-preview {
   padding-top: 10px;
   left: 10px;
@@ -9,9 +16,15 @@ div.form-preview {
   cursor: default;
 }
 
+div#begin-screener-grid {
+  display: grid;
+  padding: 0 10% 0 10%;
+  row-gap: 10px;
+}
+
 .button-home {
   bottom: 0px;
-  border: 0;
+  border-width: 1px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border-top-left-radius: 8px;
@@ -22,8 +35,12 @@ div.form-preview {
   transition: background-color .3s;
 }
 
+.button-home:hover {
+  background-color: #F3CFC6;
+}
+
 .button-home:active {
-  background-color: #0057b794;
+  background-color: #fc8263;
 }
 
 .form-preview-container {
@@ -52,8 +69,9 @@ div.form-preview {
   margin-bottom: -160px;
 }
 
-div.form-preview-container ul {
-  width: 75%
+.form-preview-list {
+  width: 75%;
+  cursor: default;
 }
 
 #stageone {
@@ -77,4 +95,12 @@ div.form-preview-container ul {
 
 #hidden {
   visibility: hidden;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.disclaimer {
+  text-align: center;
 }

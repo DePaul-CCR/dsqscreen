@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post">
-  <div>
+<form method="post" class="single-question">
+  <div class="question-header">
     <p class="instructions">
       <i
         >For the following question, please select the choice that best fits
@@ -14,9 +14,9 @@
       recovery periods?
     </h3>
   </div>
-  <div style="display:height:200px;">
-    <fieldset style="align: center; padding-left: 5%">
-      <ol start="0">
+  <div class="single-question-container">
+    <fieldset>
+      <ol class="radio-button-list">
         <li>
           <input type="radio" id="f0" name="viral" value="0" />
           <label for="f0">No</label>
@@ -29,7 +29,7 @@
     </fieldset>
   </div>
 
-  <button type="submit" name="result" value="result">Next</button>
+  <button class="next-question-button" type="submit" name="result" value="result">Next</button>
 </form>
 
 <div class="container">
