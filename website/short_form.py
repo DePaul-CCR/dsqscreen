@@ -246,7 +246,8 @@ def graph2():
         iomcogcheck = "Yes"
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
-        iom_msg = "Your answers indicate you may meet the IOM Criteria for ME/CFS."
+        iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS. To improve the accuracy" \
+                  " of your assessment with more questions, continue to the next section."
         iomdxcheck = "Met"
 
     else:
@@ -256,7 +257,7 @@ def graph2():
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
         screen_message = "Your scores meet a threshold of 2 or greater on frequency and severity of least one major symptom."
     else:
-        screen_message = "Your scores do not meet a threshold of 2 frequency or severity for any of the major symptoms." \
+        screen_message = "Your scores do not meet a threshold of 2 frequency or severity for any of the major symptoms. " \
                          "It is unlikely that you have ME/CFS based on your self-report scores."
 
     # This assesses the Canadian Consensus Criteria, one of the three major case definitions we use
@@ -328,11 +329,10 @@ def graph2():
     if np.sum([ccc_fatigue, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 5 and ccc_poly >= 2:
         ccc_dx = "Met"
         ccc_msg = "Your responses suggest that you meet the Canadian Consensus Criteria for ME/CFS. " \
-                  "To compare your symptoms with more case definitions, click Continue."
+                  "To improve the accuracy of your assessment with more questions, continue to the next section."
     else:
         ccc_dx = "Not met"
-        ccc_msg = "Your responses do not meet the Canadian Consensus Criteria for ME/CFS. " \
-                  "To compare your symptoms with more case definitions, click Continue."
+        ccc_msg = "Your responses do not meet the Canadian Consensus Criteria for ME/CFS."
 
     # categories = [*feature_list, feature_list[0]]
     categories = ['Fatigue', 'PEM', 'Sleep', 'Cognitive Impairment', 'Pain', 'Gastro Problems',
