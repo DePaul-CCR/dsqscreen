@@ -246,18 +246,15 @@ def graph2():
         iomcogcheck = "Yes"
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
-        iom_msg = "Your answers indicate you may meet the IOM Criteria for ME/CFS. To compare your" \
-                  " scores with more case definitions, continue to the next section"
+        iom_msg = "Your answers indicate you may meet the IOM Criteria for ME/CFS."
         iomdxcheck = "Met"
 
     else:
-        iom_msg = 'Your responses do not meet the IOM Criteria for ME/CFS. To assess more case definitions, ' \
-                  'continue to the next section'
+        iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS."
         iomdxcheck = "Not met"
 
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
-        screen_message = "Your scores meet a threshold of 2 or greater on frequency and severity of least one major symptom. " \
-                         "We recommend continuing to the next section (DSQ-Short Form) for more in-depth assessment."
+        screen_message = "Your scores meet a threshold of 2 or greater on frequency and severity of least one major symptom."
     else:
         screen_message = "Your scores do not meet a threshold of 2 frequency or severity for any of the major symptoms." \
                          "It is unlikely that you have ME/CFS based on your self-report scores."

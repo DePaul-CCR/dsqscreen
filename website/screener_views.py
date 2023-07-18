@@ -152,13 +152,11 @@ def graph():
         iomcogcheck = "Yes"
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
-        iom_msg = "Your answers indicate you may meet the IOM Criteria for ME/CFS. To compare your" \
-                  " scores with more case definitions, continue to the next section"
+        iom_msg = "Your answers indicate you may meet the IOM Criteria for ME/CFS."
         iomdxcheck = "Met"
 
     else:
-        iom_msg = 'Your responses do not meet the IOM Criteria for ME/CFS. To assess more case definitions, ' \
-                  'continue to the next section'
+        iom_msg = 'Your responses do not meet the IOM Criteria for ME/CFS.'
         iomdxcheck = "Not met"
 
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
