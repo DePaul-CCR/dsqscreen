@@ -47,9 +47,10 @@
 </h2>
 <hr />
 <br />
-<div class="div">
+<div id="begin-screener-grid">
 
-  {% include "partials/_form_previews.html" with {'stage': '0'} %}
+  {% set stage=0 %}
+  {% include "partials/_form_previews.html" %}
 
   <div>
     <p>This online screener is based on the DePaul Symptom Questionnaire (DSQ), a validated instrument for assessing
@@ -58,7 +59,7 @@
       For more information, follow one of the links above in the about menu.</p><br>
   </div>
 
-  <form method="post">
+  <form method="post" id="begin-screener">
     <div class="container">
       <button class="button-home" type="submit" name="result" value="result">
         Begin screener
@@ -66,7 +67,7 @@
     </div>
   </form>
 
-  <p>Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician for diagnostic concerns.</p>
+  <p class="disclaimer">Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician for diagnostic concerns.</p>
 
 </div>
 

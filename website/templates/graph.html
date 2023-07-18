@@ -40,9 +40,10 @@
 </header>
    <h3 class="ariel">Screener Results</h3>
    <hr>
-   {% include "partials/_form_previews.html" with stage=1 %}
 
-</div>
+    {% set stage = 1 %}  
+    {% include "partials/_form_previews.html" %}  
+
 <div class="container">
      <p><b>{{ screen_message }} </b></p><hr>
     <div class="chart-center" >
