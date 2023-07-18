@@ -5,6 +5,10 @@ form[method="post"] {
   padding: 0 10% 0 10%;
 }
 
+#begin-screener {
+  display: block;
+}
+
 form.single-question {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr .5fr 1fr;
@@ -32,17 +36,21 @@ div#right {
   margin: auto;
 }
 
-ol[start="0"] > li {
+ol.radio-button-list > li {
   transition: background-color .3s;
 }
 
-ol[start="0"] > li:hover {
+ol.radio-button-list > li:hover {
   background-color: #F3CFC6;
 }
 
 li > label {
   display: inline-block;
   width: 90%;
+  /* prevent highlighting text */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .meter {

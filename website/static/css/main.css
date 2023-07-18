@@ -229,7 +229,6 @@ a {
 
 button {
   font-size: 1em;
-  font: Ariel;
   margin: 10px auto;
   font-weight: 100;
   max-width: 100%;
@@ -327,7 +326,6 @@ color: gray;
     width: 70%;
     height: auto;
     border: thin #c0c0c0 solid;
-    font: Ariel;
 }
 
 
@@ -558,7 +556,6 @@ from { width: 0; }
   text-align: left;
   margin-left: 10px;
   margin-right: 10px;
-  font: Ariel;
 }
 
 .results button {
