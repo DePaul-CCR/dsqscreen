@@ -37,7 +37,7 @@ pemname = str
 sleepname = str
 cogname = str
 
-
+# used for the full-form results
 def diagnose2():
     import domainScores as ds
     pem_domainscore = (int(session["minexf"]) + int(session["minexs"]) + int(session['soref']) + int(session['sores']) +
@@ -129,13 +129,11 @@ def diagnose2():
         iomcogcheck = "Yes"
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
-        iom_msg = "Your answers indicate you may meet the IOM Criteria for ME/CFS. To compare your" \
-                  " scores with more case definitions, continue to the next section"
+        iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS."
         iomdxcheck = "Met"
 
     else:
-        iom_msg = 'Your responses do not meet the IOM Criteria for ME/CFS. To assess more case definitions, ' \
-                  'continue to the next section'
+        iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS."
         iomdxcheck = "Not met"
 
     # Canadian criteria assessment
@@ -240,7 +238,7 @@ def diagnose2():
         ccc_msg = "Your responses suggest that you meet the Canadian Consensus Criteria for ME/CFS."
     else:
         ccc_dx = "Not met"
-        ccc_msg = "Your responses do not meet the Canadian Consensus Criteria for ME/CFS. "
+        ccc_msg = "Your responses do not meet the Canadian Consensus Criteria for ME/CFS."
 
     # ME-ICC assessment starts here, the longest and most complicated assessment
     if int(session['reduction']) == 1:

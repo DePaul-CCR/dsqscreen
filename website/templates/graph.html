@@ -40,9 +40,10 @@
 </header>
    <h3 class="ariel">Screener Results</h3>
    <hr>
-   {% include "partials/_form_previews.html" %}
 
-</div>
+    {% set stage = 1 %}  
+    {% include "partials/_form_previews.html" %}  
+
 <div class="container">
      <p><b>{{ screen_message }} </b></p><hr>
     <div class="chart-center" >
@@ -59,14 +60,13 @@
 <br>
 
 </div>
-<div class="container" style="margin: 50px auto;">
-<ul style="display: inline-block;"> <li style="display: inline-block;">
 
-  <li style="display: inline-block; "><button onclick="window.location.href='{{ url_for('short_form.expem1') }}'">
-   <b>
-    Continue</b></button></li>
-</ul>
+<div class="container" style="margin: 50px auto;">
+  <button onclick="window.location.href='{{ url_for('short_form.expem1') }}'">
+    Continue
+  </button>
 </div>
+
 <div style="display: none;" class="results" >
 
         <h3 style="margin:0;">Institute of Medicine (IOM) Case Definition Assessment</h3><hr>
@@ -97,12 +97,8 @@
     </div>
 </div>
 
-
-
-<div style="display: inline-block; ">
 <p class="disclaimer"><i>Note: this is not a medical diagnosis. We advise you to consult with your physician or seek an ME/CFS specialist
 if you think you may be suffering from ME/CFS.</i></p>
-</div>
 <script>
 const hamburger = document.querySelector('.hamburger');
 const navbarLinks = document.querySelector('.navbar-links');

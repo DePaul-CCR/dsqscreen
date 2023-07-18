@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post">
-  <div>
+<form method="post" class="single-question">
+  <div class="question-header">
     <p class="instructions">
       <i
         >For the following question, please select the choice that best fits
@@ -15,16 +15,16 @@
       level?
     </h3>
   </div>
-  <div style="display:height:200px;">
-    <fieldset style="align: center; padding-left: 5%">
-      <ol start="0">
-        <li>
-          <input type="radio" id="f0" name="reduction" value="0" />
-          <label for="f0">No</label>
-        </li>
+  <div class="single-question-container">
+    <fieldset>
+      <ol class="radio-button-list">
         <li>
           <input type="radio" id="f1" name="reduction" value="1" />
           <label for="f1">Yes</label>
+        </li>
+        <li>
+          <input type="radio" id="f0" name="reduction" value="0" />
+          <label for="f0">No</label>
         </li>
         <li>
           <input type="radio" id="f2" name="reduction" value="2" />
@@ -34,7 +34,7 @@
     </fieldset>
   </div>
 
-  <button type="submit" name="result" value="result">Submit</button>
+  <button type="submit" name="result" value="result" class="next-question-button">Submit</button>
 </form>
 
 <div class="container">
