@@ -1,5 +1,12 @@
 /* style for landing page and form preview bubbles */
 
+h2.landing-page {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Proxima-Nova-Condensed;
+  letter-spacing: .03rem;
+}
+
 div.form-preview {
   padding-top: 10px;
   left: 10px;

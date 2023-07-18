@@ -1,7 +1,15 @@
 @font-face {
   font-family: 'Proxima-Nova-Condensed';
-  src: url('/static/fonts/Proxima-Nova-Condensed-Semibold-Italic.otf');
+  src: url('/static/fonts/Proxima-Nova-Condensed-Regular.otf');
   font-weight: light;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima-Nova-Condensed';
+  src: url('/static/fonts/Proxima-Nova-Condensed-Semibold-Italic.otf');
+  font-weight: light;
+  font-style: italic;
   font-display: swap;
 }
