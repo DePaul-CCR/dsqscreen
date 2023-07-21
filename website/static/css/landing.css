@@ -44,10 +44,12 @@ div#begin-screener-grid {
 
 .disclaimer {
   text-align: center;
+  padding: 0 0 2em 0;
 }
 
 .screener-description {
   font-size: 18px;
+  text-align: center;
 }
 
 /* styling for form preview bubbles */
@@ -108,6 +110,25 @@ div#begin-screener-grid {
 
 .strikethrough {
   text-decoration: line-through;
+}
+
+.hero-landing {
+  position: absolute;
+  bottom: 0px;
+  z-index: -1;
+  opacity: 20%;
+}
+
+#hero-right {
+  right: 0px;
+  height: 50vh;
+  width: 30vw;
+}
+
+#hero-left {
+  left: 24vw;
+  height: 50vh;
+  width: 15vw;
 }
 
 @media only screen and (min-device-width: 661px) {

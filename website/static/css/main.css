@@ -7,10 +7,11 @@ DSQ: #ED7E63
 
 body {
   font-family: 'Figtree', sans-serif;
-  color: #444;
-  background-color: hsl(0, 0%, 98%);
+  color: #1f1f1f;
+  background: radial-gradient(circle, rgba(0,87,183,0.3) 0%, rgba(194,239,235,0.34) 60%);
   padding: 0;
   margin: 0;
+  height: 100vh;
 }
 
 /*
@@ -242,7 +243,11 @@ button {
 }
 
 button:hover {
-  background-color: inherit;
+  background-color: #F3CFC6;
+}
+
+button:active {
+  background-color: #ED7E63;
 }
 
 h2 {
@@ -259,7 +264,6 @@ h3 {
   font-weight: 100;
   margin-top: 30px;
   text-align: center;
-  letter-spacing: -1px;
 }
 
 h3.ariel {
@@ -455,10 +459,14 @@ footer {
 }
 
 .typed {
+  text-decoration: underline dotted red;
+  text-underline-offset: 5px;
+  height: 1em;
   text-align: center;
-  animation: typing;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(30, end);
+  margin: 0 0 2em 0;
+  /* animation: typing; */
+  /* animation-duration: 0.5s; */
+  /* animation-timing-function: steps(30, end); */
 }
 
 .message {
@@ -501,78 +509,6 @@ footer {
 @keyframes typewrite {
 from { width: 0; }
   to { width: 100%; }
-}
-
-.results {
-  width: 50%;
-  height: auto;
-  /*
-  border: thin #c0c0c0 solid;  */
-  margin: auto;
-  padding: 50px auto;
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 50px;
-  font: Arial;
-  text-align: center;
-  position: relative;
-}
-
-.results ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-.results li {
-  border: 1px solid black;
-  padding: 10px;
-}
-
-.symptoms {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.left-column {
-  flex: 1;
-}
-
-.right-column {
-  text-align: left;
-  flex: 1;
-}
-
-
-.results p {
-  text-align: left;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.results button {
-  text-align: center;
-  display: inline-block;
-}
-
-.chart-left {
-  z-index: -1;
-  width: 50%;
-  height: 500px;
-  border: thin #c0c0c0 solid;
-  display: inline-block;
-  float: left;
-  margin-top: 50px;
-}
-
-.chart-center {
-  width: 50%;
-  height: auto;
-  border: none;
-  text-align: center;
-  margin: 20 px auto;
-  display: block;
-  position: relative;
-  top: 20px;
 }
 
 .unveiled {
@@ -703,6 +639,7 @@ from { width: 0; }
     display: none;
   }
 }
+
 @media only screen and (max-device-width: 800px) {
     body {
         font-weight: 500;
