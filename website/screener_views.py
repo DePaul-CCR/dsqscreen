@@ -40,9 +40,9 @@ def page1():
             return redirect(url_for("screener_views.page2"))
         else:
             error = message
-            return render_template("result.html", error=message, pagenum=session['pagenum'],
+            return render_template("page1.html", error=message, pagenum=session['pagenum'],
                                    selected_radio=selected_radio, selected_severity=selected_severity)
-    return render_template("result.html", error=error, pagenum=session['pagenum'])
+    return render_template("page1.html", error=error, pagenum=session['pagenum'])
 
 
 @screener_views.route('/minimum', methods=["post", "get"])
