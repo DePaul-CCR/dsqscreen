@@ -8,56 +8,54 @@
 <header>
   <ul class="menu">
 
-    <li >
-    <a href="{{ url_for('screener_views.home') }}">Home</a>
-     </li>
-
-        <li class="hamburger" >
-
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-            <ul class="navbar-links">
-            <li >
-                <a href="{{ url_for('screener_views.home') }}">Home</a>
-                </li>
-           <li><a href="{{ url_for('aboutmecfs')}}">
-          About ME/CFS</a></li>
-            <li><a href="https://csh.depaul.edu/about/centers-and-institutes/ccr/myalgic-encephalomyelitis-cfs/Pages/measures.aspx"
-      target="_blank">
-          About the DSQ</a></li>
-      <li><a href="{{ url_for('about') }}">About This Screener</a></li>
-        </ul></li>
-  <li>
-   <a href="{{ url_for('aboutmecfs')}}">About</a><ul class="submenu2">
-      <li><a href="{{ url_for('aboutmecfs')}}">
-          About ME/CFS</a></li>
-      <li><a href="https://csh.depaul.edu/about/centers-and-institutes/ccr/myalgic-encephalomyelitis-cfs/Pages/measures.aspx"
-      target="_blank">
-          About the DSQ</a></li>
-      <li><a href="{{ url_for('about') }}">About This Screener</a></li>
-    </ul>
-  </li>
-
-
- </ul>
+    <li>
+      <a href="{{ url_for('screener_views.home') }}">Home</a>
+    </li>
+    <li class="hamburger">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      <ul class="navbar-links">
+        <li>
+          <a href="{{ url_for('screener_views.home') }}">Home</a>
+        </li>
+        <li><a href="{{ url_for('aboutmecfs')}}">
+            About ME/CFS</a></li>
+        <li><a
+            href="https://csh.depaul.edu/about/centers-and-institutes/ccr/myalgic-encephalomyelitis-cfs/Pages/measures.aspx"
+            target="_blank">
+            About the DSQ</a></li>
+        <li><a href="{{ url_for('about') }}">About This Screener</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="{{ url_for('aboutmecfs')}}">About</a>
+      <ul class="submenu2">
+        <li><a href="{{ url_for('aboutmecfs')}}">
+            About ME/CFS</a></li>
+        <li><a
+            href="https://csh.depaul.edu/about/centers-and-institutes/ccr/myalgic-encephalomyelitis-cfs/Pages/measures.aspx"
+            target="_blank">
+            About the DSQ</a></li>
+        <li><a href="{{ url_for('about') }}">About This Screener</a></li>
+      </ul>
+    </li>
+  </ul>
 </header>
+
+<img class="hero-landing" id="hero-right" alt="person resting head, fatigued" src="../static/img/landing_page_background.png" width="640px" height="640px">
+<img class="hero-landing" id="hero-left" alt="person resting head, fatigued" src="../static/img/landing_page_background2.png" width="503px" height="1117px">
+
 <h2 class="landing-page">
-  Myalgic Encephalomyelitis Chronic Fatigue Syndrome ME/CFS Screener
+  Do you have ME/CFS?
 </h2>
 <hr />
 <br />
 <div id="begin-screener-grid">
 
-  {% set stage=0 %}
-  {% include "partials/_form_previews.html" %}
-
   <div class="screener-description">
-    <p>This online screener is based on the DePaul Symptom Questionnaire (DSQ), a validated instrument for assessing
-      ME/CFS symptoms. <br> <br> You'll be asked 4 questions which will suggest whether you have ME/CFS. You may
-      continue to the more in-depth questionnaires for more a more accurate assessment.
-      For more information, follow one of the links above in the about menu.</p><br>
-  </div>
+    Fill out this brief screener to find out if you have typical symptoms of Myalgic-Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS).
+  </div><br>
 
   <form method="post" id="begin-screener">
     <div class="container">
@@ -67,7 +65,7 @@
     </div>
   </form>
 
-  <p class="disclaimer">Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician for diagnostic concerns.</p>
+  <p class="disclaimer">Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician if you believe you may be suffering from ME/CFS.</p>
 
 </div>
 
