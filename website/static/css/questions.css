@@ -120,3 +120,12 @@ li > label {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
+
+/* error text */
+.typed {
+  text-decoration: underline red;
+  text-underline-offset: 5px;
+  height: 1em;
+  text-align: center;
+  margin: 0 0 2em 0;
+}
