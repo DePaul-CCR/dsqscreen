@@ -2,3 +2,75 @@
   display: block;
   margin-top: 25px;
 }
+
+.results {
+  background: white;
+  width: 50%;
+  height: auto;
+  border: thin #c0c0c0 solid;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  text-align: center;
+  position: relative;
+}
+
+.results ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.results li {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.symptoms {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.left-column {
+  flex: 1;
+}
+
+.right-column {
+  text-align: left;
+  flex: 1;
+}
+
+
+.results p {
+  text-align: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.results button {
+  text-align: center;
+  display: inline-block;
+}
+
+.chart-left {
+  z-index: -1;
+  width: 50%;
+  height: 500px;
+  border: thin #c0c0c0 solid;
+  display: inline-block;
+  float: left;
+  margin-top: 50px;
+}
+
+.chart-center {
+  width: 50%;
+  height: auto;
+  border: none;
+  text-align: center;
+  margin: 20 px auto;
+  display: block;
+  position: relative;
+  top: 20px;
+}

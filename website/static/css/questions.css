@@ -11,13 +11,16 @@ form[method="post"] {
 
 form.single-question {
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr .5fr 1fr;
+  grid-template-rows: 2fr .5fr 1fr;
   padding: 0 20% 0 20%;
 }
 
 .question-header {
   grid-column: 1 / 3;
   grid-row: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
 }
 
 div#left {
@@ -100,7 +103,7 @@ li > label {
   to { width: attr(data);}
 }
 
-/* question text */
-h3.single-question-text {
-
+.question-title {
+  font-weight: 100;
+  /* font-family: 'Proxima-Nova-Condensed'; */
 }
