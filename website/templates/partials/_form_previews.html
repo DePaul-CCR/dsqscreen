@@ -1,4 +1,14 @@
-<div class="container">
+<!-- include tag:
+    {#  {% include "partials/_form_previews.html" %}  #}
+  prepend with
+    {#  {% set stage = N %}  #}
+  to show screener progress (strikesthrough completed stages) where N is number of stages completed
+-->
+{% if stage is not defined: %}
+{%  set stage = 0 %}
+{% endif %}
+
+<div class="container form-preview-wrapper">
   <div id="stageone" class="form-preview-container">
     {% if stage == 0 %}
       <div class="form-preview">Screener (4 questions)</div>
@@ -38,4 +48,4 @@
     </ul>
   </div>
   <span class="arrow" id="hidden">⇨</span>
-</div><br>
+</div>

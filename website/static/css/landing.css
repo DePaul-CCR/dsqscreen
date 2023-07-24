@@ -18,7 +18,6 @@ div.form-preview {
 
 div#begin-screener-grid {
   display: grid;
-  padding: 0 10% 0 10%;
   row-gap: 10px;
 }
 
@@ -43,6 +42,17 @@ div#begin-screener-grid {
   background-color: #fc8263;
 }
 
+.disclaimer {
+  text-align: center;
+  padding: 0 0 2em 0;
+}
+
+.screener-description {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* styling for form preview bubbles */
 .form-preview-container {
   height: 40px;
   border-top-right-radius: 8px;
@@ -61,6 +71,7 @@ div#begin-screener-grid {
   overflow: hidden;
   z-index: 1;
 }
+
 
 .form-preview-container:hover {
   height:auto;
@@ -101,6 +112,40 @@ div#begin-screener-grid {
   text-decoration: line-through;
 }
 
-.disclaimer {
-  text-align: center;
+.hero-landing {
+  position: absolute;
+  bottom: 0px;
+  z-index: -1;
+  opacity: 20%;
+}
+
+#hero-right {
+  right: 0px;
+  height: 445px;
+  width: 435px;
+}
+
+#hero-left {
+  left: 24vw;
+  height: 445px;
+  width: 191px;
+}
+
+@media only screen and (min-device-width: 661px) {
+  .form-preview-wrapper{
+    margin: 0 50px 0 50px;
+  }
+}
+
+@media only screen and (min-device-width: 787px) {
+  .form-preview-wrapper{
+    margin: 0 154px 0 155px;
+  }
+
+}
+
+@media only screen and (max-device-width: 975px) {
+  .screener-description > p {
+    margin: 5% 10% 0 10%
+  }
 }
