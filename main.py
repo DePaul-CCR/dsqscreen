@@ -24,7 +24,6 @@ from website import create_app
 app = create_app()
 
 symptom = ["Fatigue", "Minimum exercise", "Sleep", "Remember"]
-pagelist = ["example.html", "example2.html", "example3.html", "example4.html"]
 pagenum = 0
 end = False
 pemdomain = 0
