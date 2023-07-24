@@ -121,14 +121,14 @@ div#begin-screener-grid {
 
 #hero-right {
   right: 0px;
-  height: 50vh;
-  width: 30vw;
+  height: 445px;
+  width: 435px;
 }
 
 #hero-left {
   left: 24vw;
-  height: 50vh;
-  width: 15vw;
+  height: 445px;
+  width: 191px;
 }
 
 @media only screen and (min-device-width: 661px) {
