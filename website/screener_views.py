@@ -23,8 +23,6 @@ def home():
 # First symptom question
 @screener_views.route('/fatigue', methods=['post', 'get'])
 def page1():
-    global message
-    error = None
 
     session['pagenum'] = 1
     if request.method == "POST":
@@ -39,10 +37,9 @@ def page1():
 
             return redirect(url_for("screener_views.page2"))
         else:
-            error = message
-            return render_template("result.html", error=message, pagenum=session['pagenum'],
+            return render_template("page1.html", pagenum=session['pagenum'], message=message,
                                    selected_radio=selected_radio, selected_severity=selected_severity)
-    return render_template("result.html", error=error, pagenum=session['pagenum'])
+    return render_template("page1.html", pagenum=session['pagenum'], message='')
 
 
 @screener_views.route('/minimum', methods=["post", "get"])
@@ -52,7 +49,6 @@ def page2():
     global pemname
     selected_f = request.form.get('minex')
     selected_s = request.form.get('minex_s')
-    error = None
     if request.method == "POST":
         minexf = request.form.get("minex")
         minexs = request.form.get("minex_s")
@@ -66,10 +62,9 @@ def page2():
             return redirect(url_for("screener_views.page3"))
 
         else:
-            return render_template("page2.html", pagenum=session['pagenum'], error=message,
+            return render_template("page2.html", pagenum=session['pagenum'], message=message,
                                    selected_s=selected_s, selected_f=selected_f)
-    else:
-        return render_template("page2.html", error=error, pagenum=session['pagenum'])
+    return render_template("page2.html", pagenum=session['pagenum'], message='')
 
 
 @screener_views.route('/unrefreshed', methods=['post', 'get'])
@@ -153,11 +148,11 @@ def graph():
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
         iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS. To assess your" \
-                  " scores with further case definitions, continue to the next section."
+                  " scores with further case definitions continue to the next section."
         iomdxcheck = "Met"
 
     else:
-        iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS. To assess further case definitions, " \
+        iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS. To assess further case definitions " \
                   "continue to the next section"
         iomdxcheck = "Not met"
 

@@ -3,13 +3,7 @@
 {% block content %}
 <form method="post">
   <div class="question-header">
-    <p class="instructions">
-      <i
-        >For each question below, please select
-        <b>one number for frequency</b> and <b>one number for severity.</b>
-      </i>
-    </p>
-    <h3>{{ pagenum }}. Minimum exercise makes you physically tired</h3>
+    <h3 class="question-title">Minimum exercise makes you physically tired</h3>
   </div>
 
   <div
@@ -88,9 +82,9 @@
   </div>
   <button class="next-question-button" type="submit" name="result" value="result">Next</button>
 </form>
+
 <div class="container">
-  {% if error %}
-  <p class="message"><strong>Error:</strong> {{ error }} {% endif %}</p>
+  <p class="typed"><i>{{ message }} </i></p>
 </div>
 
   <div class="meter">

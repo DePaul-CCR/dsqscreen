@@ -247,7 +247,7 @@ def graph2():
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
         iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS. To improve the accuracy" \
-                  " of your assessment with more questions, continue to the next section."
+                  " of your assessment with more questions continue to the next section."
         iomdxcheck = "Met"
 
     else:
@@ -329,7 +329,7 @@ def graph2():
     if np.sum([ccc_fatigue, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 5 and ccc_poly >= 2:
         ccc_dx = "Met"
         ccc_msg = "Your responses suggest that you meet the Canadian Consensus Criteria for ME/CFS. " \
-                  "To improve the accuracy of your assessment with more questions, continue to the next section."
+                  "To improve the accuracy of your assessment with more questions continue to the next section."
     else:
         ccc_dx = "Not met"
         ccc_msg = "Your responses do not meet the Canadian Consensus Criteria for ME/CFS."
