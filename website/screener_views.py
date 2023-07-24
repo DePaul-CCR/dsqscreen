@@ -9,7 +9,6 @@ screener_views = Blueprint('screener_views', __name__)
 
 message = "Please enter a response for both frequency and severity before continuing"
 
-
 @screener_views.route('/', methods=['post', 'get'])
 def home():
     session["pagenum"] = 0
@@ -31,8 +30,8 @@ def page1():
         fatiguescoref = request.form.get("fatigue")
         fatiguescores = request.form.get("severity")
         if fatiguescores is not None and fatiguescoref is not None:
-            session["fatiguescoref"] = fatiguescoref
-            session["fatiguescores"] = fatiguescores
+            session['fatiguescoref'] = int(fatiguescoref)
+            session['fatiguescores'] = int(fatiguescores)
             session['pagenum'] += 1
 
             return redirect(url_for("screener_views.page2"))
@@ -75,8 +74,8 @@ def page3():
         sleepf = request.form.get("sleepf")
         sleeps = request.form.get("sleeps")
         if sleeps is not None and sleepf is not None:
-            session["sleepf"] = sleepf
-            session["sleeps"] = sleeps
+            session["sleepf"] = int(sleepf)
+            session["sleeps"] = int(sleeps)
             session['pagenum'] += 1
 
             if int(session["sleepf"]) >= 0 and int(session["sleeps"]) >= 0:
@@ -101,8 +100,8 @@ def page4():
         rememberf = request.form.get("rememberf")
         remembers = request.form.get("remembers")
         if remembers is not None and rememberf is not None:
-            session["rememberf"] = rememberf
-            session["remembers"] = remembers
+            session["rememberf"] = int(rememberf)
+            session["remembers"] = int(remembers)
             session['pagenum'] += 1
 
             session['cogscoref'] = int(rememberf)
@@ -120,41 +119,23 @@ def page4():
 
 @screener_views.route('/graph')
 def graph():
-    fatiguescore = (int(session["fatiguescoref"]) +
-                    int(session["fatiguescores"])) / 2
-    pemscore = session['pemscore']
-
-    sleepscore = session['sleepscore']
-
-    cogscore = session['cogscore']
-
-    df = pd.read_csv('MECFS COMPOSITE DATA.csv')
-    responses = [fatiguescore, pemscore, sleepscore, cogscore]
     iomfatiguecheck = "No"
-    iomreductioncheck = "No"
     iompemcheck = "No"
     iomsleepcheck = "No"
     iomcogcheck = "No"
-    if int(session['fatiguescoref']) >= 2 and int(session['fatiguescores']) >= 2:
+    # TODO remove this if unused for IOM?
+    # iomreductioncheck = "No"
+
+    if session['fatiguescoref'] >= 2 and session['fatiguescores'] >= 2:
         iomfatiguecheck = "Yes"
-
-    iomreductioncheck = "Yes"
-    if int(session['minexf']) >= 2 and int(session['minexs']) >= 2:
+    if session['minexf'] >= 2 and session['minexs'] >= 2:
         iompemcheck = "Yes"
-    if int(session['sleepf']) >= 2 and int(session['sleeps']) >= 2:
+    if session['sleepf'] >= 2 and session['sleeps'] >= 2:
         iomsleepcheck = "Yes"
-    if int(session['rememberf']) and int(session['remembers']) >= 2:
+    if session['rememberf'] and session['remembers'] >= 2:
         iomcogcheck = "Yes"
-
-    if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
-        iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS. To assess your" \
-                  " scores with further case definitions continue to the next section."
-        iomdxcheck = "Met"
-
-    else:
-        iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS. To assess further case definitions " \
-                  "continue to the next section"
-        iomdxcheck = "Not met"
+    # TODO remove this if unused for IOM?
+    # iomreductioncheck = "Yes"
 
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
         screen_message = "Your scores meet a threshold of 2 or greater on frequency and severity of least one major symptom. " \
@@ -163,14 +144,28 @@ def graph():
         screen_message = "Your scores do not meet a threshold of 2 frequency or severity for any of the major symptoms. " \
                          "It is unlikely that you have ME/CFS based on your self-report scores."
 
-    composite_scores = responses
-    categories = ['Fatigue', 'Post-exertional malaise', 'Sleep problems',
-                  'Cognitive problems']
-
     select_list = ['fatigue13c', (session['pemname'] + 'c'),
                    (session['cogname'] + 'c'), (session['sleepname'] + 'c'), 'dx']
-    df = df[select_list]
+    categories = ['Fatigue', 'Post-exertional malaise', 'Sleep problems', 'Cognitive problems']
+
+    return render_template(
+        "graph.html",
+        graphJSON=graph_composite(categories), 
+        graphFrequencyJSON=graph_frequency(categories), 
+        # graphSeverityJSON=graphSeverityJSON,  
+        screen_message=screen_message
+    )
+
+def graph_composite(categories):
+    fatiguescore = (session["fatiguescoref"] + session["fatiguescores"]) / 2
+    pemscore = session['pemscore']
+    sleepscore = session['sleepscore']
+    cogscore = session['cogscore']
+
+    composite_scores = [fatiguescore, pemscore, sleepscore, cogscore]
     colors = ['#89889E' if score < 2 else '#56A8A0' for score in composite_scores]
+    
+    #composite chart
     fig = go.Figure(
         data=[
             go.Bar(y=composite_scores, x=categories, name="Your scores", marker=dict(color=colors))],
@@ -183,19 +178,56 @@ def graph():
                 xanchor="right",
                 x=1)))
     fig.update_layout(yaxis_title='Combined Frequency and Severity Scores',
-                      xaxis_title='Symptom Domains')
+                    xaxis_title='Symptom Domains')
     fig.update_layout(yaxis_range=[0, 4])
     fig.add_hline(y=1.5, line_color='black')
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template("graph.html",
-                           iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
-                           iompemcheck=iompemcheck, iomdxcheck=iomdxcheck,
-                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck,
-                           next_link="Continue to full DSQ", graphJSON=graphJSON, iom_msg=iom_msg,
-                           screen_message=screen_message)
+# frequency chart
+def graph_frequency(categories):
+    fatiguescore = session["fatiguescoref"]
+    pemscore = session["minexf"]
+    sleepscore = session['sleepf']
+    cogscore = session['rememberf']
+    composite_scores = [fatiguescore, pemscore, sleepscore, cogscore]
+    colors = ['#89889E' if score < 2 else '#56A8A0' for score in composite_scores]
 
+    fig_frequency = go.Figure(
+        data=[
+            go.Bar(y=composite_scores, x=categories, name="Your scores", marker=dict(color=colors))],
+        layout=go.Layout(
+            title=go.layout.Title(text=''),
+            showlegend=True, legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="right",
+                x=1)))
+    fig_frequency.update_layout(yaxis_title='Frequency Scores',
+                      xaxis_title='Symptom Domains')
+    fig_frequency.update_layout(yaxis_range=[0, 4])
+    fig_frequency.add_hline(y=1.5, line_color='black')
+    return json.dumps(fig_frequency, cls=plotly.utils.PlotlyJSONEncoder)
 
+    # TODO: severity chart
+    # fig_frequency = go.Figure(
+    #     data=[
+    #         go.Bar(y=composite_scores, x=categories, name="Your scores", marker=dict(color=colors))],
+    #     layout=go.Layout(
+    #         title=go.layout.Title(text=''),
+    #         showlegend=True, legend=dict(
+    #             orientation="h",
+    #             yanchor="bottom",
+    #             y=1.02,
+    #             xanchor="right",
+    #             x=1)))
+    # fig_frequency.update_layout(yaxis_title='Combined Frequency and Severity Scores',
+    #                   xaxis_title='Symptom Domains')
+    # fig_frequency.update_layout(yaxis_range=[0, 4])
+    # fig_frequency.add_hline(y=1.5, line_color='black')
+    # graphFrequencyJSON = json.dumps(fig_frequency, cls=plotly.utils.PlotlyJSONEncoder)
+
+# not currently in use since we disabled users - PC 7/21/23
 @screener_views.route('/scores')
 def scores():
     name = session['user']
