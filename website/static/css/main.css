@@ -297,10 +297,6 @@ span {
   display: in-line block;
 }
 
-fieldset {
-  margin-left: 20px;
-}
-
 label {
   white-space: nowrap;
   margin: auto;
@@ -644,22 +640,15 @@ footer {
     font-weight: 500;
   }
 
-  fieldset {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-  }
-
   /* These are bandaid fixes; we will want to remove style tags in HTML pages*/
 
   #left {
     width: auto !important;
-    height: auto !important;
     float: none !important;
   }
 
   #right {
     width: auto !important;
-    height: auto !important;
     float: none !important;
   }
 
