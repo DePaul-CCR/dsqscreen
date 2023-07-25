@@ -639,15 +639,14 @@ footer {
   }
 }
 
-@media only screen and (max-device-width: 800px) {
+@media only screen and (max-width: 800px) {
   body {
     font-weight: 500;
   }
 
   fieldset {
-    border: none;
     margin-bottom: 20px;
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 
   /* These are bandaid fixes; we will want to remove style tags in HTML pages*/
