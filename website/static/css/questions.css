@@ -215,6 +215,6 @@ li > label {
 
   fieldset > legend {
     height: auto;
-    margin-bottom: none;
+    margin-bottom: 0;
   }
 }
