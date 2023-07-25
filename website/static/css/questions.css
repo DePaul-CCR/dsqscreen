@@ -52,6 +52,7 @@ ol.radio-button-list > li {
   transition: background-color .3s;
   list-style-type: none;
   display: flex;
+  align-items: flex-start;
 }
 
 ol.radio-button-list > li:hover, li.selected {
@@ -119,13 +120,14 @@ li > label {
 }
 
 .question-title {
-  font-weight: 100;
+  font-weight: 500;
   background: rgb(255,255,255);
   background: radial-gradient(circle, rgba(255,255,255,85%) 25%, rgba(255,255,255,0) 100%);
 }
 
 
 .instructions {
+  font-weight: 500;
   text-align: center;
   background-color: #bfffb7;
   margin-top: 30px;
@@ -151,16 +153,26 @@ li > label {
     margin-right: 50px;
   }
 
-  form[method="post"] {
+  form.two-question {
     grid-template-rows: 1fr 1fr .5fr;
   }
 }
 
+@media only screen and (min-width: 900px) {
+
+}
+
+
 @media only screen and (max-width: 899px) {
-  form[method="post"] {
+  form.two-question {
     padding: 0 5% 0 5%;
     grid-template-columns: none;
-    grid-template-rows: repeat(3, 1fr) .5fr;
+    grid-template-rows: auto;
+  }
+
+  form.single-question {
+    padding: 0 5% 0 5%;
+    grid-template-rows: 2fr .5fr 0 1fr;
   }
   
   .question-header {
@@ -183,6 +195,11 @@ li > label {
 }
 
 @media only screen and (max-width: 500px) {
+  form.single-question {
+    padding: 0 5px 0 5px;
+    grid-template-rows: auto;
+  }
+
   .radio-button-list {
     padding-left: 0;
   }
