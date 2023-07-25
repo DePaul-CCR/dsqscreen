@@ -133,7 +133,7 @@ div#begin-screener-grid {
 
 
 
-@media only screen and (max-device-width: 787px) {
+@media only screen and (max-width: 787px) {
   .screener-description {
     font-size: 25px;
   }
@@ -141,15 +141,19 @@ div#begin-screener-grid {
   .form-preview-wrapper {
     margin: 0 154px 0 155px;
   }
+
+    #hero-left {
+      right: 0;
+    }
+
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-width: 1023px) {
   #hero-right {
     display: none;
   }
 
   #hero-left {
     left: 40vw;
-    bottom: -80px;
   }
 }
