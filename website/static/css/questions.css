@@ -9,6 +9,15 @@ form[method="post"] {
   display: block;
 }
 
+fieldset {
+  margin-bottom: 20px;
+}
+
+fieldset > legend {
+  height: 1em;
+  margin-bottom: 1em;
+}
+
 form.single-question {
   grid-template-columns: 1fr;
   grid-template-rows: 2fr .5fr 1fr;
@@ -41,15 +50,18 @@ div#right {
 
 ol.radio-button-list > li {
   transition: background-color .3s;
+  list-style-type: none;
+  display: flex;
+  align-items: flex-start;
 }
 
-ol.radio-button-list > li:hover {
+ol.radio-button-list > li:hover, li.selected {
   background-color: #F3CFC6;
 }
 
 li > label {
   display: inline-block;
-  width: 90%;
+  width: 100%;
   /* prevent highlighting text */
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -98,19 +110,24 @@ li > label {
   animation-duration: 0.5s;
 }
 
+.radio-button-list {
+  padding-left: 0;
+}
+
 @keyframes progress {
   from { width: var(--start);}
   to { width: attr(data);}
 }
 
 .question-title {
-  font-weight: 100;
+  font-weight: 500;
   background: rgb(255,255,255);
   background: radial-gradient(circle, rgba(255,255,255,85%) 25%, rgba(255,255,255,0) 100%);
 }
 
 
 .instructions {
+  font-weight: 500;
   text-align: center;
   background-color: #bfffb7;
   margin-top: 30px;
@@ -128,4 +145,76 @@ li > label {
   height: 1em;
   text-align: center;
   margin: 0 0 2em 0;
+}
+
+@media only screen and (max-width: 1279px) {
+  .instructions {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  form.two-question {
+    grid-template-rows: 1fr 1fr .5fr;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+
+}
+
+
+@media only screen and (max-width: 899px) {
+  form.two-question {
+    padding: 0 5% 0 5%;
+    grid-template-columns: none;
+    grid-template-rows: auto;
+  }
+
+  form.single-question {
+    padding: 0 5% 0 5%;
+    grid-template-rows: 2fr .5fr 0 1fr;
+  }
+  
+  .question-header {
+    grid-column: 1;
+  }
+  
+  div#right {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  .next-question-button {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  
+  fieldset {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  form.single-question {
+    padding: 0 5px 0 5px;
+    grid-template-rows: auto;
+  }
+
+  .radio-button-list {
+    padding-left: 0;
+  }
+
+  .instructions{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  fieldset {
+    padding-left: 0;
+  }
+
+  fieldset > legend {
+    height: auto;
+    margin-bottom: 0;
+  }
 }
