@@ -348,7 +348,7 @@ def graph2():
                    name="Average ME/CFS scores")],
         layout=go.Layout(
             title=go.layout.Title(text='Your scores compared'
-                                       ' with our dataset of 2,402 participants'),
+                                       ' with our dataset of over 2,400 participants with ME/CFS'),
             showlegend=True, legend=dict(
                 orientation="h",
                 yanchor="bottom",
