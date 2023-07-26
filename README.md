@@ -26,7 +26,7 @@ MacOS:
 `python3 main.py dev`
 
 ### Dev pipeline:  
-`featurebranch` -> PR `main` -> PR `production` -> autodeploys to render.com
+`featurebranch` -> PR `main` -> PR `production` -> Create release on Github -> autodeploys to render.com 
 
 ### Production:
 -> To start production server  
