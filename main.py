@@ -411,7 +411,7 @@ def diagnose2():
             go.Bar(y=user_scores, x=categories, name="Your scores")],
         layout=go.Layout(
             title=go.layout.Title(text='Your scores compared'
-                                       ' with our dataset of 2,402 participants'),
+                                       ' with our dataset of over 2,400 participants with ME/CFS'),
             showlegend=True, legend=dict(
                 orientation="h",
                 yanchor="bottom",

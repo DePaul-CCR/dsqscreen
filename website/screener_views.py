@@ -171,11 +171,13 @@ def graph():
                    (session['cogname'] + 'c'), (session['sleepname'] + 'c'), 'dx']
     df = df[select_list]
     colors = ['#89889E' if score < 2 else '#56A8A0' for score in composite_scores]
+    
+    # composite f/s score graph
     fig = go.Figure(
         data=[
             go.Bar(y=composite_scores, x=categories, name="Your scores", marker=dict(color=colors))],
         layout=go.Layout(
-            title=go.layout.Title(text=''),
+            title=go.layout.Title(text='Your Summary Score', x=0.5),
             showlegend=True, legend=dict(
                 orientation="h",
                 yanchor="bottom",
