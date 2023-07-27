@@ -47,11 +47,6 @@
   padding: 10px;
 }
 
-.symptoms {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
 .left-column {
   flex: 1;
 }
@@ -92,6 +87,64 @@
   display: block;
   position: relative;
   top: 20px;
+}
+
+.symptoms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 2em);
+  height: 100%;
+  overflow: auto;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+.symptom-col-1 {
+  display: inline-block;
+  grid-column: 1;
+  border-width: medium;
+  border-top: 1px solid black;
+  padding: 5px;
+  border-left: 1px solid black;
+}
+
+.symptom-col-2 {
+  grid-column: 2;
+  display: inline-block;
+  border-top: 1px solid black;
+  padding: 5px;
+  border-left: 1px solid black;
+  text-align: left;
+  border-right: 1px solid black;
+}
+
+.symptoms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 2em);
+  height: 100%;
+  overflow: auto;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+.symptom-col-1 {
+  display: inline-block;
+  grid-column: 1;
+  border-width: medium;
+  border-top: 1px solid black;
+  padding: 5px;
+  border-left: 1px solid black;
+}
+
+.symptom-col-2 {
+  grid-column: 2;
+  display: inline-block;
+  border-top: 1px solid black;
+  padding: 5px;
+  border-left: 1px solid black;
+  text-align: left;
+  border-right: 1px solid black;
 }
 
 .chart-center#screener {
