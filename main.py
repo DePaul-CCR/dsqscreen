@@ -86,7 +86,7 @@ def diagnose2():
     user_scores = [(int(session['fatiguescoref']) + int(session['fatiguescores'])) / 2,
                    pem_domainscore, sleep_domainscore, cog_domainscore, pain_domainscore, gastro_domainscore,
                    ortho_domainscore, circ_domainscore, immune_domainscore, neuroen_domainscore]
-    cfsDomains = np.mean(mecfs.iloc[:, 110:120], axis=0)
+    cfsdomains = np.mean(mecfs.iloc[:, 110:120], axis=0)
     conDomains = np.mean(control.iloc[:, 110:120], axis=0)
 
     categories = ['Fatigue', 'PEM', 'Sleep', 'Cognitive Problems', 'Pain', 'Gastro Problems',
@@ -404,14 +404,18 @@ def diagnose2():
         ME_diagnosis = 0
         me_icc = "Your scores suggest you do not meet the ME-ICC case definition criteria for ME/CFS"
         meicc_dxcheck = "Not met"
+    
+    # converts scores to 100pt scale
+    user_scores = np.multiply(user_scores, 25).tolist()
+    cfsdomains = np.multiply(cfsdomains, 25).tolist()
+    
     fig = go.Figure(
         data=[
-            go.Bar(y=cfsDomains, x=categories,
-                   name="Average ME/CFS scores"),
-            go.Bar(y=user_scores, x=categories, name="Your scores")],
+            go.Bar(y=user_scores, x=categories, name="Your scores"),
+            go.Bar(y=cfsdomains, x=categories, name="Average ME/CFS scores")],
         layout=go.Layout(
-            title=go.layout.Title(text='Your scores compared'
-                                       ' with our dataset of over 2,400 participants with ME/CFS'),
+            title=go.layout.Title(text='Your scores compared with our dataset of <br>'
+                                       'over 2,400 participants with ME/CFS', x=0.5),
             showlegend=True, legend=dict(
                 orientation="h",
                 yanchor="bottom",
@@ -420,7 +424,8 @@ def diagnose2():
                 x=1)))
     fig.update_layout(yaxis_title='Averaged Frequency and Severity Scores',
                       xaxis_title='Symptom Domains')
-
+    fig.update_yaxes(range=[0, 100], dtick=25)
+    fig.add_hline(y=1.5 * 25, line_color='black')
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
     return render_template("graph3.html", graphJSON=graphJSON,

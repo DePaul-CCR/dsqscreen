@@ -339,16 +339,18 @@ def graph2():
                   'Orthostatic Intolerance', 'Circulatory Problems', 'Immune System', 'Neuroendocrine Problems']
     print(categories)
 
+    # converts scores to 100pt scale
+    user_scores = np.multiply(user_scores, 25).tolist()
+    cfsdomains = np.multiply(cfsdomains, 25).tolist()
 
     # Creates a figure using the plotly library, which can be dynamically embedded in the HTML page
     fig = go.Figure(
         data=[
             go.Bar(y=user_scores, x=categories, name="Your scores"),
-            go.Bar(y=cfsdomains, x=categories,
-                   name="Average ME/CFS scores")],
+            go.Bar(y=cfsdomains, x=categories, name="Average ME/CFS scores")],
         layout=go.Layout(
-            title=go.layout.Title(text='Your scores compared'
-                                       ' with our dataset of over 2,400 participants with ME/CFS'),
+            title=go.layout.Title(text='Your scores compared with our dataset of <br>'
+                                       'over 2,400 participants with ME/CFS', x=0.5),
             showlegend=True, legend=dict(
                 orientation="h",
                 yanchor="bottom",
@@ -357,7 +359,8 @@ def graph2():
                 x=1)))
     fig.update_layout(yaxis_title='Averaged Frequency and Severity Scores',
                       xaxis_title='Symptom Domains')
-
+    fig.update_yaxes(range=[0, 100], dtick=25)
+    fig.add_hline(y=1.5 * 25, line_color='black')
     # This converts to figure fig to a JSON object so it can be dynamically rendered with javascript on the page
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
