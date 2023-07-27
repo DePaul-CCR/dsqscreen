@@ -218,3 +218,19 @@ li > label {
     margin-bottom: 0;
   }
 }
+
+@media only screen and (max-width: 500px) and (max-height: 800px) {
+  .question-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+  }
+
+  .radio-button-list {
+    margin-bottom: 0
+  }
+
+  .typed {
+    margin: 0 0 1.5em 0;
+  }
+}
