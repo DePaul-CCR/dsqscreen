@@ -65,7 +65,7 @@
 }
 
 .chart-center {
-  width: 50%;
+  width: 75%;
   height: auto;
   border: none;
   text-align: center;
@@ -73,4 +73,11 @@
   display: block;
   position: relative;
   top: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .chart-center {
+    zoom: .45;
+    width: 90%;
+  }
 }
