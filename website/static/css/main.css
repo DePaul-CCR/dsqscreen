@@ -333,15 +333,6 @@ select {
   border-bottom-left-radius: 8px;
 }
 
-.two-buttons {
-  white-space: nowrap;
-  display: flex;
-  justify-content: center;
-}
-.two-buttons button {
-  margin-left: 0;
-}
-
 /* The contaner must be positioned relative: */
 .custom-select {
   position: relative;
