@@ -1,36 +1,66 @@
+/* currently only on graph1 -- PC 07/28/23 */
+.diagnostic-message {
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  background-color: #F3CFC6;
+  grid-row: 1;
+  grid-column: 2;
+  border: 1px solid black;
+}
+
 .print-button {
   display: block;
   margin-top: 25px;
 }
 
-.results {
+.screener-results {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: auto 460px;
+  margin-bottom: 20px;
+}
+
+.case-results {
   background: white;
   width: 50%;
-  height: auto;
+  margin: 20px auto 20px auto;
   border: thin #c0c0c0 solid;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
-  margin: auto;
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 50px;
-  text-align: center;
-  position: relative;
 }
 
-.results ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.case-results-title {
+  margin: 5px 0 0 0;
 }
-.results li {
+
+.case-results-diagnosis {
+  text-align: left;
   border: 1px solid black;
-  padding: 10px;
+  font-weight: bold;
+  background-color: #F3CFC6;
+  padding: 10px 0 10px 0;
 }
 
-.symptoms {
-  display: flex;
-  flex-wrap: nowrap;
+.case-results-symptom-header {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 2px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.case-results p {
+  text-align: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.case-results button {
+  text-align: center;
+  display: inline-block;
 }
 
 .left-column {
@@ -40,18 +70,6 @@
 .right-column {
   text-align: left;
   flex: 1;
-}
-
-
-.results p {
-  text-align: left;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.results button {
-  text-align: center;
-  display: inline-block;
 }
 
 .chart-left {
@@ -64,20 +82,61 @@
   margin-top: 50px;
 }
 
-.chart-center {
-  width: 75%;
-  height: auto;
-  border: none;
-  text-align: center;
-  margin: 20 px auto;
-  display: block;
-  position: relative;
-  top: 20px;
+.symptom-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, auto);
+  border-bottom: 1px solid black;
 }
 
-@media screen and (max-width: 500px) {
+.symptom-col-1 {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 5px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.symptom-col-2 {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 5px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.chart-center#screener {
+  grid-row: 2;
+  grid-column: 2;
+  margin: 50px 0 20px 0;
+}
+
+.two-buttons {
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+}
+
+.two-buttons button {
+  margin: 10px 10px 0 0;
+}
+
+@media screen and (max-width: 650px) {
   .chart-center {
     zoom: .45;
     width: 90%;
+  }
+
+  .diagnostic-message {
+    padding: 0;
+  }
+
+  .screener-results {
+    grid-template-columns: 0 1fr 0;
+    grid-template-rows: auto;
+    grid-gap: 20px;
   }
 }

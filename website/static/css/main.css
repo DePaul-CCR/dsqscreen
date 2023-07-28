@@ -295,7 +295,6 @@ p {
 span {
   margin-left: 200px;
   margin-right: 200px;
-  display: in-line block;
 }
 
 label {
@@ -332,15 +331,6 @@ select {
   border-bottom-right-radius: 8px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-}
-
-.two-buttons {
-  white-space: nowrap;
-  display: flex;
-  justify-content: center;
-}
-.two-buttons button {
-  margin-left: 0;
 }
 
 /* The contaner must be positioned relative: */
@@ -591,7 +581,7 @@ footer {
     display: none;
   }
 
-  .results {
+  .case-results {
     width: 100%;
     border: none;
     margin: auto;
@@ -745,7 +735,7 @@ footer {
     width: 100%;
   }
 
-  .results {
+  .case-results {
     width: 100%;
   }
 
