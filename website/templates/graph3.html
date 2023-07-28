@@ -35,34 +35,26 @@
   <hr>
   <p> <b>Case Definition Requirements Satisfied: </b></p>
   <div class="symptoms">
-    <div class="left-column">
-      <ul>
-        <li>Fatigue that persists at least 6 months </li>
-        <li>50% or more reduction in functioning</li>
-        <li>Post-exertional malaise (PEM) </li>
-        <li>Sleep Problems</li>
-        <li>Pain</li>
-        <li>Neurocognitive Issues</li>
-        <li>Autonomic Dysfunction</li>
-        <li>Neuroendocrine Issues</li>
-        <li>Immune Symptoms</li>
-        <li><b>Diagnosis:</b></li>
-      </ul>
-    </div>
-    <div class="right-column">
-      <ul>
-        <li {% if ccc_fatiguecheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_fatiguecheck }}</li>
-        <li {% if ccc_reduction=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_reduction }}</li>
-        <li {% if ccc_pemcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_pemcheck }}</li>
-        <li {% if ccc_sleepcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_sleepcheck }}</li>
-        <li {% if ccc_paincheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_paincheck }}</li>
-        <li {% if ccc_cogcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_cogcheck }}</li>
-        <li {% if ccc_autocheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_autocheck }}</li>
-        <li {% if ccc_neurocheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_neurocheck }}</li>
-        <li {% if ccc_immunecheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</li>
-        <li><b>{{ ccc_dx }}</b></li>
-      </ul>
-    </div>
+    <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
+    <div class="symptom-col-2" {% if ccc_fatiguecheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_fatiguecheck }}</div>
+    <div class="symptom-col-1">50% or more reduction in functioning</div>
+    <div class="symptom-col-2" {% if ccc_reduction=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_reduction }}</div>
+    <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
+    <div class="symptom-col-2" {% if ccc_pemcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_pemcheck }}</div>
+    <div class="symptom-col-1">Sleep Problems</div>
+    <div class="symptom-col-2" {% if ccc_sleepcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_sleepcheck }}</div>
+    <div class="symptom-col-1">Pain</div>
+    <div class="symptom-col-2" {% if ccc_paincheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_paincheck }}</div>
+    <div class="symptom-col-1">Neurocognitive Issues</div>
+    <div class="symptom-col-2" {% if ccc_cogcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_cogcheck }}</div>
+    <div class="symptom-col-1">Autonomic Dysfunction</div>
+    <div class="symptom-col-2" {% if ccc_autocheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_autocheck }}</div>
+    <div class="symptom-col-1">Neuroendocrine Issues</div>
+    <div class="symptom-col-2" {% if ccc_neurocheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_neurocheck }}</div>
+    <div class="symptom-col-1">Immune Symptoms</div>
+    <div class="symptom-col-2" {% if ccc_immunecheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</div>
+    <div class="symptom-col-1"><b>Diagnosis:</b></div>
+    <div class="symptom-col-2"><b>{{ ccc_dx }}</b></div>
   </div>
 </div>
 
