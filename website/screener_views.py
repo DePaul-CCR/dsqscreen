@@ -143,11 +143,9 @@ def graph():
         iomcogcheck = "Yes"
 
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
-        screen_message = "Your scores meet a threshold of 2 or greater on frequency and severity of least one major symptom. " \
-                         "We recommend continuing to the next section (DSQ-Short Form) for a more in-depth assessment."
+        screen_message = 'Based on your responses there is a chance you might have MECFS. <br> Please continue to the next section for a more accurate assessment.'
     else:
-        screen_message = "Your scores do not meet a threshold of 2 frequency or severity for any of the major symptoms. " \
-                         "It is unlikely that you have ME/CFS based on your self-report scores."
+        screen_message = "Based on your responses it does not appear you have MECFS."
 
     composite_scores = responses
     categories = ['Fatigue', 'Post-exertional malaise', 'Sleep problems',
