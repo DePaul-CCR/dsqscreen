@@ -437,15 +437,6 @@ def diagnose2():
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
                            iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck)
 
-
-@app.route('/graph')
-def graph(graphJSON, probCFS, sample_size):
-    graphJSON = graphJSON
-    probCFS = probCFS
-    sample_size = sample_size
-    return render_template("results/graph.html", graphJSON=graphJSON, probCFS=probCFS, sample_size=sample_size)
-
-
 @app.route('/end2', methods=['get'])
 def end2():
     global pagenum
