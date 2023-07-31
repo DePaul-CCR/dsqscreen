@@ -458,33 +458,6 @@ def end2():
     else:
         return f"<h1>{pemdomain}You probably don't have ME/CFS</h1>"
 
-
-@app.route('/soreness', methods=['post', 'get'])
-def expem1():
-    form = FlaskForm()
-    global pemname
-    if request.method == "POST":
-        soref = request.form.get("soref")
-        sores = request.form.get("sores")
-        if soref is not None and sores is not None:
-            session["soref"] = soref
-            session["sores"] = sores
-            session['pagenum'] += 1
-
-            if int(session["soref"]) >= 0 and int(session["sores"]) >= 0:
-                session['pemscoref'] = session['soref']
-                session['pemscores'] = session['sores']
-                session['pemscore'] = (int(session['soref']) + int(session['sores'])) / 2
-                pemname = 'soreness15'
-
-                return redirect(url_for("excog1"))
-
-
-        else:
-            return render_template("expem1.html", pagenum=session['pagenum'], message=message)
-    return render_template("expem1.html", pagenum=session['pagenum'], message='')
-
-
 @app.route('/drained', methods=['post', 'get'])
 def expem2():
     form = FlaskForm()
@@ -503,8 +476,8 @@ def expem2():
                 pemname = 'drained18'
                 return redirect(url_for("weakness"))
         else:
-            return render_template("expem2.html", pagenum=session['pagenum'], message=message)
-    return render_template("expem2.html", pagenum=session['pagenum'], message='')
+            return render_template("dsq/expem2.html", pagenum=session['pagenum'], message=message)
+    return render_template("dsq/expem2.html", pagenum=session['pagenum'], message='')
 
 
 @app.route('/viral', methods=['post', 'get'])
@@ -518,8 +491,8 @@ def viral():
             session['pagenum'] += 1
             return redirect(url_for('expem3'))
         else:
-            return render_template("viral.html", message=msg_viral, pagenum=session['pagenum'])
-    return render_template('viral.html', message='', pagenum=session['pagenum'])
+            return render_template("dsq/viral.html", message=msg_viral, pagenum=session['pagenum'])
+    return render_template('dsq/viral.html', message='', pagenum=session['pagenum'])
 
 
 @app.route('/heavy', methods=['post', 'get'])
@@ -541,8 +514,8 @@ def expem3():
                 pemname = 'heavy14'
                 return redirect(url_for("expem4"))
         else:
-            return render_template("expem3.html", pagenum=session['pagenum'], message=message)
-    return render_template("expem3.html", pagenum=session['pagenum'], message='')
+            return render_template("dsq/expem3.html", pagenum=session['pagenum'], message=message)
+    return render_template("dsq/expem3.html", pagenum=session['pagenum'], message='')
 
 
 @app.route('/mentally', methods=['post', 'get'])
@@ -563,8 +536,8 @@ def expem4():
                 pemname = 'mental16'
                 return redirect(url_for("expem2"))
         else:
-            return render_template("expem4.html", message=message, pagenum=session['pagenum'])
-    return render_template("expem4.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/expem4.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/expem4.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/weakness', methods=['post', 'get'])
@@ -584,8 +557,8 @@ def weakness():
             session['pemscore'] = (int(session['weakf']) + int(session['weaks'])) / 2
             return redirect(url_for("exsleep2"))
         else:
-            return render_template("weakness33.html", message=message, pagenum=session['pagenum'])
-    return render_template("weakness33.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/weakness33.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/weakness33.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/staying', methods=['post', 'get'])
@@ -606,8 +579,8 @@ def exsleep1():
                 sleepname = 'staying22'
                 return redirect(url_for("early"))
         else:
-            return render_template("exsleep1.html", message=message, pagenum=session['pagenum'])
-    return render_template("exsleep1.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/exsleep1.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/exsleep1.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/nap', methods=['post', 'get'])
@@ -628,8 +601,8 @@ def exsleep2():
             sleepname = 'nap20'
             return redirect(url_for("exsleep3"))
         else:
-            return render_template("exsleep2.html", message=message, pagenum=session['pagenum'])
-    return render_template("exsleep2.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/exsleep2.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/exsleep2.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/falling', methods=['post', 'get'])
@@ -650,8 +623,8 @@ def exsleep3():
                 sleepname = 'falling21'
                 return redirect(url_for("exsleep1"))
         else:
-            return render_template("exsleep3.html", message=message, pagenum=session['pagenum'])
-    return render_template("exsleep3.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/exsleep3.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/exsleep3.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/early', methods=['post', 'get'])
@@ -672,8 +645,8 @@ def early():
                 sleepname = 'falling21'
                 return redirect(url_for("exsleep4"))
         else:
-            return render_template("early23.html", message=message, pagenum=session['pagenum'])
-    return render_template("early23.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/early23.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/early23.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/allday', methods=['post', 'get'])
@@ -700,8 +673,8 @@ def exsleep4():
                 session['sleepscore'] = (int(session['jointpain']) + int(session['alldays'])) / 2
                 return redirect(url_for("jointpain"))
         else:
-            return render_template("exsleep4.html", message=message, pagenum=session['pagenum'])
-    return render_template("exsleep4.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/exsleep4.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/exsleep4.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/jointpain', methods=['post', 'get'])
@@ -717,8 +690,8 @@ def jointpain():
             session['pagenum'] += 1
             return redirect(url_for("eyepain"))
         else:
-            return render_template("jointpain26.html", message=message, pagenum=session['pagenum'])
-    return render_template("jointpain26.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/jointpain26.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/jointpain26.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/eyepain', methods=['post', 'get'])
@@ -734,8 +707,8 @@ def eyepain():
             session['pagenum'] += 1
             return redirect(url_for("chestpain"))
         else:
-            return render_template("eyepain27.html", message=message, pagenum=session['pagenum'])
-    return render_template("eyepain27.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/eyepain27.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/eyepain27.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/chestpain', methods=['post', 'get'])
@@ -751,8 +724,8 @@ def chestpain():
             session['pagenum'] += 1
             return redirect(url_for("stomach"))
         else:
-            return render_template("chestpain28.html", message=message, pagenum=session['pagenum'])
-    return render_template("chestpain28.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/chestpain28.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/chestpain28.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/stomach', methods=['post', 'get'])
@@ -768,8 +741,8 @@ def stomach():
             session['pagenum'] += 1
             return redirect(url_for("headaches"))
         else:
-            return render_template("stomach30.html", message=message, pagenum=session['pagenum'])
-    return render_template("stomach30.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/stomach30.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/stomach30.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/headaches', methods=['post', 'get'])
@@ -785,8 +758,8 @@ def headaches():
             session['pagenum'] += 1
             return redirect(url_for("twitches"))
         else:
-            return render_template("headaches31.html", message=message, pagenum=session['pagenum'])
-    return render_template("headaches31.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/headaches31.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/headaches31.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/twitches', methods=['post', 'get'])
@@ -802,8 +775,8 @@ def twitches():
             session['pagenum'] += 1
             return redirect(url_for("noise"))
         else:
-            return render_template("twitches32.html", message=message, pagenum=session['pagenum'])
-    return render_template("twitches32.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/twitches32.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/twitches32.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/noise', methods=['post', 'get'])
@@ -819,8 +792,8 @@ def noise():
             session['pagenum'] += 1
             return redirect(url_for("lights"))
         else:
-            return render_template("noise34.html", message=message, pagenum=session['pagenum'])
-    return render_template("noise34.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/noise34.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/noise34.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/lights', methods=['post', 'get'])
@@ -836,32 +809,8 @@ def lights():
             session['pagenum'] += 1
             return redirect(url_for("excog2"))
         else:
-            return render_template("lights35.html", message=message, pagenum=session['pagenum'])
-    return render_template("lights35.html", message='', pagenum=session['pagenum'])
-
-
-@app.route('/attention', methods=['post', 'get'])
-def excog1():
-    form = FlaskForm()
-    global cogname
-    if request.method == "POST":
-        attentionf = request.form.get("attentionf")
-        attentions = request.form.get("attentions")
-        if attentions is not None and attentionf is not None:
-            session["attentionf"] = attentionf
-            session["attentions"] = attentions
-            session['pagenum'] += 1
-            if int(session["attentionf"]) >= 0 and int(session["attentions"]) >= 0:
-                session['cogscoref'] = int(attentionf)
-                session['cogscores'] = int(attentions)
-                cogname = 'difficulty37'
-                session['cogscore'] = (int(session['attentionf']) + int(session['attentions'])) / 2
-                end = True
-                return redirect(url_for("musclepain"))
-        else:
-            return render_template("excog1.html", message=message, pagenum=session['pagenum'])
-    return render_template("excog1.html", message='', pagenum=session['pagenum'])
-
+            return render_template("dsq/lights35.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/lights35.html", message='', pagenum=session['pagenum'])
 
 @app.route('/word', methods=['post', 'get'])
 def excog2():
@@ -881,8 +830,8 @@ def excog2():
                 session['cogscore'] = (int(session['wordf']) + int(session['words'])) / 2
                 return redirect(url_for("understand"))
         else:
-            return render_template("excog2.html", message=message, pagenum=session['pagenum'])
-    return render_template("excog2.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/excog2.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/excog2.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/focus', methods=['post', 'get'])
@@ -905,8 +854,8 @@ def excog3():
                 cogname = 'focus40'
                 return redirect(url_for('vision'))
         else:
-            return render_template("excog3.html", message=message, pagenum=session['pagenum'])
-    return render_template("excog3.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/excog3.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/excog3.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/understand', methods=['post', 'get'])
@@ -929,8 +878,8 @@ def understand():
                 cogname = 'understand39'
                 return redirect(url_for("excog3"))
         else:
-            return render_template("understand39.html", message=message, pagenum=session['pagenum'])
-    return render_template("understand39.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/understand39.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/understand39.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/slowness', methods=['post', 'get'])
@@ -955,8 +904,8 @@ def slowness():
             else:
                 return redirect(url_for("absent"))
         else:
-            return render_template("slowness43.html", message=message, pagenum=session['pagenum'])
-    return render_template("slowness43.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/slowness43.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/slowness43.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/absent', methods=['post', 'get'])
@@ -979,8 +928,8 @@ def absent():
                 cogname = 'absent44'
                 return redirect(url_for("bladder"))
         else:
-            return render_template("absent44.html", message=message, pagenum=session['pagenum'])
-    return render_template("absent44.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/absent44.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/absent44.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/bladder', methods=['post', 'get'])
@@ -996,8 +945,8 @@ def bladder():
             session['pagenum'] += 1
             return redirect(url_for("nausea"))
         else:
-            return render_template("bladder45.html", message=message, pagenum=session['pagenum'])
-    return render_template("bladder45.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/bladder45.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/bladder45.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/nausea', methods=['post', 'get'])
@@ -1013,8 +962,8 @@ def nausea():
             session['pagenum'] += 1
             return redirect(url_for("shortness"))
         else:
-            return render_template("nausea47.html", message=message, pagenum=session['pagenum'])
-    return render_template("nausea47.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/nausea47.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/nausea47.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/shortness', methods=['post', 'get'])
@@ -1030,8 +979,8 @@ def shortness():
             session['pagenum'] += 1
             return redirect(url_for("dizzy"))
         else:
-            return render_template("shortness49.html", message=message, pagenum=session['pagenum'])
-    return render_template("shortness49.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/shortness49.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/shortness49.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/dizzy', methods=['post', 'get'])
@@ -1047,8 +996,8 @@ def dizzy():
             session['pagenum'] += 1
             return redirect(url_for("heart"))
         else:
-            return render_template("dizzy50.html", message=message, pagenum=session['pagenum'])
-    return render_template("dizzy50.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/dizzy50.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/dizzy50.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/heart', methods=['post', 'get'])
@@ -1064,8 +1013,8 @@ def heart():
             session['pagenum'] += 1
             return redirect(url_for("weight"))
         else:
-            return render_template("heart51.html", message=message, pagenum=session['pagenum'])
-    return render_template("heart51.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/heart51.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/heart51.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/weight', methods=['post', 'get'])
@@ -1081,8 +1030,8 @@ def weight():
             session['pagenum'] += 1
             return redirect(url_for("appetite"))
         else:
-            return render_template("weight52.html", message=message, pagenum=session['pagenum'])
-    return render_template("weight52.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/weight52.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/weight52.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/appetite', methods=['post', 'get'])
@@ -1098,8 +1047,8 @@ def appetite():
             session['pagenum'] += 1
             return redirect(url_for("sweating"))
         else:
-            return render_template("appetite53.html", message=message, pagenum=session['pagenum'])
-    return render_template("appetite53.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/appetite53.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/appetite53.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/sweating', methods=['post', 'get'])
@@ -1115,8 +1064,8 @@ def sweating():
             session['pagenum'] += 1
             return redirect(url_for("night"))
         else:
-            return render_template("sweating54.html", message=message, pagenum=session['pagenum'])
-    return render_template("sweating54.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/sweating54.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/sweating54.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/night', methods=['post', 'get'])
@@ -1132,8 +1081,8 @@ def night():
             session['pagenum'] += 1
             return redirect(url_for("chills"))
         else:
-            return render_template("night55.html", message=message, pagenum=session['pagenum'])
-    return render_template("night55.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/night55.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/night55.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/chills', methods=['post', 'get'])
@@ -1149,8 +1098,8 @@ def chills():
             session['pagenum'] += 1
             return redirect(url_for("hitemp"))
         else:
-            return render_template("chills57.html", message=message, pagenum=session['pagenum'])
-    return render_template("chills57.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/chills57.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/chills57.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/59', methods=['post', 'get'])
@@ -1167,8 +1116,8 @@ def hitemp():
             session['pagenum'] += 1
             return redirect(url_for("lotemp"))
         else:
-            return render_template("hitemp59.html", message=message, pagenum=session['pagenum'])
-    return render_template("hitemp59.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/hitemp59.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/hitemp59.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/60', methods=['post', 'get'])
@@ -1185,8 +1134,8 @@ def lotemp():
             session['pagenum'] += 1
             return redirect(url_for("alcohol"))
         else:
-            return render_template("lotemp60.html", message=message, pagenum=session['pagenum'])
-    return render_template("lotemp60.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/lotemp60.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/lotemp60.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/61', methods=['post', 'get'])
@@ -1203,8 +1152,8 @@ def alcohol():
             session['pagenum'] += 1
             return redirect(url_for("throat"))
         else:
-            return render_template("alcohol61.html", message=message, pagenum=session['pagenum'])
-    return render_template("alcohol61.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/alcohol61.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/alcohol61.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/62', methods=['post', 'get'])
@@ -1220,8 +1169,8 @@ def throat():
             session['pagenum'] += 1
             return redirect(url_for("lymphnodes"))
         else:
-            return render_template("throat62.html", message=message, pagenum=session['pagenum'])
-    return render_template("throat62.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/throat62.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/throat62.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/63', methods=['post', 'get'])
@@ -1237,8 +1186,8 @@ def lymphnodes():
             session['pagenum'] += 1
             return redirect(url_for("fever"))
         else:
-            return render_template("lymphnodes63.html", message=message, pagenum=session['pagenum'])
-    return render_template("lymphnodes63.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/lymphnodes63.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/lymphnodes63.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/64', methods=['post', 'get'])
@@ -1254,8 +1203,8 @@ def fever():
             session['pagenum'] += 1
             return diagnose2()
         else:
-            return render_template("fever64.html", message=message, pagenum=session['pagenum'])
-    return render_template("fever64.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/fever64.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/fever64.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/vision', methods=['post', 'get'])
@@ -1279,8 +1228,8 @@ def vision():
                 return redirect(url_for('depth'))
 
         else:
-            return render_template("vision41.html", message=message, pagenum=session['pagenum'])
-    return render_template("vision41.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/vision41.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/vision41.html", message='', pagenum=session['pagenum'])
 
 
 @app.route('/depth', methods=['post', 'get'])
@@ -1296,8 +1245,8 @@ def depth():
             session['pagenum'] += 1
             return redirect(url_for("slowness"))
         else:
-            return render_template("depth42.html", message=message, pagenum=session['pagenum'])
-    return render_template("depth42.html", message='', pagenum=session['pagenum'])
+            return render_template("dsq/depth42.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/depth42.html", message='', pagenum=session['pagenum'])
 
 @app.route('/end', methods=['post', 'get'])
 def end():
