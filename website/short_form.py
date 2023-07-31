@@ -241,7 +241,7 @@ def graph2():
         iompemcheck = "Yes"
     if int(session['sleepf']) >= 2 and int(session['sleeps']) >= 2:
         iomsleepcheck = "Yes"
-    if (int(session['rememberf']) and int(session['remembers']) >= 2 ) or (
+    if (int(session['rememberf']) >= 2 and int(session['remembers']) >= 2 ) or (
             int(session['attentionf']) >= 2 and int(session['attentions']) >= 2):
         iomcogcheck = "Yes"
 
