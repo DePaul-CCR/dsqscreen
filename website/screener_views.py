@@ -39,9 +39,9 @@ def page1():
 
             return redirect(url_for("screener_views.page2"))
         else:
-            return render_template("page1.html", pagenum=session['pagenum'], message=message,
+            return render_template("screener/page1.html", pagenum=session['pagenum'], message=message,
                                    selected_radio=selected_radio, selected_severity=selected_severity)
-    return render_template("page1.html", pagenum=session['pagenum'], message='')
+    return render_template("screener/page1.html", pagenum=session['pagenum'], message='')
 
 
 @screener_views.route('/minimum', methods=["post", "get"])
@@ -62,9 +62,9 @@ def page2():
             return redirect(url_for("screener_views.page3"))
 
         else:
-            return render_template("page2.html", pagenum=session['pagenum'], message=message,
+            return render_template("screener/page2.html", pagenum=session['pagenum'], message=message,
                                    selected_s=selected_s, selected_f=selected_f)
-    return render_template("page2.html", pagenum=session['pagenum'], message='')
+    return render_template("screener/page2.html", pagenum=session['pagenum'], message='')
 
 
 @screener_views.route('/unrefreshed', methods=['post', 'get'])
@@ -88,9 +88,9 @@ def page3():
                 return redirect(url_for("screener_views.page4"))
 
         else:
-            return render_template("page3.html", pagenum=session['pagenum'], message=message,
+            return render_template("screener/page3.html", pagenum=session['pagenum'], message=message,
                                    sleepf=sleepf, sleeps=sleeps)
-    return render_template("page3.html", pagenum=session['pagenum'], message='')
+    return render_template("screener/page3.html", pagenum=session['pagenum'], message='')
 
 
 @screener_views.route('/remember', methods=['post', 'get'])
@@ -113,9 +113,9 @@ def page4():
             return redirect(url_for('screener_views.graph'))
 
         else:
-            return render_template("page4.html", pagenum=session['pagenum'], message=message,
+            return render_template("screener/page4.html", pagenum=session['pagenum'], message=message,
                                    rememberf=rememberf, remembers=remembers)
-    return render_template("page4.html", pagenum=session['pagenum'], message='')
+    return render_template("screener/page4.html", pagenum=session['pagenum'], message='')
 
 
 @screener_views.route('/graph')
@@ -180,7 +180,7 @@ def graph():
     fig.update_yaxes(range=[0, 100], dtick=25)
     fig.add_hline(y=1.5 * 25, line_color='black')
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template("graph.html",
+    return render_template("results/graph.html",
                            graphJSON = graphJSON, 
                            screen_message = screen_message)
 
