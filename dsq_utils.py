@@ -4,7 +4,6 @@ import plotly.graph_objects as go
 import json
 import plotly.utils
 
-# 
 def dsq_diagnose():
     import domainScores as ds
     pem_domainscore = (int(session["minexf"]) + int(session["minexs"]) + int(session['soref']) + int(session['sores']) +
