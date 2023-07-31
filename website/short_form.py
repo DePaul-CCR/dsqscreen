@@ -97,8 +97,8 @@ def bowel():
             session['pagenum'] += 1
             return redirect(url_for("short_form.unsteady"))
         else:
-            return render_template("bowel.html", message=message, pagenum=session['pagenum'])
-    return render_template("bowel.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/bowel.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/bowel.html", message='', pagenum=session['pagenum'])
 
 
 @short_form.route('/unsteady', methods=['post', 'get'])
