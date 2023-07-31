@@ -428,7 +428,7 @@ def diagnose2():
     fig.add_hline(y=1.5 * 25, line_color='black')
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template("graph3.html", graphJSON=graphJSON,
+    return render_template("results/graph3.html", graphJSON=graphJSON,
                            ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,
                            ccc_pemcheck=ccc_pemcheck, ccc_paincheck=ccc_paincheck, ccc_sleepcheck=ccc_sleepcheck,
                            ccc_cogcheck=ccc_cogcheck, ccc_autocheck=ccc_autocheck, ccc_immunecheck=ccc_immunecheck,
@@ -443,7 +443,7 @@ def graph(graphJSON, probCFS, sample_size):
     graphJSON = graphJSON
     probCFS = probCFS
     sample_size = sample_size
-    return render_template("graph.html", graphJSON=graphJSON, probCFS=probCFS, sample_size=sample_size)
+    return render_template("results/graph.html", graphJSON=graphJSON, probCFS=probCFS, sample_size=sample_size)
 
 
 @app.route('/end2', methods=['get'])
