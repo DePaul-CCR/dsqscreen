@@ -96,6 +96,8 @@
   padding: 5px;
   border-top: 1px solid black;
   border-left: 1px solid black;
+  /* so symptom connecting elements can be positioned in between correctly */
+  position: relative;
 }
 
 .symptom-col-2 {
@@ -112,6 +114,18 @@
   grid-row: 2;
   grid-column: 2;
   margin: 50px 0 20px 0;
+}
+
+.symptom-logic-connector {
+  position: absolute;
+  top: -.6em;
+  right: 0;
+  background-color: white;
+  display: inline-block;
+  z-index: 1000;
+  border: 1px solid black;
+  border-right: 0;
+  font-size: .9em;
 }
 
 .two-buttons {

@@ -12,17 +12,21 @@
     <div class="case-results-diagnosis">{{ iom_msg }}</div>
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
     <div class="symptom-list">
-      <div class="symptom-col-1">Fatigue that persists at least 6 months </div>
+      <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
       <div class="symptom-col-2" {% if iomfatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
-      <div class="symptom-col-1">50% or more reduction in functioning</div>
+      <div class="symptom-col-1">50% or more reduction in functioning
+        <div class="symptom-logic-connector" {% if iomfatiguecheck == 'Yes' and iomreductioncheck == 'Yes'%} style="background-color: #FFD580; font-weight: bold;" {% endif %}>Both{</div>
+      </div>
       <div class="symptom-col-2" {% if iomreductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomreductioncheck }}</div>
-      <div class="symptom-col-1">Post-exertional malaise (PEM) </div>
+      <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
       <div class="symptom-col-2" {% if iompemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iompemcheck }}</div>
-      <div class="symptom-col-1">Unrefreshing sleep </div>
+      <div class="symptom-col-1">Unrefreshing sleep</div>
       <div class="symptom-col-2" {% if iomsleepcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomsleepcheck }}</div>
-      <div class="symptom-col-1">Cognitive impairment </div>
+      <div class="symptom-col-1">Cognitive impairment</div>
       <div class="symptom-col-2" {% if iomcogcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomcogcheck }}</div>
-      <div class="symptom-col-1">Orthostatic intolerance </div>
+      <div class="symptom-col-1">Orthostatic intolerance
+        <div class="symptom-logic-connector" {% if iomcogcheck == 'Yes' and iomorthocheck == 'Yes'%} style="background-color: #FFD580; font-weight: bold;" {% endif %}>Either{</div>
+      </div>
       <div class="symptom-col-2" {% if iomorthocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomorthocheck }}</div>
       <div class="symptom-col-1"><b>Diagnosis:</b></div>
       <div class="symptom-col-2"><b>{{ iomdxcheck }}</b></div>
