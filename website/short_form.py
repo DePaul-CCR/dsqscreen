@@ -232,6 +232,8 @@ def graph2():
     iompemcheck = "No"
     iomsleepcheck = "No"
     iomcogcheck = "No"
+    iomorthocheck = "No"
+
     if int(session['fatiguescoref']) >= 2 and int(session['fatiguescores']) >= 2:
         iomfatiguecheck = "Yes"
     if int(session['reduction']) == 1:
@@ -241,11 +243,13 @@ def graph2():
         iompemcheck = "Yes"
     if int(session['sleepf']) >= 2 and int(session['sleeps']) >= 2:
         iomsleepcheck = "Yes"
-    if (int(session['rememberf']) and int(session['remembers']) >= 2 ) or (
+    if (int(session['rememberf']) >= 2 and int(session['remembers']) >= 2 ) or (
             int(session['attentionf']) >= 2 and int(session['attentions']) >= 2):
         iomcogcheck = "Yes"
+    if int(session['unsteadyf']) >= 2 and int(session['unsteadys']) >= 2:
+        iomorthocheck = "Yes"
 
-    if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
+    if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and (iomcogcheck == "Yes" or iomorthocheck == "Yes"):
         iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS. To improve the accuracy" \
                   " of your assessment with more questions continue to the next section."
         iomdxcheck = "Met"
@@ -370,5 +374,5 @@ def graph2():
                            ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reduction=ccc_reduction,
                            iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
-                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck
+                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck
                            )

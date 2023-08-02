@@ -139,7 +139,7 @@ def graph():
         iompemcheck = "Yes"
     if session['sleepf'] >= 2 and session['sleeps'] >= 2:
         iomsleepcheck = "Yes"
-    if session['rememberf'] and session['remembers'] >= 2:
+    if session['rememberf'] >= 2 and session['remembers'] >= 2:
         iomcogcheck = "Yes"
 
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
