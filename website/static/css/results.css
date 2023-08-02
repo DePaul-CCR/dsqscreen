@@ -25,7 +25,7 @@
 
 .case-results {
   background: white;
-  width: 50%;
+  width: 55%;
   margin: 20px auto 20px auto;
   border: thin #c0c0c0 solid;
   border-top-right-radius: 8px;
@@ -124,7 +124,17 @@
   margin: 10px 10px 0 0;
 }
 
+@media screen and (max-width: 1024px) {
+  .case-results {
+    width: 75%;
+  }
+}
+
 @media screen and (max-width: 650px) {
+  .case-results {
+    width: 90%;
+  }
+
   .chart-center {
     zoom: .45;
     width: 90%;
@@ -140,3 +150,4 @@
     grid-gap: 20px;
   }
 }
+

@@ -31,8 +31,8 @@ def expem1():
 
 
         else:
-            return render_template("expem1.html", pagenum=session['pagenum'], message=message)
-    return render_template("expem1.html", pagenum=session['pagenum'], message='')
+            return render_template("short_form/expem1.html", pagenum=session['pagenum'], message=message)
+    return render_template("short_form/expem1.html", pagenum=session['pagenum'], message='')
 
 @short_form.route('/attention', methods=['post', 'get'])
 def excog1():
@@ -52,8 +52,8 @@ def excog1():
                 end = True
                 return redirect(url_for("short_form.musclepain"))
         else:
-            return render_template("excog1.html", message=message, pagenum=session['pagenum'])
-    return render_template("excog1.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/excog1.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/excog1.html", message='', pagenum=session['pagenum'])
 
 @short_form.route('/musclepain', methods=['post', 'get'])
 def musclepain():
@@ -67,8 +67,8 @@ def musclepain():
             session['pagenum'] += 1
             return redirect(url_for("short_form.bloating"))
         else:
-            return render_template("musclepain.html", message=message, pagenum=session['pagenum'])
-    return render_template("musclepain.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/musclepain.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/musclepain.html", message='', pagenum=session['pagenum'])
 
 @short_form.route('/bloating', methods=['post', 'get'])
 def bloating():
@@ -82,8 +82,8 @@ def bloating():
             session['pagenum'] += 1
             return redirect(url_for("short_form.bowel"))
         else:
-            return render_template("bloating.html", message=message, pagenum=session['pagenum'])
-    return render_template("bloating.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/bloating.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/bloating.html", message='', pagenum=session['pagenum'])
 
 @short_form.route('/bowel', methods=['post', 'get'])
 def bowel():
@@ -97,8 +97,8 @@ def bowel():
             session['pagenum'] += 1
             return redirect(url_for("short_form.unsteady"))
         else:
-            return render_template("bowel.html", message=message, pagenum=session['pagenum'])
-    return render_template("bowel.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/bowel.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/bowel.html", message='', pagenum=session['pagenum'])
 
 
 @short_form.route('/unsteady', methods=['post', 'get'])
@@ -113,8 +113,8 @@ def unsteady():
             session['pagenum'] += 1
             return redirect(url_for("short_form.cold_limbs"))
         else:
-            return render_template("unsteady.html", message=message, pagenum=session['pagenum'])
-    return render_template("unsteady.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/unsteady.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/unsteady.html", message='', pagenum=session['pagenum'])
 
 @short_form.route('/cold_limbs', methods=['post', 'get'])
 def cold_limbs():
@@ -128,8 +128,8 @@ def cold_limbs():
             session['pagenum'] += 1
             return redirect(url_for("short_form.hot_cold"))
         else:
-            return render_template("limbs.html", message=message, pagenum=session['pagenum'])
-    return render_template("limbs.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/limbs.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/limbs.html", message='', pagenum=session['pagenum'])
 
 @short_form.route('/hot_cold', methods=['post', 'get'])
 def hot_cold():
@@ -143,8 +143,8 @@ def hot_cold():
             session['pagenum'] += 1
             return redirect(url_for("short_form.flu"))
         else:
-            return render_template("hot.html", message=message, pagenum=session['pagenum'])
-    return render_template("hot.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/hot.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/hot.html", message='', pagenum=session['pagenum'])
 
 @short_form.route('/flu', methods=['post', 'get'])
 def flu():
@@ -158,8 +158,8 @@ def flu():
             session['pagenum'] += 1
             return redirect(url_for("short_form.smells"))
         else:
-            return render_template("flu.html", message=message, pagenum=session['pagenum'])
-    return render_template("flu.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/flu.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/flu.html", message='', pagenum=session['pagenum'])
 
 @short_form.route('/smells', methods=['post', 'get'])
 def smells():
@@ -175,8 +175,8 @@ def smells():
             survey='rf14'
             return redirect(url_for('short_form.reduction'))
         else:
-            return render_template("smells.html", message=message, pagenum=session['pagenum'])
-    return render_template("smells.html", message='', pagenum=session['pagenum'])
+            return render_template("short_form/smells.html", message=message, pagenum=session['pagenum'])
+    return render_template("short_form/smells.html", message='', pagenum=session['pagenum'])
 
 @short_form.route('/reduction', methods=['post', 'get'])
 def reduction():
@@ -188,8 +188,8 @@ def reduction():
             session['pagenum'] += 1
             return redirect(url_for('short_form.graph2'))
         else:
-            return render_template("reduction.html", message=msg_reduction, pagenum=session['pagenum'])
-    return render_template('reduction.html', message='', pagenum=session['pagenum'])
+            return render_template("short_form/reduction.html", message=msg_reduction, pagenum=session['pagenum'])
+    return render_template("short_form/reduction.html", message='', pagenum=session['pagenum'])
 
 
 @short_form.route('/short_form_dx', methods=['post', 'get'])
@@ -232,6 +232,8 @@ def graph2():
     iompemcheck = "No"
     iomsleepcheck = "No"
     iomcogcheck = "No"
+    iomorthocheck = "No"
+
     if int(session['fatiguescoref']) >= 2 and int(session['fatiguescores']) >= 2:
         iomfatiguecheck = "Yes"
     if int(session['reduction']) == 1:
@@ -241,11 +243,13 @@ def graph2():
         iompemcheck = "Yes"
     if int(session['sleepf']) >= 2 and int(session['sleeps']) >= 2:
         iomsleepcheck = "Yes"
-    if (int(session['rememberf']) and int(session['remembers']) >= 2 ) or (
+    if (int(session['rememberf']) >= 2 and int(session['remembers']) >= 2 ) or (
             int(session['attentionf']) >= 2 and int(session['attentions']) >= 2):
         iomcogcheck = "Yes"
+    if int(session['unsteadyf']) >= 2 and int(session['unsteadys']) >= 2:
+        iomorthocheck = "Yes"
 
-    if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and iomcogcheck == "Yes":
+    if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and (iomcogcheck == "Yes" or iomorthocheck == "Yes"):
         iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS. To improve the accuracy" \
                   " of your assessment with more questions continue to the next section."
         iomdxcheck = "Met"
@@ -364,11 +368,11 @@ def graph2():
     # This converts to figure fig to a JSON object so it can be dynamically rendered with javascript on the page
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template("graph2.html", graphJSON=graphJSON, ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,
+    return render_template("results/graph2.html", graphJSON=graphJSON, ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,
                            ccc_pemcheck=ccc_pemcheck, ccc_paincheck=ccc_paincheck, ccc_sleepcheck=ccc_sleepcheck,
                            ccc_cogcheck=ccc_cogcheck, ccc_autocheck=ccc_autocheck, ccc_immunecheck=ccc_immunecheck,
                            ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reduction=ccc_reduction,
                            iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
-                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck
+                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck
                            )
