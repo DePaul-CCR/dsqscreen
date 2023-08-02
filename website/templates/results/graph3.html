@@ -13,15 +13,17 @@
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
     <div class="symptom-list">
       <div class="symptom-col-1">Fatigue that persists at least 6 months </div>
-      <div class="symptom-col-2" {% if iomfatiguecheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
+      <div class="symptom-col-2" {% if iomfatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
       <div class="symptom-col-1">50% or more reduction in functioning</div>
-      <div class="symptom-col-2" {% if iomreductioncheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomreductioncheck }}</div>
+      <div class="symptom-col-2" {% if iomreductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomreductioncheck }}</div>
       <div class="symptom-col-1">Post-exertional malaise (PEM) </div>
-      <div class="symptom-col-2" {% if iompemcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iompemcheck }}</div>
+      <div class="symptom-col-2" {% if iompemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iompemcheck }}</div>
       <div class="symptom-col-1">Unrefreshing sleep </div>
-      <div class="symptom-col-2" {% if iomsleepcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomsleepcheck }}</div>
+      <div class="symptom-col-2" {% if iomsleepcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomsleepcheck }}</div>
       <div class="symptom-col-1">Cognitive impairment </div>
-      <div class="symptom-col-2" {% if iomcogcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomcogcheck }}</div>
+      <div class="symptom-col-2" {% if iomcogcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomcogcheck }}</div>
+      <div class="symptom-col-1">Orthostatic intolerance </div>
+      <div class="symptom-col-2" {% if iomorthocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomorthocheck }}</div>
       <div class="symptom-col-1"><b>Diagnosis:</b></div>
       <div class="symptom-col-2"><b>{{ iomdxcheck }}</b></div>
     </div>
@@ -33,23 +35,23 @@
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
     <div class="symptom-list">
       <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
-      <div class="symptom-col-2" {% if ccc_fatiguecheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_fatiguecheck }}</div>
+      <div class="symptom-col-2" {% if ccc_fatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_fatiguecheck }}</div>
       <div class="symptom-col-1">50% or more reduction in functioning</div>
-      <div class="symptom-col-2" {% if ccc_reduction=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_reduction }}</div>
+      <div class="symptom-col-2" {% if ccc_reduction == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_reduction }}</div>
       <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
-      <div class="symptom-col-2" {% if ccc_pemcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_pemcheck }}</div>
+      <div class="symptom-col-2" {% if ccc_pemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_pemcheck }}</div>
       <div class="symptom-col-1">Sleep Problems</div>
-      <div class="symptom-col-2" {% if ccc_sleepcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_sleepcheck }}</div>
+      <div class="symptom-col-2" {% if ccc_sleepcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_sleepcheck }}</div>
       <div class="symptom-col-1">Pain</div>
-      <div class="symptom-col-2" {% if ccc_paincheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_paincheck }}</div>
+      <div class="symptom-col-2" {% if ccc_paincheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_paincheck }}</div>
       <div class="symptom-col-1">Neurocognitive Issues</div>
-      <div class="symptom-col-2" {% if ccc_cogcheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_cogcheck }}</div>
+      <div class="symptom-col-2" {% if ccc_cogcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_cogcheck }}</div>
       <div class="symptom-col-1">Autonomic Dysfunction</div>
-      <div class="symptom-col-2" {% if ccc_autocheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_autocheck }}</div>
+      <div class="symptom-col-2" {% if ccc_autocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_autocheck }}</div>
       <div class="symptom-col-1">Neuroendocrine Issues</div>
-      <div class="symptom-col-2" {% if ccc_neurocheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_neurocheck }}</div>
+      <div class="symptom-col-2" {% if ccc_neurocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_neurocheck }}</div>
       <div class="symptom-col-1">Immune Symptoms</div>
-      <div class="symptom-col-2" {% if ccc_immunecheck=='Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</div>
+      <div class="symptom-col-2" {% if ccc_immunecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</div>
       <div class="symptom-col-1"><b>Diagnosis:</b></div>
       <div class="symptom-col-2"><b>{{ ccc_dx }}</b></div>
     </div>
@@ -65,39 +67,6 @@
     </div>
   </div>
 </div>
-
-<!-- removed me-icc because the DSQ uses PEM and it uses PENE -->
-<!-- <div class="results" style="display: none;">
-
-    <h3 style="margin: 0;">ME-ICC Assessment</h3><hr>
-    <p> <b>{{ me_icc }} </b></p><hr>
-       <p> <b> ME-ICC Requirements Satisfied: <br> </b></p><ul style="list-style-type: none;">
-    <li> <b><u>{{ meicc_pemcheck }} </u> </b> (A) Post-Exertional Malaise (PEM)</li>
-    <li><br><b> (B) One symptom in at least three of the following categories:</b> <br>
-        <ol>
-        <li> <b><u>{{meicc_cogcheck}}</u></b> Neurocognitive Impairments </li>
-        <li> <b><u>{{meicc_paincheck}}</u></b> Pain </li>
-        <li> <b><u>{{meicc_sleepcheck}}</u></b> Sleep disturbance </li>
-        <li> <b><u>{{meicc_motorcheck}}</u></b> Neurosensory, perceptual and motor disturbances </li>
-    </ol></li>
-        <li><br><b> (C) One symptom in at least three of the following categories:</b> <br>
-        <ol>
-        <li> <b><u>{{meicc_flucheck}}</u></b> Flu-like symptoms </li>
-        <li> <b><u>{{meicc_viralcheck}}</u></b> Susceptibility to viral infections with prolonged recovery periods </li>
-        <li> <b><u>{{meicc_gastrocheck}}</u></b> Gastro-intestinal tract disturbances </li>
-        <li> <b><u>{{meicc_bladdercheck}}</u></b> Genitourinary disturbances </li>
-        <li> <b><u>{{meicc_sensitivitycheck}}</u></b> Sensitivities to food, medications, odors, or chemicals </li>
-    </ol></li>
-        <li><br><b> (D) At least one symptom from the following categories:</b> <br>
-        <ol>
-        <li> <b><u>{{meicc_cardiocheck}}</u></b> Cardiovascular </li>
-        <li> <b><u>{{meicc_respiratorycheck}}</u></b> Respiratory </li>
-        <li> <b><u>{{meicc_thermocheck}}</u></b> Loss of thermostatic stability </li>
-        <li> <b><u>{{meicc_tempcheck}}</u></b> Intolerance of extremes of temperature </li>
-    </ol></li>
-
-   </ul><hr>
-</div> -->
 
   <button class="print-button" onclick="window.print();return false;" >
    <b>Print/Save PDF</b>
