@@ -11,7 +11,7 @@
     <h3 class="case-results-title">Institute of Medicine (IOM) Case Definition</h3>
     <div class="case-results-diagnosis">{{ iom_msg }}</div>
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
-    <div class="symptom-list">
+    <div class="symptom-list closed" id="iom">
       <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
       <div class="symptom-col-2" {% if iomfatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
       <div class="symptom-col-1">50% or more reduction in functioning
@@ -31,13 +31,14 @@
       <div class="symptom-col-1"><b>Diagnosis:</b></div>
       <div class="symptom-col-2"><b>{{ iomdxcheck }}</b></div>
     </div>
+    <div class="symptom-expand-button" id="iom">Click here to see more...</div>
   </div>
 
   <div class="case-results">
     <h3 class="case-results-title">Canadian 2003 ME/CFS Case Definition</h3>
     <div class="case-results-diagnosis">{{ ccc_msg }}</div>
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
-    <div class="symptom-list">
+    <div class="symptom-list closed" id="ccc">
       <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
       <div class="symptom-col-2" {% if ccc_fatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_fatiguecheck }}</div>
       <div class="symptom-col-1">50% or more reduction in functioning</div>
@@ -59,6 +60,7 @@
       <div class="symptom-col-1"><b>Diagnosis:</b></div>
       <div class="symptom-col-2"><b>{{ ccc_dx }}</b></div>
     </div>
+    <div class="symptom-expand-button" id="ccc">Click here to see more...</div>
   </div>
   <div class="container">
     <div class="chart-center">
@@ -72,9 +74,35 @@
   </div>
 </div>
 
-  <button class="print-button" onclick="window.print();return false;" >
-   <b>Print/Save PDF</b>
-  </button>
+<button class="print-button" onclick="window.print();return false;" >
+  <b>Print/Save PDF</b>
+</button>
 
-  <p class="disclaimer"><i>Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician if you believe you may be suffering from ME/CFS.</i></p>
+<p class="disclaimer"><i>Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician if you believe you may be suffering from ME/CFS.</i></p>
+
+<script>
+  const iomExpandButton = document.querySelector('.symptom-expand-button#iom');
+  const iomSymptomList = document.querySelector('.symptom-list#iom');
+  const cccExpandButton = document.querySelector('.symptom-expand-button#ccc');
+  const cccSymptomList = document.querySelector('.symptom-list#ccc');
+
+  iomExpandButton.addEventListener('click', () => {
+    iomSymptomList.classList.toggle('closed');
+    if (iomSymptomList.classList.contains('closed')) {
+      iomExpandButton.innerHTML = "Click here to see more..."
+    } else {
+      iomExpandButton.innerHTML = "Click here to see less..."
+    }
+  });
+
+  cccExpandButton.addEventListener('click', () => {
+    cccSymptomList.classList.toggle('closed');
+    if (cccSymptomList.classList.contains('closed')) {
+      cccExpandButton.innerHTML = "Click here to see more..."
+    } else {
+      cccExpandButton.innerHTML = "Click here to see less..."
+    }
+  });
+</script>
+
 {% endblock %}
