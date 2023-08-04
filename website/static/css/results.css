@@ -1,26 +1,16 @@
-/* currently only on graph1 -- PC 07/28/23 */
 .diagnostic-message {
   font-weight: bold;
-  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
   text-align: center;
   background-color: #F3CFC6;
-  grid-row: 1;
-  grid-column: 2;
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .print-button {
   display: block;
   margin-top: 25px;
-}
-
-.screener-results {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: 1fr max-content 1fr;
-  grid-template-rows: auto 460px;
-  margin-bottom: 20px;
 }
 
 .case-results {
@@ -130,12 +120,6 @@
   border-right: 1px solid black;
 }
 
-.chart-center#screener {
-  grid-row: 2;
-  grid-column: 2;
-  margin: 50px 0 20px 0;
-}
-
 .symptom-logic-connector {
   position: absolute;
   top: -.6em;
@@ -172,16 +156,6 @@
   .chart-center {
     zoom: .45;
     width: 90%;
-  }
-
-  .diagnostic-message {
-    padding: 0;
-  }
-
-  .screener-results {
-    grid-template-columns: 0 1fr 0;
-    grid-template-rows: auto;
-    grid-gap: 20px;
   }
 }
 
