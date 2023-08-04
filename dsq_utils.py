@@ -213,6 +213,13 @@ def dsq_diagnose():
         ccc_dx = "Not met"
         ccc_msg = "Your responses do not meet the Canadian Consensus Criteria for ME/CFS."
     
+    # diagnostic message true if ccc OR iom
+    if ccc_dx == "Met" or iomdxcheck == "Met":
+        dsq_message = "Based on your responses there is a chance you might have MECFS. <br> Please consult with your doctor for next steps."
+    else:
+        dsq_message = "Based on your responses it does not appear you have MECFS."
+
+
     # converts scores to 100pt scale
     user_scores = np.multiply(user_scores, 25).tolist()
     cfsdomains = np.multiply(cfsdomains, 25).tolist()
@@ -242,4 +249,4 @@ def dsq_diagnose():
                            ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reduction=ccc_reduction,
                            iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
-                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck)
+                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck, dsq_message=dsq_message)
