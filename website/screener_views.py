@@ -154,7 +154,7 @@ def graph():
     select_list = ['fatigue13c', (session['pemname'] + 'c'),
                    (session['cogname'] + 'c'), (session['sleepname'] + 'c'), 'dx']
     df = df[select_list]
-    colors = ['#89889E' if score < 2 else '#56A8A0' for score in composite_scores]
+    colors = ['#89889E' if score < 50 else '#56A8A0' for score in composite_scores]
     
     # composite f/s score graph
     fig = go.Figure(
@@ -178,7 +178,6 @@ def graph():
         xaxis_title='Symptom Domains'
     )
     fig.update_yaxes(range=[0, 100], dtick=25)
-    fig.add_hline(y=1.5 * 25, line_color='black')
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template("results/graph.html",
                            graphJSON = graphJSON, 

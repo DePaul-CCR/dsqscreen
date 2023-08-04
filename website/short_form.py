@@ -364,7 +364,6 @@ def graph2():
     fig.update_layout(yaxis_title='Averaged Frequency and Severity Scores',
                       xaxis_title='Symptom Domains')
     fig.update_yaxes(range=[0, 100], dtick=25)
-    fig.add_hline(y=1.5 * 25, line_color='black')
     # This converts to figure fig to a JSON object so it can be dynamically rendered with javascript on the page
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 

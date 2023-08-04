@@ -11,29 +11,34 @@
     <h3 class="case-results-title">Institute of Medicine (IOM) Case Definition</h3>
     <div class="case-results-diagnosis">{{ iom_msg }}</div>
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
-    <div class="symptom-list">
-      <div class="symptom-col-1">Fatigue that persists at least 6 months </div>
+    <div class="symptom-list closed" id="iom">
+      <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
       <div class="symptom-col-2" {% if iomfatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
-      <div class="symptom-col-1">50% or more reduction in functioning</div>
+      <div class="symptom-col-1">50% or more reduction in functioning
+        <div class="symptom-logic-connector" {% if iomfatiguecheck == 'Yes' and iomreductioncheck == 'Yes'%} style="background-color: #FFD580; font-weight: bold;" {% endif %}>Both{</div>
+      </div>
       <div class="symptom-col-2" {% if iomreductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomreductioncheck }}</div>
-      <div class="symptom-col-1">Post-exertional malaise (PEM) </div>
+      <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
       <div class="symptom-col-2" {% if iompemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iompemcheck }}</div>
-      <div class="symptom-col-1">Unrefreshing sleep </div>
+      <div class="symptom-col-1">Unrefreshing sleep</div>
       <div class="symptom-col-2" {% if iomsleepcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomsleepcheck }}</div>
-      <div class="symptom-col-1">Cognitive impairment </div>
+      <div class="symptom-col-1">Cognitive impairment</div>
       <div class="symptom-col-2" {% if iomcogcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomcogcheck }}</div>
-      <div class="symptom-col-1">Orthostatic intolerance </div>
+      <div class="symptom-col-1">Orthostatic intolerance
+        <div class="symptom-logic-connector" {% if iomcogcheck == 'Yes' or iomorthocheck == 'Yes'%} style="background-color: #FFD580; font-weight: bold;" {% endif %}>Either{</div>
+      </div>
       <div class="symptom-col-2" {% if iomorthocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomorthocheck }}</div>
       <div class="symptom-col-1"><b>Diagnosis:</b></div>
       <div class="symptom-col-2"><b>{{ iomdxcheck }}</b></div>
     </div>
+    <div class="symptom-expand-button" id="iom">Click here to see more...</div>
   </div>
 
   <div class="case-results">
     <h3 class="case-results-title">Canadian 2003 ME/CFS Case Definition</h3>
     <div class="case-results-diagnosis">{{ ccc_msg }}</div>
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
-    <div class="symptom-list">
+    <div class="symptom-list closed" id="ccc">
       <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
       <div class="symptom-col-2" {% if ccc_fatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_fatiguecheck }}</div>
       <div class="symptom-col-1">50% or more reduction in functioning</div>
@@ -55,6 +60,7 @@
       <div class="symptom-col-1"><b>Diagnosis:</b></div>
       <div class="symptom-col-2"><b>{{ ccc_dx }}</b></div>
     </div>
+    <div class="symptom-expand-button" id="ccc">Click here to see more...</div>
   </div>
   <div class="container">
     <div class="chart-center">
@@ -78,4 +84,7 @@
 </div>
 
 <p class="disclaimer"><i>Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician if you believe you may be suffering from ME/CFS.</i></p>
+
+<script src="{{url_for('static', filename='js/expand_symptoms.js')}}"></script>
+
 {% endblock %}
