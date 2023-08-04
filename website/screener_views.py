@@ -178,13 +178,6 @@ def graph():
         xaxis_title='Symptom Domains'
     )
     fig.update_yaxes(range=[0, 100], dtick=25)
-    fig.add_hline(
-        y=49, 
-        line_color='black', 
-        line_dash="dot",
-        annotation_text="Threshold for possible ME/CFS",
-        annotation_position="bottom right"
-    )
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template("results/graph.html",
                            graphJSON = graphJSON, 
