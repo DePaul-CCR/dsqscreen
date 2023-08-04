@@ -33,7 +33,7 @@
 }
 
 .case-results-title {
-  margin: 5px 0 0 0;
+  margin: 5px 0 5px 0;
 }
 
 .case-results-diagnosis {
@@ -50,6 +50,7 @@
   padding: 2px;
   text-align: left;
   font-weight: bold;
+  display: none;
 }
 
 .case-results p {
@@ -89,6 +90,25 @@
   border-bottom: 1px solid black;
 }
 
+.symptom-list.closed {
+  display: none;
+}
+
+.symptom-expand-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0 5px 0;
+  cursor: default;
+  font-weight: bold;
+  transition: background-color .3s;
+  background-color: #C2EFEB;
+}
+
+.symptom-expand-button:hover {
+  background-color: #ED7E63;
+}
+
 .symptom-col-1 {
   display: flex;
   align-items: center;
@@ -96,6 +116,8 @@
   padding: 5px;
   border-top: 1px solid black;
   border-left: 1px solid black;
+  /* so symptom connecting elements can be positioned in between correctly */
+  position: relative;
 }
 
 .symptom-col-2 {
@@ -112,6 +134,18 @@
   grid-row: 2;
   grid-column: 2;
   margin: 50px 0 20px 0;
+}
+
+.symptom-logic-connector {
+  position: absolute;
+  top: -.6em;
+  right: 0;
+  background-color: white;
+  display: inline-block;
+  z-index: 1000;
+  border: 1px solid black;
+  border-right: 0;
+  font-size: .9em;
 }
 
 .two-buttons {

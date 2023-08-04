@@ -233,7 +233,6 @@ def dsq_diagnose():
     fig.update_layout(yaxis_title='Averaged Frequency and Severity Scores',
                       xaxis_title='Symptom Domains')
     fig.update_yaxes(range=[0, 100], dtick=25)
-    fig.add_hline(y=1.5 * 25, line_color='black')
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
     return render_template("results/graph3.html", graphJSON=graphJSON,
