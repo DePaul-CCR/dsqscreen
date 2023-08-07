@@ -337,7 +337,6 @@ def graph2():
     # categories = [*feature_list, feature_list[0]]
     categories = ['Fatigue', 'PEM', 'Sleep', 'Cognitive Impairment', 'Pain', 'Gastro Problems',
                   'Orthostatic Intolerance', 'Circulatory Problems', 'Immune System', 'Neuroendocrine Problems']
-    print(categories)
 
     # converts scores to 100pt scale
     user_scores = np.multiply(user_scores, 25).tolist()
