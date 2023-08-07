@@ -270,9 +270,11 @@ def graph2():
         ccc_fatigue = 0
         ccc_fatiguecheck = "No"
     if int(session['reduction']) == 1:
-        ccc_reduction = "Yes"
+        ccc_reduction = 1
+        ccc_reductioncheck = "Yes"
     else:
-        ccc_reduction = "No"
+        ccc_reduction = 0
+        ccc_reductioncheck = "No"
     if int(session['musclef']) >= 2 and int(session['muscles']) >= 2:
         ccc_pain = 1
         ccc_paincheck = "Yes"
@@ -324,7 +326,7 @@ def graph2():
         ccc_immunecheck = "No"
     ccc_poly = np.sum([ccc_auto, ccc_neuro, ccc_immune])
     # most of the symptoms are required, but there is one polythetic criteria, shown here by ccc_poly
-    if np.sum([ccc_fatigue, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 5 and ccc_poly >= 2:
+    if np.sum([ccc_fatigue, ccc_reduction, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 6 and ccc_poly >= 2:
         ccc_dx = "Met"
         ccc_msg = "Your responses suggest that you meet the Canadian Consensus Criteria for ME/CFS. " \
                   "To improve the accuracy of your assessment with more questions continue to the next section."
@@ -370,7 +372,7 @@ def graph2():
     return render_template("results/graph2.html", graphJSON=graphJSON, ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,
                            ccc_pemcheck=ccc_pemcheck, ccc_paincheck=ccc_paincheck, ccc_sleepcheck=ccc_sleepcheck,
                            ccc_cogcheck=ccc_cogcheck, ccc_autocheck=ccc_autocheck, ccc_immunecheck=ccc_immunecheck,
-                           ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reduction=ccc_reduction,
+                           ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reductioncheck=ccc_reductioncheck, ccc_poly=ccc_poly,
                            iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
                            iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck, short_form_message=short_form_message
