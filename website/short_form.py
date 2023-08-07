@@ -258,12 +258,6 @@ def graph2():
         iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS."
         iomdxcheck = "Not met"
 
-    if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
-        screen_message = "Your scores meet a threshold of 2 or greater on frequency and severity of least one major symptom."
-    else:
-        screen_message = "Your scores do not meet a threshold of 2 frequency or severity for any of the major symptoms. " \
-                         "It is unlikely that you have ME/CFS based on your self-report scores."
-
     # This assesses the Canadian Consensus Criteria, one of the three major case definitions we use
 
     ccc_dx = False
@@ -347,6 +341,12 @@ def graph2():
     user_scores = np.multiply(user_scores, 25).tolist()
     cfsdomains = np.multiply(cfsdomains, 25).tolist()
 
+    # diagnostic message ccc OR iom
+    if ccc_dx == "Met" or iomdxcheck == "Met":
+        short_form_message = "Based on your responses there is a chance you might have MECFS. <br> Please continue to the next section for a more accurate assessment."
+    else:
+        short_form_message = "Based on your responses it does not appear you have MECFS."
+
     # Creates a figure using the plotly library, which can be dynamically embedded in the HTML page
     fig = go.Figure(
         data=[
@@ -373,5 +373,5 @@ def graph2():
                            ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reduction=ccc_reduction,
                            iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
-                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck
+                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck, short_form_message=short_form_message
                            )

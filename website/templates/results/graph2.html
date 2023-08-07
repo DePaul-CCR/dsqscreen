@@ -4,9 +4,21 @@
 {% include "partials/_top_nav_bar.html" %}
 
 <h3 class="ariel">DePaul University Short Form Questionnaire Results</h3>
-<hr>
 
 <div class="results">
+  <div class="diagnostic-message">{{ short_form_message|safe }}</div>
+  
+  <div class="container">
+    <div class="chart-center">
+      <figure id="chart"></figure>
+      <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+      <script type='text/javascript'>
+        var graphs = {{ graphJSON | safe}};
+        Plotly.plot('chart', graphs, {});
+      </script>
+    </div>
+  </div>
+
   <div class="case-results">
     <h3 class="case-results-title">Institute of Medicine (IOM) Case Definition</h3>
     <div class="case-results-diagnosis">{{ iom_msg }}</div>
@@ -61,16 +73,6 @@
       <div class="symptom-col-2"><b>{{ ccc_dx }}</b></div>
     </div>
     <div class="symptom-expand-button" id="ccc">Click here to see more...</div>
-  </div>
-  <div class="container">
-    <div class="chart-center">
-      <figure id="chart"></figure>
-      <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-      <script type='text/javascript'>
-        var graphs = {{ graphJSON | safe}};
-        Plotly.plot('chart', graphs, {});
-      </script>
-    </div>
   </div>
 </div>
 
