@@ -4,9 +4,21 @@
 {% include "partials/_top_nav_bar.html" %}
 
 <h3 class="ariel">Full DePaul University Symptom Questionnaire Results</h3>
-<hr>
 
 <div class="results">
+  <div class="diagnostic-message">{{ dsq_message|safe }}</div>
+
+  <div class="container">
+    <div class="chart-center">
+      <figure id="chart"></figure>
+      <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+      <script type='text/javascript'>
+        var graphs = {{ graphJSON | safe}};
+        Plotly.plot('chart', graphs, {});
+      </script>
+    </div>
+  </div>
+
   <div class="case-results">
     <h3 class="case-results-title">Institute of Medicine (IOM) Case Definition</h3>
     <div class="case-results-diagnosis">{{ iom_msg }}</div>
@@ -42,7 +54,7 @@
       <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
       <div class="symptom-col-2" {% if ccc_fatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_fatiguecheck }}</div>
       <div class="symptom-col-1">50% or more reduction in functioning</div>
-      <div class="symptom-col-2" {% if ccc_reduction == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_reduction }}</div>
+      <div class="symptom-col-2" {% if ccc_reductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_reductioncheck }}</div>
       <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
       <div class="symptom-col-2" {% if ccc_pemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_pemcheck }}</div>
       <div class="symptom-col-1">Sleep Problems</div>
@@ -61,16 +73,6 @@
       <div class="symptom-col-2"><b>{{ ccc_dx }}</b></div>
     </div>
     <div class="symptom-expand-button" id="ccc">Click here to see more...</div>
-  </div>
-  <div class="container">
-    <div class="chart-center">
-      <figure id="chart"></figure>
-      <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-      <script type='text/javascript'>
-        var graphs = {{ graphJSON | safe}};
-        Plotly.plot('chart', graphs, {});
-      </script>
-    </div>
   </div>
 </div>
 

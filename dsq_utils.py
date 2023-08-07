@@ -114,15 +114,16 @@ def dsq_diagnose():
 
     if int(session['fatiguescoref']) >= 2 and int(session['fatiguescores']) >= 2:
         ccc_fatigue = 1
-
         ccc_fatiguecheck = "Yes"
     else:
         ccc_fatigue = 0
         ccc_fatiguecheck = "No"
     if int(session['reduction']) == 1:
-        ccc_reduction = "Yes"
+        ccc_reduction = 1
+        ccc_reductioncheck = "Yes"
     else:
-        ccc_reduction = "No"
+        ccc_reduction = 0
+        ccc_reductioncheck = "No"
     if (int(session['musclef']) >= 2 and int(session['muscles']) >= 2) or (
             int(session['jointpainf']) >= 2 and int(session['jointpains']) >= 2) or \
             (int(session['eyepainf']) >= 2 and int(session['eyepains']) >= 2) or (
@@ -206,13 +207,19 @@ def dsq_diagnose():
         ccc_immunecheck = "No"
     ccc_poly = np.sum([ccc_auto, ccc_neuro, ccc_immune])
     # most of the symptoms are required, but there is one polythetic criteria, shown here by ccc_poly
-    if np.sum([ccc_fatigue, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 5 and ccc_poly >= 2:
+    if np.sum([ccc_fatigue, ccc_reduction, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 6 and ccc_poly >= 2:
         ccc_dx = "Met"
         ccc_msg = "Your responses suggest that you meet the Canadian Consensus Criteria for ME/CFS."
     else:
         ccc_dx = "Not met"
         ccc_msg = "Your responses do not meet the Canadian Consensus Criteria for ME/CFS."
     
+    # diagnostic message true if ccc OR iom
+    if ccc_dx == "Met" or iomdxcheck == "Met":
+        dsq_message = "Based on your responses there is a chance you might have MECFS. <br> Please consult with your doctor for next steps."
+    else:
+        dsq_message = "Based on your responses it does not appear you have MECFS."
+
     # converts scores to 100pt scale
     user_scores = np.multiply(user_scores, 25).tolist()
     cfsdomains = np.multiply(cfsdomains, 25).tolist()
@@ -239,7 +246,7 @@ def dsq_diagnose():
                            ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,
                            ccc_pemcheck=ccc_pemcheck, ccc_paincheck=ccc_paincheck, ccc_sleepcheck=ccc_sleepcheck,
                            ccc_cogcheck=ccc_cogcheck, ccc_autocheck=ccc_autocheck, ccc_immunecheck=ccc_immunecheck,
-                           ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reduction=ccc_reduction,
+                           ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reductioncheck=ccc_reductioncheck,
                            iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
-                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck)
+                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck, dsq_message=dsq_message)
