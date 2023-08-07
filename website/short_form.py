@@ -264,7 +264,6 @@ def graph2():
 
     if int(session['fatiguescoref']) >= 2 and int(session['fatiguescores']) >= 2:
         ccc_fatigue = 1
-
         ccc_fatiguecheck = "Yes"
     else:
         ccc_fatigue = 0
