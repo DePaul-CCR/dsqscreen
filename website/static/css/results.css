@@ -29,6 +29,7 @@
 .case-results-diagnosis {
   text-align: left;
   border: 1px solid black;
+  border-bottom: 0;
   font-weight: bold;
   background-color: #F3CFC6;
   padding: 10px 0 10px 0;
@@ -99,6 +100,10 @@
   background-color: #ED7E63;
 }
 
+.symptom-expand-button.closed{
+  border-top: 1px solid black;
+}
+
 .symptom-col-1 {
   display: flex;
   align-items: center;
@@ -120,6 +125,45 @@
   border-right: 1px solid black;
 }
 
+.symptom-col-2#top-of-both {
+  border: 2px solid black;
+  border-bottom: 0;
+}
+
+.symptom-col-2#bottom-of-both {
+  border: 2px solid black;
+  border-top: 1px dashed black;
+  border-bottom: 1px solid black;
+}
+
+.symptom-col-2#top-of-either {
+  border: 2px solid black;
+  border-bottom: 0;
+}
+
+.symptom-col-2#bottom-of-either {
+  border: 2px solid black;
+  border-top: 1px dashed black;
+  border-bottom: 1px solid black;
+}
+
+.symptom-col-2#top-of-3-symptom {
+  border: 2px solid black;
+  border-bottom: 1px dashed black;
+}
+
+.symptom-col-2#middle-of-3-symptom {
+  border-left: 2px solid black;
+  border-top: 0;
+  border-right: 2px solid black;
+}
+
+.symptom-col-2#bottom-of-3-symptom {
+  border: 2px solid black;
+  border-top: 1px dashed black;
+  border-bottom: 1px solid black;
+}
+
 .symptom-logic-connector {
   position: absolute;
   top: -.6em;
@@ -127,9 +171,42 @@
   background-color: white;
   display: inline-block;
   z-index: 1000;
+  font-weight: bold;
   border: 1px solid black;
   border-right: 0;
   font-size: .9em;
+}
+
+.three-symptom-connector {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background-color: white;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.three-symptom-connector#top {
+  top: -17px;
+  z-index: 999;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.three-symptom-connector#middle{
+  align-items: center;
+  display: flex;
+  font-size: .9em;
+  z-index: 1000;
+  border: 0;
+  border-left: 1px solid black;
+}
+
+.three-symptom-connector#bottom {
+  bottom: -17px;
+  border-right: 0;
+  z-index: 999;
+  height: auto;
 }
 
 .two-buttons {
@@ -159,3 +236,8 @@
   }
 }
 
+@media screen and (max-width: 390px) {
+  .three-symptom-connector#middle {
+    font-size: 10px
+  }
+}
