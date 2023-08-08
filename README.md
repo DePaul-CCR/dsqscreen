@@ -31,3 +31,6 @@ MacOS:
 ### Production:
 -> To start production server  
 `gunicorn main:app prod`
+
+###NB
+If you change the routes please update 'utils/page_flow_tuple.py' so the back button works correctly
