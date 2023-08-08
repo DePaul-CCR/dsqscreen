@@ -5,6 +5,7 @@ const cccSymptomList = document.querySelector('.symptom-list#ccc');
 
 iomExpandButton.addEventListener('click', () => {
   iomSymptomList.classList.toggle('closed');
+  iomExpandButton.classList.toggle('closed');
   if (iomSymptomList.classList.contains('closed')) {
     iomExpandButton.innerHTML = "Click here to see more..."
   } else {
@@ -14,6 +15,7 @@ iomExpandButton.addEventListener('click', () => {
 
 cccExpandButton.addEventListener('click', () => {
   cccSymptomList.classList.toggle('closed');
+  cccExpandButton.classList.toggle('closed');
   if (cccSymptomList.classList.contains('closed')) {
     cccExpandButton.innerHTML = "Click here to see more..."
   } else {
