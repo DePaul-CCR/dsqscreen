@@ -1,13 +1,17 @@
 # print(app.url_map)
 # last ran 08/08/23 -- PC
 
+#these should be in order of flow
+
 '/' <-> screener_views.home
+
 #screener
 '/fatigue' <-> screener_views.page1
 '/minimum' <-> screener_views.page2
 '/unrefreshed' <-> screener_views.page3
 '/remember' <-> screener_views.page4
 '/screener_dx' <-> screener_views.graph
+
 #short_form
 '/short_form/soreness' <-> short_form.expem1
 '/short_form/attention' <-> short_form.excog1
@@ -21,6 +25,7 @@
 '/short_form/smells' <-> short_form.smells
 '/short_form/reduction' <-> short_form.reduction
 '/short_form/short_form_dx' <-> short_form.graph2
+
 #dsq
 '/viral' <-> viral
 '/heavy' <-> expem3
@@ -64,5 +69,7 @@
 '/lymphnodes' <-> lymphnodes
 '/fever' <-> fever
 '/dsq_dx' <-> graph3
+
+#other
 '/about' <-> about
 '/aboutmecfs' <-> aboutmecfs
