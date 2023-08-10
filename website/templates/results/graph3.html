@@ -92,9 +92,12 @@
   </div>
 </div>
 
-<button class="print-button" onclick="window.print();return false;" >
-  <b>Print/Save PDF</b>
-</button>
+<div class="result-navigation">
+  <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
+  <button onclick="window.print();return false;">
+    Print/Save PDF
+  </button>
+</div>
 
 <p class="disclaimer"><i>Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician if you believe you may be suffering from ME/CFS.</i></p>
 
