@@ -2,6 +2,7 @@ import numpy as np
 from flask import render_template, request, redirect, url_for, session
 from flask_wtf import FlaskForm
 import utils.dsq_utils as dsq_utils
+import utils.back_function as back_function
 # commented out unused imports, can probably delete soon -- PC 7/31/23
 # import plotly.utils
 # import plotly.graph_objects as go
@@ -21,6 +22,9 @@ import utils.dsq_utils as dsq_utils
 from website import create_app
 
 app = create_app()
+
+# exposes previous page function to all templates for back button functionality
+app.jinja_env.globals.update(previous_page=back_function.previous_page)
 
 symptom = ["Fatigue", "Minimum exercise", "Sleep", "Remember"]
 pagenum = 0
@@ -808,7 +812,6 @@ def graph3():
 @app.route('/about', methods=['post', 'get'])
 def about():
     return render_template('about.html')
-
 
 @app.route('/aboutmecfs', methods=['post', 'get'])
 def aboutmecfs():
