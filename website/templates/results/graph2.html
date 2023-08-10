@@ -41,7 +41,7 @@
       </div>
       <div class="symptom-col-2" id="bottom-of-either" {% if iomorthocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomorthocheck }}</div>
       <div class="symptom-col-1"><b>Assessment:</b></div>
-      <div class="symptom-col-2" style="background-color: #F3CFC6;">
+      <div class="symptom-col-2 assessment">
         {% if iomdxcheck == 'Met' %} 
           <b>Possible ME/CFS</b>
         {% else %}
@@ -80,7 +80,7 @@
       <div class="symptom-col-1">Immune Symptoms</div>
       <div class="symptom-col-2" id="bottom-of-3-symptom"{% if ccc_immunecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</div>
       <div class="symptom-col-1"><b>Assessment:</b></div>
-      <div class="symptom-col-2" style="background-color: #F3CFC6;">
+      <div class="symptom-col-2 assessment">
         {% if ccc_dx == 'Met' %} 
           <b>Possible ME/CFS</b>
         {% else %}
@@ -92,12 +92,13 @@
   </div>
 </div>
 
-<div class="two-buttons">
+<div class="result-navigation">
+  <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
   <button onclick="window.print();return false;">
-    <b>Print/Save PDF</b>
+    Print/Save PDF
   </button>
   <button onclick="window.location.href='{{ url_for('viral') }}'">
-    <b>Continue</b>
+    Continue
   </button>
 </div>
 

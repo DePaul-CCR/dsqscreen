@@ -19,7 +19,8 @@
     </div>
   </div>
   
-  <div class="container">
+  <div class="result-navigation">
+    <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
     <button onclick="window.location.href='{{ url_for('short_form.expem1') }}'">
       Continue
     </button>

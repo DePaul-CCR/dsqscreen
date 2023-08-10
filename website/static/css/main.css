@@ -237,12 +237,12 @@ a {
 
 button {
   font-size: 1em;
-  margin: 10px auto;
+  margin: 10px 25px;
   max-width: 100%;
   text-align: center;
   letter-spacing: 0px;
   position: relative;
-  padding: 20px;
+  padding: 30px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-top-left-radius: 5px;

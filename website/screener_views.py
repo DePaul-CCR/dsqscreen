@@ -118,7 +118,7 @@ def page4():
     return render_template("screener/page4.html", pagenum=session['pagenum'], message='')
 
 
-@screener_views.route('/graph')
+@screener_views.route('/screener_dx')
 def graph():
     # we *25 to scale 4pt scale to 100 pt scale
     fatiguescore = session['fatiguescore'] * 25

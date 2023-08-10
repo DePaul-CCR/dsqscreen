@@ -1,15 +1,9 @@
-{% extends 'base.html' %}
-
-{% block content %}
 <form method="post" class="two-question">
   <div class="question-header">
-    <h3 class="question-title">Sleep all day and stay awake all night</h3>
+    <h3 class="question-title">{{ title }}</h3>
   </div>
 
-  <div
-    id="left"
-    
-  >
+<div id="left">
     <fieldset>
       <legend>
         <b>Frequency: </b>Throughout the past 6 months, how often have you had
@@ -17,23 +11,28 @@
       </legend>
       <ol class="radio-button-list">
         <li>
-          <input type="radio" id="f0" name="alldayf" value="0" />
+          <input type="radio" id="f0" name="fatigue" value="0" {% if
+          selected_radio == '0' %}checked{% endif %}>
           <label for="f0">None of the time</label>
         </li>
         <li>
-          <input type="radio" id="f1" name="alldayf" value="1" />
+          <input type="radio" id="f1" name="fatigue" value="1" {% if
+          selected_radio == '1' %}checked{% endif %}>
           <label for="f1">A little of the time</label>
         </li>
         <li>
-          <input type="radio" id="f2" name="alldayf" value="2" />
+          <input type="radio" id="f2" name="fatigue" value="2" {% if
+          selected_radio == '2' %}checked{% endif %}>
           <label for="f2">About half the time</label>
         </li>
         <li>
-          <input type="radio" id="f3" name="alldayf" value="3" />
+          <input type="radio" id="f3" name="fatigue" value="3" {% if
+          selected_radio == '3' %}checked{% endif %}>
           <label for="f3">Most of the time</label>
         </li>
         <li>
-          <input type="radio" id="f4" name="alldayf" value="4" />
+          <input type="radio" id="f4" name="fatigue" value="4" {% if
+          selected_radio == '4' %}checked{% endif %}>
           <label for="f4">All of the time</label>
         </li>
       </ol>
@@ -48,31 +47,36 @@
       </legend>
       <ol class="radio-button-list">
         <li>
-          <input type="radio" id="s0" name="alldays" value="0" />
+          <input type="radio" id="s0" name="severity" value="0" {% if
+          selected_severity == '0' %}checked{% endif %}>
           <label for="s0">Symptom not present</label>
         </li>
         <li>
-          <input type="radio" id="s1" name="alldays" value="1" />
+          <input type="radio" id="s1" name="severity" value="1" {% if
+          selected_severity == '1' %}checked{% endif %}>
           <label for="s1">Mild</label>
         </li>
         <li>
-          <input type="radio" id="s2" name="alldays" value="2" />
+          <input type="radio" id="s2" name="severity" value="2" {% if
+          selected_severity == '2' %}checked{% endif %}>
           <label for="s2">Moderate</label>
         </li>
         <li>
-          <input type="radio" id="s3" name="alldays" value="3" />
+          <input type="radio" id="s3" name="severity" value="3" {% if
+          selected_severity == '3' %}checked{% endif %}>
           <label for="s3">Severe</label>
         </li>
         <li>
-          <input type="radio" id="s4" name="alldays" value="4" />
+          <input type="radio" id="s4" name="severity" value="4" {% if
+          selected_severity == '4' %}checked{% endif %}>
           <label for="s4">Very severe</label>
         </li>
       </ol>
     </fieldset>
-  </div>  
+  </div>
   <div class="question-navigation">
     <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
-    <button class="next-question-button" type="submit" name="result" value="result">Next</button> 
+    <button class="next-question-button" type="submit" name="result" value="result">Next</button>
   </div>
 </form>
 
@@ -81,6 +85,5 @@
 </div>
 
 <div class="meter">
-  <span id="meter3span" style="--start: 20%; width: 22.5%"></span>
+  <span style={{ progress_meter }}></span>
 </div>
-{% endblock %}
