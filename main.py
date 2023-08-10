@@ -1,7 +1,8 @@
 import numpy as np
 from flask import render_template, request, redirect, url_for, session
 from flask_wtf import FlaskForm
-import dsq_utils
+import utils.dsq_utils as dsq_utils
+import utils.back_function as back_function
 # commented out unused imports, can probably delete soon -- PC 7/31/23
 # import plotly.utils
 # import plotly.graph_objects as go
@@ -22,6 +23,9 @@ from website import create_app
 
 app = create_app()
 
+# exposes previous page function to all templates for back button functionality
+app.jinja_env.globals.update(previous_page=back_function.previous_page)
+
 symptom = ["Fatigue", "Minimum exercise", "Sleep", "Remember"]
 pagenum = 0
 end = False
@@ -34,51 +38,6 @@ composite = 0
 pemname = str
 sleepname = str
 cogname = str
-
-# used for the full-form results
-
-@app.route('/end2', methods=['get'])
-def end2():
-    global pagenum
-    fatiguescoref = int(session["fatiguescoref"])
-    fatiguescores = int(session["fatiguescores"])
-    minexf = int(session["minexf"])
-    minexs = int(session["minexs"])
-    global pemdomain
-    global cogdomain
-    global sleepdomain
-
-    sleepf = int(session["sleepf"])
-    sleeps = int(session["sleeps"])
-    rememberf = int(session["rememberf"])
-    remembers = int(session["remembers"])
-
-    if pemdomain == 1 and sleepdomain == 1 and cogdomain == 1:
-        return f"<h1>{pemdomain}You may have ME/CFS. We advise you to consult a specialist. </h1>"
-    else:
-        return f"<h1>{pemdomain}You probably don't have ME/CFS</h1>"
-
-@app.route('/drained', methods=['post', 'get'])
-def expem2():
-    form = FlaskForm()
-    global pemname
-    if request.method == "POST":
-        drainedf = request.form.get("drainedf")
-        draineds = request.form.get("draineds")
-        if drainedf is not None and draineds is not None:
-            session["drainedf"] = drainedf
-            session["draineds"] = draineds
-            session['pagenum'] += 1
-            if int(session["drainedf"]) >= 0 and int(session["draineds"]) >= 0:
-                session['pemscoref'] = session['drainedf']
-                session['pemscores'] = session['draineds']
-                session['pemscore'] = (int(session['drainedf']) + int(session['draineds'])) / 2
-                pemname = 'drained18'
-                return redirect(url_for("weakness"))
-        else:
-            return render_template("dsq/expem2.html", pagenum=session['pagenum'], message=message)
-    return render_template("dsq/expem2.html", pagenum=session['pagenum'], message='')
-
 
 @app.route('/viral', methods=['post', 'get'])
 def viral():
@@ -93,7 +52,6 @@ def viral():
         else:
             return render_template("dsq/viral.html", message=msg_viral, pagenum=session['pagenum'])
     return render_template('dsq/viral.html', message='', pagenum=session['pagenum'])
-
 
 @app.route('/heavy', methods=['post', 'get'])
 def expem3():
@@ -117,7 +75,6 @@ def expem3():
             return render_template("dsq/expem3.html", pagenum=session['pagenum'], message=message)
     return render_template("dsq/expem3.html", pagenum=session['pagenum'], message='')
 
-
 @app.route('/mentally', methods=['post', 'get'])
 def expem4():
     form = FlaskForm()
@@ -139,6 +96,26 @@ def expem4():
             return render_template("dsq/expem4.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/expem4.html", message='', pagenum=session['pagenum'])
 
+@app.route('/drained', methods=['post', 'get'])
+def expem2():
+    form = FlaskForm()
+    global pemname
+    if request.method == "POST":
+        drainedf = request.form.get("drainedf")
+        draineds = request.form.get("draineds")
+        if drainedf is not None and draineds is not None:
+            session["drainedf"] = drainedf
+            session["draineds"] = draineds
+            session['pagenum'] += 1
+            if int(session["drainedf"]) >= 0 and int(session["draineds"]) >= 0:
+                session['pemscoref'] = session['drainedf']
+                session['pemscores'] = session['draineds']
+                session['pemscore'] = (int(session['drainedf']) + int(session['draineds'])) / 2
+                pemname = 'drained18'
+                return redirect(url_for("weakness"))
+        else:
+            return render_template("dsq/expem2.html", pagenum=session['pagenum'], message=message)
+    return render_template("dsq/expem2.html", pagenum=session['pagenum'], message='')
 
 @app.route('/weakness', methods=['post', 'get'])
 def weakness():
@@ -159,29 +136,6 @@ def weakness():
         else:
             return render_template("dsq/weakness33.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/weakness33.html", message='', pagenum=session['pagenum'])
-
-
-@app.route('/staying', methods=['post', 'get'])
-def exsleep1():
-    form = FlaskForm()
-    global sleepname
-    if request.method == "POST":
-        stayf = request.form.get("stayf")
-        stays = request.form.get("stays")
-        if stayf is not None and stays is not None:
-            session["stayf"] = stayf
-            session["stays"] = stays
-            session['pagenum'] += 1
-            if int(session["stayf"]) >= 0 and int(session["stays"]) >= 0:
-                session['sleepscoref'] = int(stayf)
-                session['sleepscores'] = int(stays)
-                session['sleepscore'] = (int(session['stayf']) + int(session['stays'])) / 2
-                sleepname = 'staying22'
-                return redirect(url_for("early"))
-        else:
-            return render_template("dsq/exsleep1.html", message=message, pagenum=session['pagenum'])
-    return render_template("dsq/exsleep1.html", message='', pagenum=session['pagenum'])
-
 
 @app.route('/nap', methods=['post', 'get'])
 def exsleep2():
@@ -204,7 +158,6 @@ def exsleep2():
             return render_template("dsq/exsleep2.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/exsleep2.html", message='', pagenum=session['pagenum'])
 
-
 @app.route('/falling', methods=['post', 'get'])
 def exsleep3():
     form = FlaskForm()
@@ -226,6 +179,26 @@ def exsleep3():
             return render_template("dsq/exsleep3.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/exsleep3.html", message='', pagenum=session['pagenum'])
 
+@app.route('/staying', methods=['post', 'get'])
+def exsleep1():
+    form = FlaskForm()
+    global sleepname
+    if request.method == "POST":
+        stayf = request.form.get("stayf")
+        stays = request.form.get("stays")
+        if stayf is not None and stays is not None:
+            session["stayf"] = stayf
+            session["stays"] = stays
+            session['pagenum'] += 1
+            if int(session["stayf"]) >= 0 and int(session["stays"]) >= 0:
+                session['sleepscoref'] = int(stayf)
+                session['sleepscores'] = int(stays)
+                session['sleepscore'] = (int(session['stayf']) + int(session['stays'])) / 2
+                sleepname = 'staying22'
+                return redirect(url_for("early"))
+        else:
+            return render_template("dsq/exsleep1.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/exsleep1.html", message='', pagenum=session['pagenum'])
 
 @app.route('/early', methods=['post', 'get'])
 def early():
@@ -247,7 +220,6 @@ def early():
         else:
             return render_template("dsq/early23.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/early23.html", message='', pagenum=session['pagenum'])
-
 
 @app.route('/allday', methods=['post', 'get'])
 def exsleep4():
@@ -276,7 +248,6 @@ def exsleep4():
             return render_template("dsq/exsleep4.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/exsleep4.html", message='', pagenum=session['pagenum'])
 
-
 @app.route('/jointpain', methods=['post', 'get'])
 def jointpain():
     global end
@@ -292,7 +263,6 @@ def jointpain():
         else:
             return render_template("dsq/jointpain26.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/jointpain26.html", message='', pagenum=session['pagenum'])
-
 
 @app.route('/eyepain', methods=['post', 'get'])
 def eyepain():
@@ -310,7 +280,6 @@ def eyepain():
             return render_template("dsq/eyepain27.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/eyepain27.html", message='', pagenum=session['pagenum'])
 
-
 @app.route('/chestpain', methods=['post', 'get'])
 def chestpain():
     global end
@@ -326,7 +295,6 @@ def chestpain():
         else:
             return render_template("dsq/chestpain28.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/chestpain28.html", message='', pagenum=session['pagenum'])
-
 
 @app.route('/stomach', methods=['post', 'get'])
 def stomach():
@@ -344,7 +312,6 @@ def stomach():
             return render_template("dsq/stomach30.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/stomach30.html", message='', pagenum=session['pagenum'])
 
-
 @app.route('/headaches', methods=['post', 'get'])
 def headaches():
     global end
@@ -361,7 +328,6 @@ def headaches():
             return render_template("dsq/headaches31.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/headaches31.html", message='', pagenum=session['pagenum'])
 
-
 @app.route('/twitches', methods=['post', 'get'])
 def twitches():
     global end
@@ -377,7 +343,6 @@ def twitches():
         else:
             return render_template("dsq/twitches32.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/twitches32.html", message='', pagenum=session['pagenum'])
-
 
 @app.route('/noise', methods=['post', 'get'])
 def noise():
@@ -433,6 +398,28 @@ def excog2():
             return render_template("dsq/excog2.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/excog2.html", message='', pagenum=session['pagenum'])
 
+@app.route('/understand', methods=['post', 'get'])
+def understand():
+    form = FlaskForm()
+    global end
+    global cogname
+    if request.method == "POST":
+        understandf = request.form.get("understandf")
+        understands = request.form.get("understands")
+        if understandf is not None and understands is not None:
+            session["understandf"] = understandf
+            session["understands"] = understands
+            session['pagenum'] += 1
+            if int(session["understandf"]) >= 0 and int(session["understands"]) >= 0:
+                session['cogscoref'] = int(understandf)
+                session['cogscores'] = int(understands)
+                session['cogscore'] = (int(session['understandf']) + int(session['understands'])) / 2
+                # end = True
+                cogname = 'understand39'
+                return redirect(url_for("excog3"))
+        else:
+            return render_template("dsq/understand39.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/understand39.html", message='', pagenum=session['pagenum'])
 
 @app.route('/focus', methods=['post', 'get'])
 def excog3():
@@ -457,30 +444,45 @@ def excog3():
             return render_template("dsq/excog3.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/excog3.html", message='', pagenum=session['pagenum'])
 
-
-@app.route('/understand', methods=['post', 'get'])
-def understand():
+@app.route('/vision', methods=['post', 'get'])
+def vision():
     form = FlaskForm()
     global end
     global cogname
     if request.method == "POST":
-        understandf = request.form.get("understandf")
-        understands = request.form.get("understands")
-        if understandf is not None and understands is not None:
-            session["understandf"] = understandf
-            session["understands"] = understands
+        visionf = request.form.get("visionf")
+        visions = request.form.get("visions")
+        if visionf is not None and visions is not None:
+            session["visionf"] = visionf
+            session["visions"] = visions
             session['pagenum'] += 1
-            if int(session["understandf"]) >= 0 and int(session["understands"]) >= 0:
-                session['cogscoref'] = int(understandf)
-                session['cogscores'] = int(understands)
-                session['cogscore'] = (int(session['understandf']) + int(session['understands'])) / 2
+            if int(session["visionf"]) >= 0 and int(session["visions"]) >= 0:
+                session['cogscoref'] = int(visionf)
+                session['cogscores'] = int(visions)
+                session['cogscore'] = (int(session['visionf']) + int(session['visions'])) / 2
                 # end = True
-                cogname = 'understand39'
-                return redirect(url_for("excog3"))
-        else:
-            return render_template("dsq/understand39.html", message=message, pagenum=session['pagenum'])
-    return render_template("dsq/understand39.html", message='', pagenum=session['pagenum'])
+                cogname = 'unable41'
+                return redirect(url_for('depth'))
 
+        else:
+            return render_template("dsq/vision41.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/vision41.html", message='', pagenum=session['pagenum'])
+
+@app.route('/depth', methods=['post', 'get'])
+def depth():
+    global end
+    form = FlaskForm()
+    if request.method == "POST":
+        depthf = request.form.get("depthf")
+        depths = request.form.get("depths")
+        if depthf is not None and depths is not None:
+            session["depthf"] = depthf
+            session["depths"] = depths
+            session['pagenum'] += 1
+            return redirect(url_for("slowness"))
+        else:
+            return render_template("dsq/depth42.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/depth42.html", message='', pagenum=session['pagenum'])
 
 @app.route('/slowness', methods=['post', 'get'])
 def slowness():
@@ -506,7 +508,6 @@ def slowness():
         else:
             return render_template("dsq/slowness43.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/slowness43.html", message='', pagenum=session['pagenum'])
-
 
 @app.route('/absent', methods=['post', 'get'])
 def absent():
@@ -582,7 +583,6 @@ def shortness():
             return render_template("dsq/shortness49.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/shortness49.html", message='', pagenum=session['pagenum'])
 
-
 @app.route('/dizzy', methods=['post', 'get'])
 def dizzy():
     global end
@@ -598,7 +598,6 @@ def dizzy():
         else:
             return render_template("dsq/dizzy50.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/dizzy50.html", message='', pagenum=session['pagenum'])
-
 
 @app.route('/heart', methods=['post', 'get'])
 def heart():
@@ -702,7 +701,7 @@ def chills():
     return render_template("dsq/chills57.html", message='', pagenum=session['pagenum'])
 
 
-@app.route('/59', methods=['post', 'get'])
+@app.route('/hitemp', methods=['post', 'get'])
 def hitemp():
     global end
 
@@ -720,7 +719,7 @@ def hitemp():
     return render_template("dsq/hitemp59.html", message='', pagenum=session['pagenum'])
 
 
-@app.route('/60', methods=['post', 'get'])
+@app.route('/lotemp', methods=['post', 'get'])
 def lotemp():
     global end
 
@@ -738,7 +737,7 @@ def lotemp():
     return render_template("dsq/lotemp60.html", message='', pagenum=session['pagenum'])
 
 
-@app.route('/61', methods=['post', 'get'])
+@app.route('/alcohol', methods=['post', 'get'])
 def alcohol():
     global end
 
@@ -756,7 +755,7 @@ def alcohol():
     return render_template("dsq/alcohol61.html", message='', pagenum=session['pagenum'])
 
 
-@app.route('/62', methods=['post', 'get'])
+@app.route('/throat', methods=['post', 'get'])
 def throat():
     global end
     form = FlaskForm()
@@ -773,7 +772,7 @@ def throat():
     return render_template("dsq/throat62.html", message='', pagenum=session['pagenum'])
 
 
-@app.route('/63', methods=['post', 'get'])
+@app.route('/lymphnodes', methods=['post', 'get'])
 def lymphnodes():
     global end
     form = FlaskForm()
@@ -790,7 +789,7 @@ def lymphnodes():
     return render_template("dsq/lymphnodes63.html", message='', pagenum=session['pagenum'])
 
 
-@app.route('/64', methods=['post', 'get'])
+@app.route('/fever', methods=['post', 'get'])
 def fever():
     global end
     form = FlaskForm()
@@ -801,85 +800,22 @@ def fever():
             session["feverf"] = feverf
             session["fevers"] = fevers
             session['pagenum'] += 1
-            return dsq_utils.dsq_diagnose()
+            return redirect(url_for("graph3"))
         else:
             return render_template("dsq/fever64.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/fever64.html", message='', pagenum=session['pagenum'])
 
-
-@app.route('/vision', methods=['post', 'get'])
-def vision():
-    form = FlaskForm()
-    global end
-    global cogname
-    if request.method == "POST":
-        visionf = request.form.get("visionf")
-        visions = request.form.get("visions")
-        if visionf is not None and visions is not None:
-            session["visionf"] = visionf
-            session["visions"] = visions
-            session['pagenum'] += 1
-            if int(session["visionf"]) >= 0 and int(session["visions"]) >= 0:
-                session['cogscoref'] = int(visionf)
-                session['cogscores'] = int(visions)
-                session['cogscore'] = (int(session['visionf']) + int(session['visions'])) / 2
-                # end = True
-                cogname = 'unable41'
-                return redirect(url_for('depth'))
-
-        else:
-            return render_template("dsq/vision41.html", message=message, pagenum=session['pagenum'])
-    return render_template("dsq/vision41.html", message='', pagenum=session['pagenum'])
-
-
-@app.route('/depth', methods=['post', 'get'])
-def depth():
-    global end
-    form = FlaskForm()
-    if request.method == "POST":
-        depthf = request.form.get("depthf")
-        depths = request.form.get("depths")
-        if depthf is not None and depths is not None:
-            session["depthf"] = depthf
-            session["depths"] = depths
-            session['pagenum'] += 1
-            return redirect(url_for("slowness"))
-        else:
-            return render_template("dsq/depth42.html", message=message, pagenum=session['pagenum'])
-    return render_template("dsq/depth42.html", message='', pagenum=session['pagenum'])
-
-@app.route('/end', methods=['post', 'get'])
-def end():
-    form = FlaskForm()
-    if request.method == "POST":
-        return redirect(url_for('home'))
-    # return render_template("example4.html")
-
-    if end:
-        fatiguedata = ((int(session["fatiguescoref"]) + int(session['fatiguescores'])) / 2)
-        minexdata = ((int(session["minexf"]) + int(session['minexs'])) / 2)
-        sleepdata = ((int(session["sleepf"]) + int(session['sleeps'])) / 2)
-        cogdata = ((int(session["rememberf"]) + int(session['remembers'])) / 2)
-        # data = [fatiguedata, minexdata, sleepdata, cogdata]
-        data = np.array([[fatiguedata, minexdata, sleepdata, cogdata]])
-        # result = randomForest.rf2.predict(data)
-        # if result[0] == 1:
-        # return f"The random forest model classifies your responses with the ME/CFS group. Model accuracy is {randomForest.accuracy}"
-        # else:
-        # return f"The random forest model does not predict ME/CFS. Model accuracy is {randomForest.accuracy}"
-
-        # return f"{result}"
-
+@app.route('/dsq_dx', methods=['get'])
+def graph3():
+    return dsq_utils.dsq_diagnose()
 
 @app.route('/about', methods=['post', 'get'])
 def about():
     return render_template('about.html')
 
-
 @app.route('/aboutmecfs', methods=['post', 'get'])
 def aboutmecfs():
     return render_template('aboutmecfs.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
