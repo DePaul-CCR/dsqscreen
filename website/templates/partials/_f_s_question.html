@@ -1,20 +1,13 @@
 {% if not single_question %}
 <form method="post" class="two-question">
   <div class="question-header">
-    {% if instructions == 1 %}
-    <p class="instructions">
-      <i
-        >For the following question, please select the choice that best fits
-        your experience.
-      </i>
-    </p>
-    {% elif instructions == 2 %}
+{% if instructions %}
     <p class="instructions">
       <i>
         You will now be presented a series of symptoms. For each one please rate how often (<b>frequency</b>) and how intensely (<b>severity</b>) you have experienced this symptom over the past 6 months.
       </i>
     </p>
-    {% endif %}
+{% endif %}
     <h3 class="question-title">{{ title }}</h3>
   </div>
 
