@@ -1,84 +1,10 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<form method="post" class="two-question">
-  <div class="question-header">
-    <h3 class="question-title">Feeling like you have a high temperature</h3>
-  </div>
-
-<div id="left">
-    <fieldset>
-      <legend>
-        <b>Frequency: </b>Throughout the past 6 months, how often have you had
-        this symptom?
-      </legend>
-      <ol class="radio-button-list">
-        <li>
-          <input type="radio" id="f0" name="hitempf" value="0" />
-          <label for="f0">None of the time</label>
-        </li>
-        <li>
-          <input type="radio" id="f1" name="hitempf" value="1" />
-          <label for="f1">A little of the time</label>
-        </li>
-        <li>
-          <input type="radio" id="f2" name="hitempf" value="2" />
-          <label for="f2">About half the time</label>
-        </li>
-        <li>
-          <input type="radio" id="f3" name="hitempf" value="3" />
-          <label for="f3">Most of the time</label>
-        </li>
-        <li>
-          <input type="radio" id="f4" name="hitempf" value="4" />
-          <label for="f4">All of the time</label>
-        </li>
-      </ol>
-    </fieldset>
-  </div>
-
-  <div id="right">
-    <fieldset>
-      <legend>
-        <b>Severity: </b>Throughout the past 6 months, how much has this symptom
-        bothered you?
-      </legend>
-      <ol class="radio-button-list">
-        <li>
-          <input type="radio" id="s0" name="hitemps" value="0" />
-          <label for="s0">Symptom not present</label>
-        </li>
-        <li>
-          <input type="radio" id="s1" name="hitemps" value="1" />
-          <label for="s1">Mild</label>
-        </li>
-        <li>
-          <input type="radio" id="s2" name="hitemps" value="2" />
-          <label for="s2">Moderate</label>
-        </li>
-        <li>
-          <input type="radio" id="s3" name="hitemps" value="3" />
-          <label for="s3">Severe</label>
-        </li>
-        <li>
-          <input type="radio" id="s4" name="hitemps" value="4" />
-          <label for="s4">Very severe</label>
-        </li>
-      </ol>
-    </fieldset>
-  </div>  
-  <div class="question-navigation">
-    <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
-    <button class="next-question-button disabled" type="submit" name="result" value="result">Next</button> 
-  </div>
-</form>
-<div class="container">
-  <p class="typed"><i>{{ message }} </i></p>
-</div>
-
-<div class="meter">
-  <span id="meter3span" style="--start: 85%; width: 87.5%"></span>
-</div>
-
-<script src="{{url_for('static', filename='js/disable_next.js')}}"></script>
+{% set title = "Feeling like you have a high temperature" %}
+{% set fname = "hitempf" %}
+{% set sname = "hitemps" %}  
+{% set next_button_text = "Next" %}
+{% set meter_id = "meter3span" %}
+{% set meter_style = "--start: 85%; width: 87.5%" %}
+{% include "partials/_f_s_question.html" %}
 {% endblock %}
