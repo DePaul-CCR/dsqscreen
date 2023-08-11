@@ -4,7 +4,6 @@ const nextButton = document.querySelector('.next-question-button')
 if(document.querySelector('.single-question-container')) {
   const radios = Array.from(document.querySelectorAll('input[type=radio]'))
   document.addEventListener('change', (e) => {
-    console.log(e)
     if (radios.some(checked)) {
       nextButton.classList.remove('disabled')
     } else {

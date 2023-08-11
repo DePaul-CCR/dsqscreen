@@ -7,3 +7,4 @@ __pycache__/
 flask_session/
 .DS_Store
 .vscode/
+fs_q_regx.html

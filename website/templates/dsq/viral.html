@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <form method="post" class="single-question">
   <div class="question-header">
     <p class="instructions">
-      <i
-        >For the following question, please select the choice that best fits
+      <i>For the following question, please select the choice that best fits
         your experience.
       </i>
     </p>
@@ -17,29 +15,19 @@
     <fieldset>
       <ol class="radio-button-list">
         <li>
-          <input type="radio" id="f0" name="viral" value="0" />
-          <label for="f0">No</label>
-        </li>
-        <li>
           <input type="radio" id="f1" name="viral" value="1" />
           <label for="f1">Yes</label>
+        </li>
+        <li>
+          <input type="radio" id="f0" name="viral" value="0" />
+          <label for="f0">No</label>
         </li>
       </ol>
     </fieldset>
   </div>
-  <div class="question-navigation">
-    <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
-    <button class="next-question-button disabled" type="submit" name="result" value="result">Next</button> 
-  </div>
-</form>
-
-<div class="container">
-  <p class="typed"><i>{{ message }} </i></p>
-</div>
-
-<div class="meter">
-  <span id="meter3span" style="--start: 0%; width: 1%"></span>
-</div>
-
-<script src="{{url_for('static', filename='js/disable_next.js')}}"></script>
+{% set single_question = True %}
+{% set next_button_text = "Next" %}
+{% set meter_id = "meter3span" %}
+{% set meter_style = "--start: 0%; width: 1%" %}
+{% include "partials/_f_s_question.html" %}
 {% endblock %}
