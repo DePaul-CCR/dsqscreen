@@ -1,5 +1,19 @@
 <form method="post" class="two-question">
   <div class="question-header">
+    {% if instructions == 1 %}
+    <p class="instructions">
+      <i
+        >For the following question, please select the choice that best fits
+        your experience.
+      </i>
+    </p>
+    {% elif instructions == 2 %}
+    <p class="instructions">
+      <i>
+        You will now be presented a series of symptoms. For each one please rate how often (<b>frequency</b>) and how intensely (<b>severity</b>) you have experienced this symptom over the past 6 months.
+      </i>
+    </p>
+    {% endif %}
     <h3 class="question-title">{{ title }}</h3>
   </div>
 
@@ -11,28 +25,23 @@
       </legend>
       <ol class="radio-button-list">
         <li>
-          <input type="radio" id="f0" name="fatigue" value="0" {% if
-          selected_radio == '0' %}checked{% endif %}>
+          <input type="radio" id="f0" name={{ fname }} value="0">
           <label for="f0">None of the time</label>
         </li>
         <li>
-          <input type="radio" id="f1" name="fatigue" value="1" {% if
-          selected_radio == '1' %}checked{% endif %}>
+          <input type="radio" id="f1" name={{ fname }} value="1">
           <label for="f1">A little of the time</label>
         </li>
         <li>
-          <input type="radio" id="f2" name="fatigue" value="2" {% if
-          selected_radio == '2' %}checked{% endif %}>
+          <input type="radio" id="f2" name={{ fname }} value="2">
           <label for="f2">About half the time</label>
         </li>
         <li>
-          <input type="radio" id="f3" name="fatigue" value="3" {% if
-          selected_radio == '3' %}checked{% endif %}>
+          <input type="radio" id="f3" name={{ fname }} value="3">
           <label for="f3">Most of the time</label>
         </li>
         <li>
-          <input type="radio" id="f4" name="fatigue" value="4" {% if
-          selected_radio == '4' %}checked{% endif %}>
+          <input type="radio" id="f4" name={{ fname }} value="4">
           <label for="f4">All of the time</label>
         </li>
       </ol>
@@ -47,28 +56,23 @@
       </legend>
       <ol class="radio-button-list">
         <li>
-          <input type="radio" id="s0" name="severity" value="0" {% if
-          selected_severity == '0' %}checked{% endif %}>
+          <input type="radio" id="s0" name={{ sname }} value="0">
           <label for="s0">Symptom not present</label>
         </li>
         <li>
-          <input type="radio" id="s1" name="severity" value="1" {% if
-          selected_severity == '1' %}checked{% endif %}>
+          <input type="radio" id="s1" name={{ sname }} value="1">
           <label for="s1">Mild</label>
         </li>
         <li>
-          <input type="radio" id="s2" name="severity" value="2" {% if
-          selected_severity == '2' %}checked{% endif %}>
+          <input type="radio" id="s2" name={{ sname }} value="2">
           <label for="s2">Moderate</label>
         </li>
         <li>
-          <input type="radio" id="s3" name="severity" value="3" {% if
-          selected_severity == '3' %}checked{% endif %}>
+          <input type="radio" id="s3" name={{ sname }} value="3">
           <label for="s3">Severe</label>
         </li>
         <li>
-          <input type="radio" id="s4" name="severity" value="4" {% if
-          selected_severity == '4' %}checked{% endif %}>
+          <input type="radio" id="s4" name={{ sname }} value="4">
           <label for="s4">Very severe</label>
         </li>
       </ol>
@@ -76,7 +80,7 @@
   </div>
   <div class="question-navigation">
     <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
-    <button class="next-question-button disabled" type="submit" name="result" value="result">Next</button>
+    <button class="next-question-button disabled" type="submit" name="result" value="result">{{ next_button_text }}</button>
   </div>
 </form>
 
@@ -85,9 +89,7 @@
 </div>
 
 <div class="meter">
-  <span style={{ progress_meter }}></span>
+  <span id={{ meter_id }} style="{{ meter_style }}"></span>
 </div>
 
-<!-- for find & replace templatizing:
-title, input name, next/submit, meter id & style
--->
+<script src="{{url_for('static', filename='js/disable_next.js')}}"></script>
