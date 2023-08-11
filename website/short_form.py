@@ -342,8 +342,10 @@ def graph2():
     cfsdomains = np.multiply(cfsdomains, 25).tolist()
 
     # diagnostic message ccc OR iom
+    dx_met = False
     if ccc_dx == "Met" or iomdxcheck == "Met":
         short_form_message = "Based on your responses there is a chance you might have MECFS. <br> Please continue to the next section for a more accurate assessment."
+        dx_met = True
     else:
         short_form_message = "Based on your responses it does not appear you have MECFS."
 
@@ -373,5 +375,6 @@ def graph2():
                            ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reductioncheck=ccc_reductioncheck, ccc_poly=ccc_poly,
                            iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
-                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck, short_form_message=short_form_message
+                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck,
+                           short_form_message=short_form_message,dx_met=dx_met
                            )

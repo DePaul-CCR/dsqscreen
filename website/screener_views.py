@@ -132,6 +132,7 @@ def graph():
     iompemcheck = "No"
     iomsleepcheck = "No"
     iomcogcheck = "No"
+    dx_met = False
 
     if session['fatiguescoref'] >= 2 and session['fatiguescores'] >= 2:
         iomfatiguecheck = "Yes"
@@ -144,6 +145,7 @@ def graph():
 
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
         screen_message = 'Based on your responses there is a chance you might have MECFS. <br> Please continue to the next section for a more accurate assessment.'
+        dx_met = True
     else:
         screen_message = "Based on your responses it does not appear you have MECFS."
 
@@ -181,7 +183,8 @@ def graph():
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template("results/graph.html",
                            graphJSON = graphJSON, 
-                           screen_message = screen_message)
+                           screen_message = screen_message,
+                           dx_met = dx_met)
 
 # not currently in use since we disabled users - PC 7/21/23
 # @screener_views.route('/scores')

@@ -3,28 +3,34 @@
 {% block content %}
 {% include "partials/_top_nav_bar.html" %}
 
-  <h3 class="ariel">Screener Results</h3>
-  
-  <div class="results">
-    <div class="diagnostic-message">{{ screen_message|safe }}</div>
-    <div class="container">
-      <div class="chart-center">
-        <figure id="chart"></figure>
-        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-        <script type='text/javascript'>
-          var graphs = {{ graphJSON | safe}};
-          Plotly.plot('chart', graphs, {});
-        </script>
-      </div>
+<h3 class="ariel">Screener Results</h3>
+
+<div class="results">
+  <div class="diagnostic-message">{{ screen_message|safe }}</div>
+  <div class="container">
+    <div class="chart-center">
+      <figure id="chart"></figure>
+      <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+      <script type='text/javascript'>
+        var graphs = {{ graphJSON | safe}};
+        Plotly.plot('chart', graphs, {});
+      </script>
     </div>
   </div>
-  
-  <div class="result-navigation">
-    <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
-    <button onclick="window.location.href='{{ url_for('short_form.expem1') }}'">
-      Continue
-    </button>
-  </div>
+</div>
+
+{% if dx_met %}
+<div class="continue-message">Continue to answer more questions for a more accurate assessment...</div>
+{% else %}
+<div class="continue-message red">Though it is not suggested based on your assessment, you may continue to answer more questions.</div>
+{% endif %}
+
+<div class="result-navigation">
+  <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
+  <button onclick="window.location.href='{{ url_for('short_form.expem1') }}'">
+    Continue
+  </button>
+</div>
 
 <p class="disclaimer"><i>Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician if you believe you may be suffering from ME/CFS.</i></p>
 {% endblock %}

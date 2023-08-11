@@ -236,12 +236,13 @@ a {
 }
 
 button {
+  display: flex;
+  align-items: center;
   font-size: 1em;
   margin: 10px 25px;
   max-width: 100%;
-  text-align: center;
+  max-height: 88px;
   letter-spacing: 0px;
-  position: relative;
   padding: 30px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;

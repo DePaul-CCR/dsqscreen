@@ -92,6 +92,12 @@
   </div>
 </div>
 
+{% if dx_met %}
+<div class="continue-message">Continue to answer more questions for a more accurate assessment...</div>
+{% else %}
+<div class="continue-message red">Though it is not suggested based on your assessment, you may continue to answer more questions.</div>
+{% endif %}
+
 <div class="result-navigation">
   <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
   <button onclick="window.print();return false;">
