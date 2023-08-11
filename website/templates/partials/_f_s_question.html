@@ -1,3 +1,4 @@
+{% if not single_question %}
 <form method="post" class="two-question">
   <div class="question-header">
     {% if instructions == 1 %}
@@ -25,23 +26,23 @@
       </legend>
       <ol class="radio-button-list">
         <li>
-          <input type="radio" id="f0" name={{ fname }} value="0">
+          <input type="radio" id="f0" name={{ fname }} value="0"/>
           <label for="f0">None of the time</label>
         </li>
         <li>
-          <input type="radio" id="f1" name={{ fname }} value="1">
+          <input type="radio" id="f1" name={{ fname }} value="1"/>
           <label for="f1">A little of the time</label>
         </li>
         <li>
-          <input type="radio" id="f2" name={{ fname }} value="2">
+          <input type="radio" id="f2" name={{ fname }} value="2"/>
           <label for="f2">About half the time</label>
         </li>
         <li>
-          <input type="radio" id="f3" name={{ fname }} value="3">
+          <input type="radio" id="f3" name={{ fname }} value="3"/>
           <label for="f3">Most of the time</label>
         </li>
         <li>
-          <input type="radio" id="f4" name={{ fname }} value="4">
+          <input type="radio" id="f4" name={{ fname }} value="4"/>
           <label for="f4">All of the time</label>
         </li>
       </ol>
@@ -56,28 +57,29 @@
       </legend>
       <ol class="radio-button-list">
         <li>
-          <input type="radio" id="s0" name={{ sname }} value="0">
+          <input type="radio" id="s0" name={{ sname }} value="0"/>
           <label for="s0">Symptom not present</label>
         </li>
         <li>
-          <input type="radio" id="s1" name={{ sname }} value="1">
+          <input type="radio" id="s1" name={{ sname }} value="1"/>
           <label for="s1">Mild</label>
         </li>
         <li>
-          <input type="radio" id="s2" name={{ sname }} value="2">
+          <input type="radio" id="s2" name={{ sname }} value="2"/>
           <label for="s2">Moderate</label>
         </li>
         <li>
-          <input type="radio" id="s3" name={{ sname }} value="3">
+          <input type="radio" id="s3" name={{ sname }} value="3"/>
           <label for="s3">Severe</label>
         </li>
         <li>
-          <input type="radio" id="s4" name={{ sname }} value="4">
+          <input type="radio" id="s4" name={{ sname }} value="4"/>
           <label for="s4">Very severe</label>
         </li>
       </ol>
     </fieldset>
   </div>
+{% endif %}
   <div class="question-navigation">
     <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
     <button class="next-question-button disabled" type="submit" name="result" value="result">{{ next_button_text }}</button>
