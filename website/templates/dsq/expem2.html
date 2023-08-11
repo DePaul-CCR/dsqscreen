@@ -72,7 +72,7 @@
   </div>  
   <div class="question-navigation">
     <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
-    <button class="next-question-button" type="submit" name="result" value="result">Next</button> 
+    <button class="next-question-button disabled" type="submit" name="result" value="result">Next</button> 
   </div>
 </form>
 
@@ -83,4 +83,6 @@
 <div class="meter">
   <span id="meter3span" style="--start: 5%; width: 7.5%"></span>
 </div>
+
+<script src="{{url_for('static', filename='js/disable_next.js')}}"></script>
 {% endblock %}
