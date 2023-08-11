@@ -1,14 +1,7 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <form method="post" class="single-question">
   <div class="question-header">
-    <p class="instructions">
-      <i
-        >For the following question, please select the choice that best fits
-        your experience.
-      </i>
-    </p>
     <h3 class="question-title">Since the onset of your problems with fatigue / energy,
       have your symptoms caused a 50% or greater reduction in your activity
       level?
@@ -32,19 +25,10 @@
       </ol>
     </fieldset>
   </div>
-  <div class="question-navigation">
-    <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
-    <button class="next-question-button disabled" type="submit" name="result" value="result">Submit</button> 
-  </div>
-</form>
-
-<div class="container">
-  <p class="typed"><i>{{ message }} </i></p>
-</div>
-
-<div class="meter">
-  <span id="meter2span" style="--start: 91%; width: 100%"></span>
-</div>
-
-<script src="{{url_for('static', filename='js/disable_next.js')}}"></script>
+{% set single_question = True %}
+{% set instructions = 1 %}
+{% set next_button_text = "Submit" %}
+{% set meter_id = "meter2span" %}
+{% set meter_style = "--start: 91%; width: 100%" %}
+{% include "partials/_f_s_question.html" %}
 {% endblock %}
