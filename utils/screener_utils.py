@@ -62,7 +62,8 @@ def screener_diagnose():
         yaxis_title='Combined Frequency and Severity Scores',
         xaxis_title='Symptom Domains'
     )
-    fig.update_yaxes(range=[0, 100], dtick=25)
+    fig.update_yaxes(range=[0, 100], dtick=25, titlefont=dict(size=15))
+    fig.update_xaxes(tickfont=dict(size=13), titlefont=dict(size=15))
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return render_template("results/graph.html",
                            graphJSON = graphJSON, 
