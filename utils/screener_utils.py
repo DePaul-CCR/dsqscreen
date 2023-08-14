@@ -28,11 +28,9 @@ def screener_diagnose():
     if session['rememberf'] >= 2 and session['remembers'] >= 2:
         iomcogcheck = "Yes"
 
+    screen_message = 'Your responses to the screener questions are scored below. <br> Scores range from 0 to 100, with higher scores indication more frequent and severe problems.'
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
-        screen_message = 'Based on your responses to our screener questions, there is a chance you might have MECFS. <br> Please continue to the next section for a more accurate assessment.'
         dx_met = True
-    else:
-        screen_message = "Based on your responses to our screener questions, it does not appear you have MECFS."
 
     composite_scores = responses
     categories = ['Fatigue', 'Post-exertional malaise', 'Sleep problems',
@@ -41,7 +39,7 @@ def screener_diagnose():
     select_list = ['fatigue13c', (session['pemname'] + 'c'),
                    (session['cogname'] + 'c'), (session['sleepname'] + 'c'), 'dx']
     df = df[select_list]
-    colors = ['#89889E' if score < 50 else '#56A8A0' for score in composite_scores]
+    colors = ['#56A8A0' for score in composite_scores]
     
     # composite f/s score graph
     fig = go.Figure(

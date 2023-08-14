@@ -19,17 +19,26 @@
 </div>
 
 {% if dx_met %}
-<div class="continue-message">Continue to answer more questions for a more accurate assessment...</div>
-{% else %}
-<div class="continue-message red">Though it is not suggested based on your assessment, you may continue to answer more questions.</div>
-{% endif %}
-
+<div class="continue-message">Based on your responses, you might have ME/CFS.<br> We recommend you click continue to answer additional questions...</div>
 <div class="result-navigation">
-  <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
+  <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">
+    Back
+  </button>
   <button onclick="window.location.href='{{ url_for('short_form.expem1') }}'">
     Continue
   </button>
 </div>
+{% else %}
+<div class="continue-message red">You do not have ME/CFS.</div>
+<div class="result-navigation">
+  <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">
+    Back
+  </button>
+  <button onclick="window.location.href='{{ url_for('screener_views.home') }}'">
+    Home
+  </button>
+</div>
+{% endif %}
 
 <p class="disclaimer"><i>Disclaimer: This screener is not meant to provide medical diagnoses. Please consult with your physician if you believe you may be suffering from ME/CFS.</i></p>
 {% endblock %}
