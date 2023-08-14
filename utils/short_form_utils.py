@@ -4,6 +4,11 @@ import plotly.graph_objects as go
 import json
 import plotly.utils
 
+# short form questions:
+# 'fatigue13c', 'soreness15c', 'minimum17c', 'unrefreshed19c',
+# 'musclepain25c', 'bloating29c', 'remember36c', 'difficulty37c',
+# 'bowel46c', 'unsteady48c', 'limbs56c', 'hot58c', 'flu65c','smells66c'
+
 def short_form_diagnose():
     import domainScores as ds
 
@@ -23,17 +28,8 @@ def short_form_diagnose():
     user_scores = [fatiguescore, pemscore, sleepscore, cogscore, painscore, gastroscore, orthoscore, circscore,
                    immunescore, neuroenscore]
 
-    shortform_items = ['fatigue13c', 'soreness15c', 'minimum17c', 'unrefreshed19c',
-                       'musclepain25c', 'bloating29c', 'remember36c', 'difficulty37c',
-                       'bowel46c', 'unsteady48c', 'limbs56c', 'hot58c', 'flu65c',
-                       'smells66c']
-
     df = ds.sdf
-
     mecfs = df[(df['dx'] == 1)]
-    controls = df[(df['dx'] != 1)]
-
-
     cfsdomains = np.mean(mecfs.iloc[:, 110:120], axis=0)
 
     # This assesses the IOM Criteria
