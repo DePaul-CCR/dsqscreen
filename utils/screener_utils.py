@@ -1,6 +1,5 @@
 from flask import render_template, session
 import plotly.graph_objects as go
-import pandas as pd
 import json
 import plotly.utils
 
