@@ -6,12 +6,11 @@ import plotly.utils
 
 def screener_diagnose():
     # we *25 to scale 4pt scale to 100 pt scale
-    fatiguescore = domain_score('fatiguescore')
-    pemscore = domain_score('pemscore')
-    sleepscore = domain_score('sleepscore')
-    cogscore = domain_score('cogscore')
+    fatiguescore = fit_domain_score('fatiguescore')
+    pemscore = fit_domain_score('pemscore')
+    sleepscore = fit_domain_score('sleepscore')
+    cogscore = fit_domain_score('cogscore')
 
-    df = pd.read_csv('MECFS COMPOSITE DATA.csv')
     responses = [fatiguescore, pemscore, sleepscore, cogscore]
     iomfatiguecheck = "No"
     iompemcheck = "No"
@@ -38,7 +37,6 @@ def screener_diagnose():
 
     select_list = ['fatigue13c', (session['pemname'] + 'c'),
                    (session['cogname'] + 'c'), (session['sleepname'] + 'c'), 'dx']
-    df = df[select_list]
     colors = ['#56A8A0' for score in composite_scores]
     
     # composite f/s score graph
@@ -70,5 +68,5 @@ def screener_diagnose():
                            screen_message = screen_message,
                            dx_met = dx_met)
 
-def domain_score(session_var_string):
+def fit_domain_score(session_var_string):
     return 1 if session[session_var_string] == 0 else session[session_var_string] * 25
