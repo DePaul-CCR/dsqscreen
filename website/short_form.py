@@ -15,13 +15,11 @@ def expem1():
             session["soref"] = soref
             session["sores"] = sores
             session['pagenum'] += 1
-
             if int(session["soref"]) >= 0 and int(session["sores"]) >= 0:
                 session['pemscoref'] = session['soref']
                 session['pemscores'] = session['sores']
                 session['pemscore'] = (int(session['soref']) + int(session['sores'])) / 2
                 pemname = 'soreness15'
-
                 return redirect(url_for("short_form.excog1"))
         else:
             return render_template("short_form/expem1.html", pagenum=session['pagenum'], message=message)
@@ -92,7 +90,6 @@ def bowel():
         else:
             return render_template("short_form/bowel.html", message=message, pagenum=session['pagenum'])
     return render_template("short_form/bowel.html", message='', pagenum=session['pagenum'])
-
 
 @short_form.route('/unsteady', methods=['post', 'get'])
 def unsteady():
