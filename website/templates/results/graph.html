@@ -19,7 +19,7 @@
 </div>
 
 {% if dx_met %}
-<div class="continue-message">Based on your responses, you might have ME/CFS.<br> We recommend you click continue to answer additional questions...</div>
+<div class="continue-message">Based on your responses to this screener, you might have ME/CFS.<br> We recommend you click continue to answer additional questions...</div>
 <div class="result-navigation">
   <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">
     Back
@@ -29,7 +29,7 @@
   </button>
 </div>
 {% else %}
-<div class="continue-message red">You do not have ME/CFS.</div>
+<div class="continue-message red">Based on your responses to this screener, it is unlikely you have ME/CFS.</div>
 <div class="result-navigation">
   <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">
     Back
