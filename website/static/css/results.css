@@ -6,6 +6,11 @@
   background-color: #F3CFC6;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  font-size: 1.1em;
+}
+
+.diagnostic-message.screener {
+  font-weight: 400;
 }
 
 .continue-message {
@@ -245,7 +250,7 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .chart-center {
+  .chart-center.screener {
     zoom: .80;
   }
 }
