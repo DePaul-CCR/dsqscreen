@@ -35,8 +35,6 @@ def screener_diagnose():
     categories = ['Fatigue', 'Post-exertional malaise', 'Sleep problems',
                   'Cognitive problems']
 
-    select_list = ['fatigue13c', (session['pemname'] + 'c'),
-                   (session['cogname'] + 'c'), (session['sleepname'] + 'c'), 'dx']
     colors = ['#56A8A0' for score in composite_scores]
     
     # composite f/s score graph
