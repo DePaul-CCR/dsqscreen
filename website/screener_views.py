@@ -21,7 +21,6 @@ def home():
 # First symptom question
 @screener_views.route('/fatigue', methods=['post', 'get'])
 def page1():
-
     session['pagenum'] = 1
     if request.method == "POST":
         selected_radio = request.form.get('fatigue')
@@ -33,7 +32,6 @@ def page1():
             session['fatiguescores'] = int(fatiguescores)
             session['fatiguescore'] = (session['fatiguescoref'] + session['fatiguescores']) / 2
             session['pagenum'] += 1
-
             return redirect(url_for("screener_views.page2"))
         else:
             return render_template("screener/page1.html", pagenum=session['pagenum'], message=message,
@@ -67,7 +65,6 @@ def page2():
 @screener_views.route('/unrefreshed', methods=['post', 'get'])
 def page3():
     global sleepname
-
     if request.method == "POST":
         sleepf = request.form.get("sleepf")
         sleeps = request.form.get("sleeps")
@@ -75,15 +72,12 @@ def page3():
             session["sleepf"] = int(sleepf)
             session["sleeps"] = int(sleeps)
             session['pagenum'] += 1
-
             if int(session["sleepf"]) >= 0 and int(session["sleeps"]) >= 0:
                 session['sleepscoref'] = int(sleepf)
                 session['sleepscores'] = int(sleeps)
                 session['sleepscore'] = (int(session['sleepf']) + int(session['sleeps'])) / 2
                 session["sleepname"] = 'unrefreshed19'
-
                 return redirect(url_for("screener_views.page4"))
-
         else:
             return render_template("screener/page3.html", pagenum=session['pagenum'], message=message,
                                    sleepf=sleepf, sleeps=sleeps)
@@ -93,7 +87,6 @@ def page3():
 @screener_views.route('/remember', methods=['post', 'get'])
 def page4():
     global cogname
-
     if request.method == "POST":
         rememberf = request.form.get("rememberf")
         remembers = request.form.get("remembers")
@@ -101,14 +94,11 @@ def page4():
             session["rememberf"] = int(rememberf)
             session["remembers"] = int(remembers)
             session['pagenum'] += 1
-
             session['cogscoref'] = int(rememberf)
             session['cogscores'] = int(remembers)
             session["cogname"] = 'remember36'
             session['cogscore'] = (int(session['rememberf']) + int(session['remembers'])) / 2
-
             return redirect(url_for('screener_views.graph'))
-
         else:
             return render_template("screener/page4.html", pagenum=session['pagenum'], message=message,
                                    rememberf=rememberf, remembers=remembers)
