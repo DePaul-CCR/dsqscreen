@@ -18,7 +18,7 @@
   background-color: #bfffb7;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  margin: 10px auto 10px;
+  margin: 10px auto 20px;
   padding: 5px 5px 5px 5px;
   font-size: 1.1em;
 }
@@ -99,11 +99,15 @@
 .result-navigation .back-button {
   grid-column: 1 / 2;
   grid-row: 1;
+  margin: 0 10px 20px 0;
+  padding-left: 43px;
+  padding-right: 43px;
 }
 
 .result-navigation .continue-button {
   grid-column: 2 / 3;
   grid-row: 1;
+  margin: 0 0 20px 10px;
 }
 
 .result-navigation .print-button {
@@ -250,16 +254,6 @@
   height: auto;
 }
 
-.two-buttons {
-  white-space: nowrap;
-  display: flex;
-  justify-content: center;
-}
-
-.two-buttons button {
-  margin: 10px 10px 0 0;
-}
-
 @media screen and (max-width: 1280px) {
   .chart-center.screener {
     zoom: .80;
@@ -280,6 +274,14 @@
   .chart-center {
     zoom: .45;
     width: 90%;
+  }
+  
+  .result-navigation .back-button {
+    padding: 30px;
+  }
+
+  .result-navigation .continue-button {
+    padding: 25px;
   }
 }
 
