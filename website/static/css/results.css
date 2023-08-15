@@ -1,5 +1,5 @@
 .diagnostic-message {
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 10px;
   margin-bottom: 10px;
   text-align: center;
@@ -38,13 +38,14 @@
 
 .case-results-title {
   margin: 5px 0 5px 0;
+  text-align: center;
 }
 
 .case-results-diagnosis {
   text-align: left;
   border: 1px solid black;
   border-bottom: 0;
-  font-weight: bold;
+  /* font-weight: bold; */
   background-color: #F3CFC6;
   padding: 10px 0 10px 0;
 }
