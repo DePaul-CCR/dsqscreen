@@ -73,15 +73,22 @@
     </fieldset>
   </div>
 {% endif %}
-  <div class="question-navigation">
-    <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">Back</button>
-    <button class="next-question-button disabled" type="submit" name="result" value="result">{{ next_button_text }}</button>
+<div class="question-navigation">
+{% if message %}
+    <p class="error-message">
+{% else %}
+    <p class="error-message hidden">
+{% endif %}
+      Please enter a response for both frequency and severity before continuing
+    </p>
+    <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">
+      Back
+    </button>
+    <button class="next-question-button disabled" type="submit" name="result" value="result">
+      {{ next_button_text }}
+    </button>
   </div>
 </form>
-
-<div class="container">
-  <p class="typed"><i>{{ message }} </i></p>
-</div>
 
 <div class="meter">
   <span id={{ meter_id }} style="{{ meter_style }}"></span>
