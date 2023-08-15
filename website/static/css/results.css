@@ -1,34 +1,30 @@
 .diagnostic-message {
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 10px;
   margin-bottom: 10px;
   text-align: center;
   background-color: #F3CFC6;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  font-size: 1.1em;
+}
+
+.diagnostic-message.screener {
+  font-weight: 400;
 }
 
 .continue-message {
   text-align: center;
   background-color: #bfffb7;
-  /* border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px; */
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  margin: 10px auto 10px;
+  margin: 10px auto 20px;
   padding: 5px 5px 5px 5px;
   font-size: 1.1em;
 }
 
 .red {
   background-color: #F3CFC6;
-}
-
-.print-button {
-  display: block;
-  margin-top: 25px;
 }
 
 .case-results {
@@ -42,13 +38,14 @@
 
 .case-results-title {
   margin: 5px 0 5px 0;
+  text-align: center;
 }
 
 .case-results-diagnosis {
   text-align: left;
   border: 1px solid black;
   border-bottom: 0;
-  font-weight: bold;
+  /* font-weight: bold; */
   background-color: #F3CFC6;
   padding: 10px 0 10px 0;
 }
@@ -93,11 +90,30 @@
 }
 
 .result-navigation {
-  grid-row: 3;
-  grid-column: 1 / 3;
-  display: flex;
+  display: grid;
+  justify-items: center;
   justify-content: center;
-  align-items: center;
+  max-width: 100vw;
+}
+
+.result-navigation .back-button {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  margin: 0 10px 20px 0;
+  padding-left: 43px;
+  padding-right: 43px;
+}
+
+.result-navigation .continue-button {
+  grid-column: 2 / 3;
+  grid-row: 1;
+  margin: 0 0 20px 10px;
+}
+
+.result-navigation .print-button {
+  grid-row: 2;
+  grid-column: 1/3;
+  padding: 20px;
 }
 
 .symptom-list {
@@ -238,14 +254,10 @@
   height: auto;
 }
 
-.two-buttons {
-  white-space: nowrap;
-  display: flex;
-  justify-content: center;
-}
-
-.two-buttons button {
-  margin: 10px 10px 0 0;
+@media screen and (max-width: 1280px) {
+  .chart-center.screener {
+    zoom: .80;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -262,6 +274,14 @@
   .chart-center {
     zoom: .45;
     width: 90%;
+  }
+  
+  .result-navigation .back-button {
+    padding: 30px;
+  }
+
+  .result-navigation .continue-button {
+    padding: 25px;
   }
 }
 
