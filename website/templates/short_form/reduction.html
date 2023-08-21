@@ -1,33 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="post" class="single-question">
-  <div class="question-header">
-    <h3 class="question-title">Since the onset of your problems with fatigue / energy,
-      have your symptoms caused a 50% or greater reduction in your activity
-      level?
-    </h3>
-  </div>
-  <div class="single-question-container">
-    <fieldset>
-      <legend>
-        Please select the choice that best fits your experience:
-      </legend>
-      <ol class="radio-button-list">
-        <li>
-          <input type="radio" id="f1" name="reduction" value="1" />
-          <label for="f1">Yes</label>
-        </li>
-        <li>
-          <input type="radio" id="f0" name="reduction" value="0" />
-          <label for="f0">No</label>
-        </li>
-        <li>
-          <input type="radio" id="f2" name="reduction" value="2" />
-          <label for="f2">Not having a problem with fatigue/energy</label>
-        </li>
-      </ol>
-    </fieldset>
-  </div>
+<div class="single-question-form-wrapper">
+  <form method="post" class="single-question">
+    <div class="question-header">
+      <h3 class="question-title">Since the onset of your problems with fatigue / energy,
+        have your symptoms caused a 50% or greater reduction in your activity
+        level?
+      </h3>
+    </div>
+    <div class="single-question-container">
+      <fieldset>
+        <legend>
+          Please select the choice that best fits your experience:
+        </legend>
+        <ol class="radio-button-list">
+          <li>
+            <input type="radio" id="f1" name="reduction" value="1" />
+            <label for="f1">Yes</label>
+          </li>
+          <li>
+            <input type="radio" id="f0" name="reduction" value="0" />
+            <label for="f0">No</label>
+          </li>
+          <li>
+            <input type="radio" id="f2" name="reduction" value="2" />
+            <label for="f2">Not having a problem with fatigue/energy</label>
+          </li>
+        </ol>
+      </fieldset>
+    </div>
 <!-- <form> element closes in /_f_s_question template -->
 {% set single_question = True %}
 {% set next_button_text = "Submit" %}

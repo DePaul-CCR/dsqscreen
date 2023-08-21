@@ -1,97 +1,102 @@
 {% if not single_question %}
-<form method="post" class="two-question">
-  <div class="question-header">
+<div class="question-form-wrapper">
+  <form method="post" class="two-question">
+    <div class="question-header">
 {% if instructions %}
-    <p class="instructions">
-      <i>
-        You will now be presented a series of symptoms.<br>For each one please rate how often (<b>frequency</b>) and how intensely (<b>severity</b>) you have experienced this symptom over the past 6 months.
-      </i>
-    </p>
+      <p class="instructions">
+        <i>
+          You will now be presented a series of symptoms.<br>For each one please rate how often (<b>frequency</b>) and how intensely (<b>severity</b>) you have experienced this symptom over the past 6 months.
+        </i>
+      </p>
 {% endif %}
-    <h3 class="question-title">{{ title }}</h3>
-  </div>
+      <h3 class="question-title">{{ title }}</h3>
+    </div>
 
-<div id="left">
-    <fieldset>
-      <legend>
-        <b>Frequency: </b>Throughout the past 6 months, how often have you had
-        this symptom?
-      </legend>
-      <ol class="radio-button-list">
-        <li>
-          <input type="radio" id="f0" name={{ fname }} value="0"/>
-          <label for="f0">None of the time</label>
-        </li>
-        <li>
-          <input type="radio" id="f1" name={{ fname }} value="1"/>
-          <label for="f1">A little of the time</label>
-        </li>
-        <li>
-          <input type="radio" id="f2" name={{ fname }} value="2"/>
-          <label for="f2">About half the time</label>
-        </li>
-        <li>
-          <input type="radio" id="f3" name={{ fname }} value="3"/>
-          <label for="f3">Most of the time</label>
-        </li>
-        <li>
-          <input type="radio" id="f4" name={{ fname }} value="4"/>
-          <label for="f4">All of the time</label>
-        </li>
-      </ol>
-    </fieldset>
-  </div>
+  <div id="left">
+      <fieldset>
+        <legend>
+          <b>Frequency: </b>Throughout the past 6 months, how often have you had
+          this symptom?
+        </legend>
+        <ol class="radio-button-list">
+          <li>
+            <input type="radio" id="f0" name={{ fname }} value="0"/>
+            <label for="f0">None of the time</label>
+          </li>
+          <li>
+            <input type="radio" id="f1" name={{ fname }} value="1"/>
+            <label for="f1">A little of the time</label>
+          </li>
+          <li>
+            <input type="radio" id="f2" name={{ fname }} value="2"/>
+            <label for="f2">About half the time</label>
+          </li>
+          <li>
+            <input type="radio" id="f3" name={{ fname }} value="3"/>
+            <label for="f3">Most of the time</label>
+          </li>
+          <li>
+            <input type="radio" id="f4" name={{ fname }} value="4"/>
+            <label for="f4">All of the time</label>
+          </li>
+        </ol>
+      </fieldset>
+    </div>
 
-  <div id="right">
-    <fieldset>
-      <legend>
-        <b>Severity: </b>Throughout the past 6 months, how much has this symptom
-        bothered you?
-      </legend>
-      <ol class="radio-button-list">
-        <li>
-          <input type="radio" id="s0" name={{ sname }} value="0"/>
-          <label for="s0">Symptom not present</label>
-        </li>
-        <li>
-          <input type="radio" id="s1" name={{ sname }} value="1"/>
-          <label for="s1">Mild</label>
-        </li>
-        <li>
-          <input type="radio" id="s2" name={{ sname }} value="2"/>
-          <label for="s2">Moderate</label>
-        </li>
-        <li>
-          <input type="radio" id="s3" name={{ sname }} value="3"/>
-          <label for="s3">Severe</label>
-        </li>
-        <li>
-          <input type="radio" id="s4" name={{ sname }} value="4"/>
-          <label for="s4">Very severe</label>
-        </li>
-      </ol>
-    </fieldset>
-  </div>
+    <div id="right">
+      <fieldset>
+        <legend>
+          <b>Severity: </b>Throughout the past 6 months, how much has this symptom
+          bothered you?
+        </legend>
+        <ol class="radio-button-list">
+          <li>
+            <input type="radio" id="s0" name={{ sname }} value="0"/>
+            <label for="s0">Symptom not present</label>
+          </li>
+          <li>
+            <input type="radio" id="s1" name={{ sname }} value="1"/>
+            <label for="s1">Mild</label>
+          </li>
+          <li>
+            <input type="radio" id="s2" name={{ sname }} value="2"/>
+            <label for="s2">Moderate</label>
+          </li>
+          <li>
+            <input type="radio" id="s3" name={{ sname }} value="3"/>
+            <label for="s3">Severe</label>
+          </li>
+          <li>
+            <input type="radio" id="s4" name={{ sname }} value="4"/>
+            <label for="s4">Very severe</label>
+          </li>
+        </ol>
+      </fieldset>
+    </div>
 {% endif %}
-<div class="question-navigation">
+  <div class="question-navigation">
 {% if message %}
-    <p class="error-message">
+      <p class="error-message">
 {% else %}
-    <p class="error-message hidden">
+      <p class="error-message hidden">
 {% endif %}
-      Please enter a response for both frequency and severity before continuing
-    </p>
-    <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">
-      Back
-    </button>
-    <button class="next-question-button disabled" type="submit" name="result" value="result">
-      {{ next_button_text }}
-    </button>
+{% if not single_question %}
+        Please enter a response for both frequency and severity before continuing
+{% else %}
+        Please select one of the options before continuing
+{% endif %}
+      </p>
+      <button onClick="javascript:window.location.href='{{previous_page(request.path)}}'" class="back-button" type="button">
+        Back
+      </button>
+      <button class="next-question-button disabled" type="submit" name="result" value="result">
+        {{ next_button_text }}
+      </button>
+    </div>
+  </form>
+
+  <div class="meter">
+    <span id={{ meter_id }} style="{{ meter_style }}"></span>
   </div>
-</form>
-
-<div class="meter">
-  <span id={{ meter_id }} style="{{ meter_style }}"></span>
 </div>
-
 <script src="{{url_for('static', filename='js/disable_next.js')}}"></script>
