@@ -3,8 +3,8 @@ import plotly.graph_objects as go
 import json
 import plotly.utils
 
-# screener questions
-# 'fatigue13c', 'remember36c', 'minimum17c', 'unrefreshed19c',
+# screener: 4 questions
+# fatigue13c, minimum17c, unrefreshed19c, remember36c
 
 def screener_diagnose():
     # we *25 to scale 4pt scale to 100 pt scale
