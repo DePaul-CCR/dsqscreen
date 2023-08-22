@@ -1,8 +1,23 @@
+.question-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-question-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+}
+
 form[method="post"] {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 1fr 1fr;
   padding: 0 10% 0 10%;
+  height: min-content;
 }
 
 #begin-screener {
@@ -62,7 +77,8 @@ div#right {
   display: grid;
   justify-content: center;
   justify-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  height: min-content;
 }
 
 .question-navigation .back-button {
@@ -94,9 +110,7 @@ li > label {
 }
 
 .meter {
-  height: 20px;
-  position: relative;
-  bottom: 10px;
+  height: 15px;
   left: 1%;
   background: #555;
   border-radius: 25px;
@@ -197,6 +211,10 @@ li > label {
 }
 
 @media only screen and (max-width: 899px) {
+  .question-form-wrapper {
+   justify-content: flex-start;
+  }
+
   .error-message {
     margin: 0 0 .8em 0;
   }
@@ -232,6 +250,7 @@ li > label {
   .question-navigation {
     grid-column: 1;
     grid-row: 4;
+    margin-bottom: 10px;
   }
   
   fieldset {
