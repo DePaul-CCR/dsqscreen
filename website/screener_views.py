@@ -4,9 +4,7 @@ import utils.screener_utils as screener_utils
 # import numpy as np
 
 screener_views = Blueprint('screener_views', __name__)
-
 message = "Please enter a response for both frequency and severity before continuing"
-
 
 @screener_views.route('/', methods=['post', 'get'])
 def home():
@@ -17,14 +15,11 @@ def home():
         return redirect(url_for("screener_views.page1"))
     return render_template("home.html", session=session)
 
-
 # First symptom question
 @screener_views.route('/fatigue', methods=['post', 'get'])
 def page1():
     session['pagenum'] = 1
     if request.method == "POST":
-        selected_radio = request.form.get('fatigue')
-        selected_severity = request.form.get('severity')
         fatiguescoref = request.form.get("fatigue")
         fatiguescores = request.form.get("severity")
         if fatiguescores is not None and fatiguescoref is not None:
@@ -34,16 +29,12 @@ def page1():
             session['pagenum'] += 1
             return redirect(url_for("screener_views.page2"))
         else:
-            return render_template("screener/page1.html", pagenum=session['pagenum'], message=message,
-                                   selected_radio=selected_radio, selected_severity=selected_severity)
+            return render_template("screener/page1.html", pagenum=session['pagenum'], message=message)
     return render_template("screener/page1.html", pagenum=session['pagenum'], message='')
-
 
 @screener_views.route('/minimum', methods=["post", "get"])
 def page2():
     global pemname
-    selected_f = request.form.get('minex')
-    selected_s = request.form.get('minex_s')
     if request.method == "POST":
         minexf = request.form.get("minex")
         minexs = request.form.get("minex_s")
@@ -53,14 +44,10 @@ def page2():
             session["pemscore"] = (int(minexf) + int(minexs)) / 2
             session["pemname"] = "minimum17"
             session['pagenum'] += 1
-
             return redirect(url_for("screener_views.page3"))
-
         else:
-            return render_template("screener/page2.html", pagenum=session['pagenum'], message=message,
-                                   selected_s=selected_s, selected_f=selected_f)
+            return render_template("screener/page2.html", pagenum=session['pagenum'], message=message)
     return render_template("screener/page2.html", pagenum=session['pagenum'], message='')
-
 
 @screener_views.route('/unrefreshed', methods=['post', 'get'])
 def page3():
@@ -79,10 +66,8 @@ def page3():
                 session["sleepname"] = 'unrefreshed19'
                 return redirect(url_for("screener_views.page4"))
         else:
-            return render_template("screener/page3.html", pagenum=session['pagenum'], message=message,
-                                   sleepf=sleepf, sleeps=sleeps)
+            return render_template("screener/page3.html", pagenum=session['pagenum'], message=message, sleepf=sleepf, sleeps=sleeps)
     return render_template("screener/page3.html", pagenum=session['pagenum'], message='')
-
 
 @screener_views.route('/remember', methods=['post', 'get'])
 def page4():
@@ -103,7 +88,6 @@ def page4():
             return render_template("screener/page4.html", pagenum=session['pagenum'], message=message,
                                    rememberf=rememberf, remembers=remembers)
     return render_template("screener/page4.html", pagenum=session['pagenum'], message='')
-
 
 @screener_views.route('/screener_dx')
 def graph():

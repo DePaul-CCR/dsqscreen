@@ -3,6 +3,7 @@ DePaul blue: #0057B7
 Screener: #F3CFC6
 Short Form: #C2EFEB
 DSQ: #ED7E63
+Graph: #00CC9C #1E3888
 */
 
 body {
@@ -527,92 +528,6 @@ footer {
 @media print {
   header,
   button {
-    display: none;
-  }
-
-  .container {
-    display: none;
-  }
-
-  body {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  p,
-  span,
-  a {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  div {
-    width: 100%;
-    border: none;
-    display: block;
-    margin: auto;
-    text-align: center;
-  }
-
-  div h3 {
-    width: 100%;
-    border: none;
-    display: block;
-    margin: auto;
-    text-align: center;
-  }
-
-  #chart {
-    display: block;
-    position: absolute;
-    height: auto;
-    margin-top: 5px;
-    bottom: 0px;
-    filter: grayscale(0%);
-    display: none;
-  }
-
-  .case-results {
-    width: 100%;
-    border: none;
-    margin: auto;
-    position: relative;
-    top: 100px;
-    margin-bottom: 5px;
-  }
-
-  .symptoms {
-    display: inline-block;
-    flex-wrap: nowrap;
-  }
-
-  .left-column {
-    display: inline-block;
-    width: 50%;
-    float: left;
-  }
-
-  .right-column {
-    display: inline-block;
-    width: 50%;
-    float: right;
-  }
-
-  .chart-left {
-    position: absolute;
-    border: none;
-    height: auto;
-    width: auto;
-    margin-top: 5px;
-    display: none;
-  }
-
-  button {
-    display: none !important;
-  }
-
-  .disclaimer {
     display: none;
   }
 }

@@ -3,8 +3,8 @@ import plotly.graph_objects as go
 import json
 import plotly.utils
 
-# screener questions
-# 'fatigue13c', 'remember36c', 'minimum17c', 'unrefreshed19c',
+# screener: 4 questions
+# fatigue13c, minimum17c, unrefreshed19c, remember36c
 
 def screener_diagnose():
     # we *25 to scale 4pt scale to 100 pt scale
@@ -42,7 +42,7 @@ def screener_diagnose():
     # composite f/s score graph
     fig = go.Figure(
         data=[
-            go.Bar(y=composite_scores, x=categories, name="Your scores", marker=dict(color=colors))],
+            go.Bar(y=composite_scores, x=categories, name="Your scores", marker_color = '#00CC9C')],
         layout=go.Layout(
             title=go.layout.Title(text='Your Summary Score', x=0.5),
             showlegend=True, 
