@@ -36,8 +36,6 @@ def screener_diagnose():
     composite_scores = responses
     categories = ['Fatigue', 'Post-exertional malaise', 'Sleep problems',
                   'Cognitive problems']
-
-    colors = ['#56A8A0' for score in composite_scores]
     
     # composite f/s score graph
     fig = go.Figure(
