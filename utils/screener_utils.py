@@ -42,7 +42,7 @@ def screener_diagnose():
     # composite f/s score graph
     fig = go.Figure(
         data=[
-            go.Bar(y=composite_scores, x=categories, name="Your scores", marker=dict(color=colors))],
+            go.Bar(y=composite_scores, x=categories, name="Your scores", marker_color = '#00CC9C')],
         layout=go.Layout(
             title=go.layout.Title(text='Your Summary Score', x=0.5),
             showlegend=True, 

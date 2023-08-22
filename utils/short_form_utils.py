@@ -159,8 +159,8 @@ def short_form_diagnose():
     # Creates a figure using the plotly library, which can be dynamically embedded in the HTML page
     fig = go.Figure(
         data=[
-            go.Bar(y=user_scores, x=categories, name="Your scores"),
-            go.Bar(y=cfsdomains, x=categories, name="Average ME/CFS scores")],
+            go.Bar(y=user_scores, x=categories, name="Your scores", marker_color='#00CC9C'),
+            go.Bar(y=cfsdomains, x=categories, name="Average ME/CFS scores", marker_color='#1E3888')],
         layout=go.Layout(
             title=go.layout.Title(text='Your scores compared with our dataset of <br>'
                                        'over 2,400 participants with ME/CFS', x=0.5),
