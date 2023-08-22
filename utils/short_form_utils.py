@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import json
 import plotly.utils
 
-# short form questions:
+# short form: +10 questions
 # soreness15c, difficulty37c, musclepain25c, bloating29c,
 # bowel46c, unsteady48c, limbs56c, hot58c, flu65c, smells66c, reduction97
 # includes screener qs: (fatigue13c, minimum17c, unrefreshed19c, remember36c)
