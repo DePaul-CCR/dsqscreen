@@ -6,13 +6,6 @@
   align-items: center;
 }
 
-.single-question-form-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  align-items: center;
-}
-
 form[method="post"] {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -35,7 +28,7 @@ fieldset > legend {
 
 form.single-question {
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr .5fr 1fr;
+  grid-template-rows: 1.5fr .5fr 1fr;
   padding: 0 20% 0 20%;
 }
 
@@ -231,7 +224,7 @@ li > label {
 
   form.single-question {
     padding: 0 5% 0 5%;
-    grid-template-rows: 2fr .5fr 0 1fr;
+    grid-template-rows: 1fr .5fr 0 1fr;
   }
   
   .question-header {
