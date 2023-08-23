@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
 import utils.screener_utils as screener_utils
+from utils.general_utils import get_score
 # used for /scores which is currently not in use - PC 7/21/23
 # import numpy as np
 
@@ -59,10 +60,10 @@ def page3():
             session["sleepf"] = int(sleepf)
             session["sleeps"] = int(sleeps)
             session['pagenum'] += 1
-            if int(session["sleepf"]) >= 0 and int(session["sleeps"]) >= 0:
+            if get_score("sleepf") >= 0 and get_score("sleeps") >= 0:
                 session['sleepscoref'] = int(sleepf)
                 session['sleepscores'] = int(sleeps)
-                session['sleepscore'] = (int(session['sleepf']) + int(session['sleeps'])) / 2
+                session['sleepscore'] = (get_score('sleepf') + get_score('sleeps')) / 2
                 session["sleepname"] = 'unrefreshed19'
                 return redirect(url_for("screener_views.page4"))
         else:
@@ -82,7 +83,7 @@ def page4():
             session['cogscoref'] = int(rememberf)
             session['cogscores'] = int(remembers)
             session["cogname"] = 'remember36'
-            session['cogscore'] = (int(session['rememberf']) + int(session['remembers'])) / 2
+            session['cogscore'] = (get_score('rememberf') + get_score('remembers')) / 2
             return redirect(url_for('screener_views.graph'))
         else:
             return render_template("screener/page4.html", pagenum=session['pagenum'], message=message,

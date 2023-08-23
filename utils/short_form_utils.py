@@ -3,6 +3,7 @@ import numpy as np
 import plotly.graph_objects as go
 import json
 import plotly.utils
+from utils.general_utils import get_score
 
 # short form: +10 questions
 # soreness15c, difficulty37c, musclepain25c, bloating29c,
@@ -12,18 +13,18 @@ import plotly.utils
 def short_form_diagnose():
     import domainScores as ds
 
-    fatiguescore = (int(session["fatiguescoref"]) + int(session["fatiguescores"])) / 2
-    pemscore = (int(session["minexf"]) + int(session["minexs"]) + int(session['soref']) + int(session['sores'])) / 4
-    sleepscore = (int(session["sleepf"]) + int(session["sleeps"])) / 2
-    cogscore = (int(session["rememberf"]) + int(session["remembers"]) + int(session['attentionf']) +
-                int(session['attentions'])) / 4
-    painscore = (int(session['musclef']) + int(session['muscles'])) / 2
-    gastroscore = (int(session['bloatf']) + int(session['bloats']) + int(session['bowelf']) +
-                   int(session['bowels'])) / 4
-    orthoscore = (int(session['unsteadyf']) + int(session['unsteadys'])) / 2
-    circscore = (int(session['limbsf']) + int(session['limbss']) + int(session['hotf']) + int(session['hots'])) / 4
-    immunescore = (int(session['fluf']) + int(session['flus'])) / 2
-    neuroenscore = (int(session['smellf']) + int(session['smells'])) / 2
+    fatiguescore = (get_score("fatiguescoref") + get_score("fatiguescores")) / 2
+    pemscore = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores')) / 4
+    sleepscore = (get_score("sleepf") + get_score("sleeps")) / 2
+    cogscore = (get_score("rememberf") + get_score("remembers") + get_score('attentionf') +
+                get_score('attentions')) / 4
+    painscore = (get_score('musclef') + get_score('muscles')) / 2
+    gastroscore = (get_score('bloatf') + get_score('bloats') + get_score('bowelf') +
+                   get_score('bowels')) / 4
+    orthoscore = (get_score('unsteadyf') + get_score('unsteadys')) / 2
+    circscore = (get_score('limbsf') + get_score('limbss') + get_score('hotf') + get_score('hots')) / 4
+    immunescore = (get_score('fluf') + get_score('flus')) / 2
+    neuroenscore = (get_score('smellf') + get_score('smells')) / 2
 
     user_scores = [fatiguescore, pemscore, sleepscore, cogscore, painscore, gastroscore, orthoscore, circscore,
                    immunescore, neuroenscore]
@@ -41,19 +42,19 @@ def short_form_diagnose():
     iomcogcheck = "No"
     iomorthocheck = "No"
 
-    if int(session['fatiguescoref']) >= 2 and int(session['fatiguescores']) >= 2:
+    if get_score('fatiguescoref') >= 2 and get_score('fatiguescores') >= 2:
         iomfatiguecheck = "Yes"
-    if int(session['reduction']) == 1:
+    if get_score('reduction') == 1:
         iomreductioncheck = "Yes"
-    if (int(session['minexf']) >= 2 and int(session['minexs'] >= 2) or (
-            int(session['soref']) >= 2 and int(session['sores']) >= 2)):
+    if (get_score('minexf') >= 2 and int(session['minexs'] >= 2) or (
+            get_score('soref') >= 2 and get_score('sores') >= 2)):
         iompemcheck = "Yes"
-    if int(session['sleepf']) >= 2 and int(session['sleeps']) >= 2:
+    if get_score('sleepf') >= 2 and get_score('sleeps') >= 2:
         iomsleepcheck = "Yes"
-    if (int(session['rememberf']) >= 2 and int(session['remembers']) >= 2 ) or (
-            int(session['attentionf']) >= 2 and int(session['attentions']) >= 2):
+    if (get_score('rememberf') >= 2 and get_score('remembers') >= 2 ) or (
+            get_score('attentionf') >= 2 and get_score('attentions') >= 2):
         iomcogcheck = "Yes"
-    if int(session['unsteadyf']) >= 2 and int(session['unsteadys']) >= 2:
+    if get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2:
         iomorthocheck = "Yes"
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and (iomcogcheck == "Yes" or iomorthocheck == "Yes"):
@@ -69,62 +70,62 @@ def short_form_diagnose():
 
     ccc_dx = False
 
-    if int(session['fatiguescoref']) >= 2 and int(session['fatiguescores']) >= 2:
+    if get_score('fatiguescoref') >= 2 and get_score('fatiguescores') >= 2:
         ccc_fatigue = 1
         ccc_fatiguecheck = "Yes"
     else:
         ccc_fatigue = 0
         ccc_fatiguecheck = "No"
-    if int(session['reduction']) == 1:
+    if get_score('reduction') == 1:
         ccc_reduction = 1
         ccc_reductioncheck = "Yes"
     else:
         ccc_reduction = 0
         ccc_reductioncheck = "No"
-    if int(session['musclef']) >= 2 and int(session['muscles']) >= 2:
+    if get_score('musclef') >= 2 and get_score('muscles') >= 2:
         ccc_pain = 1
         ccc_paincheck = "Yes"
     else:
         ccc_pain = 0
         ccc_paincheck = "No"
-    if int(session['sleepf']) >= 2 and int(session['sleeps']) >= 2:
+    if get_score('sleepf') >= 2 and get_score('sleeps') >= 2:
         ccc_sleep = 1
         ccc_sleepcheck = "Yes"
     else:
         ccc_sleep = 0
         ccc_sleepcheck = "No"
-    if (int(session['minexf']) >= 2 and int(session['minexs']) >= 2) or (
-            int(session['soref']) >= 2 and int(session['sores']) >= 2):
+    if (get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
+            get_score('soref') >= 2 and get_score('sores') >= 2):
         ccc_pem = 1
         ccc_pemcheck = "Yes"
     else:
         ccc_pem = 0
         ccc_pemcheck = "No"
-    if (int(session['rememberf']) >= 2 and int(session['remembers']) >= 2) or (
-            int(session['attentionf']) >= 2 and int(session['attentions']) >= 2):
+    if (get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
+            get_score('attentionf') >= 2 and get_score('attentions') >= 2):
         ccc_cog = 1
         ccc_cogcheck = "Yes"
     else:
         ccc_cog = 0
         ccc_cogcheck = "No"
 
-    if (int(session['unsteadyf']) >= 2 and int(session['unsteadys']) >= 2) or (
-            int(session['bowelf']) >= 2 and int(session['bowels']) >= 2) or (
-            int(session['bloatf']) >= 2 and int(session['bloats']) >= 2):
+    if (get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2) or (
+            get_score('bowelf') >= 2 and get_score('bowels') >= 2) or (
+            get_score('bloatf') >= 2 and get_score('bloats') >= 2):
         ccc_auto = 1
         ccc_autocheck = "Yes"
     else:
         ccc_auto = 0
         ccc_autocheck = "No"
-    if (int(session['limbsf']) >= 2 and int(session['limbss']) >= 2) or (
-            int(session['hotf']) >= 2 and int(session['hots']) >= 2):
+    if (get_score('limbsf') >= 2 and get_score('limbss') >= 2) or (
+            get_score('hotf') >= 2 and get_score('hots') >= 2):
         ccc_neuro = 1
         ccc_neurocheck = "Yes"
     else:
         ccc_neuro = 0
         ccc_neurocheck = "No"
-    if (int(session['fluf']) >= 2 and int(session['flus']) >= 2) or (
-            int(session['smellf']) >= 2 and int(session['smells']) >= 2):
+    if (get_score('fluf') >= 2 and get_score('flus') >= 2) or (
+            get_score('smellf') >= 2 and get_score('smells') >= 2):
         ccc_immune = 1
         ccc_immunecheck = "Yes"
     else:
