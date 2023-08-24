@@ -1,0 +1,79 @@
+#Generated using:
+# print(app.url_map)
+#Last ran 08/08/23 -- PC
+
+#Routes should be in order of flow
+#Format:
+# ```DSQItemName: 'route' <-> flask_route_method```
+
+#home
+'/' <-> screener_views.home
+
+#screener
+Fatigue13comp: '/fatigue' <-> screener_views.page1
+Minimum17comp: '/minimum' <-> screener_views.page2
+Unrefreshed19comp: '/unrefreshed' <-> screener_views.page3
+Remember36comp: '/remember' <-> screener_views.page4
+'/screener_dx' <-> screener_views.graph
+
+#short_form
+Soreness15comp: '/short_form/soreness' <-> short_form.expem1
+Difficulty37comp: '/short_form/attention' <-> short_form.excog1
+Musclepain25comp: '/short_form/musclepain' <-> short_form.musclepain
+Bloating29comp: '/short_form/bloating' <-> short_form.bloating
+Bowel46comp: '/short_form/bowel' <-> short_form.bowel
+Unsteady48comp: '/short_form/unsteady' <-> short_form.unsteady
+Limbs56comp: '/short_form/cold_limbs' <-> short_form.cold_limbs
+Hot58comp: '/short_form/hot_cold' <-> short_form.hot_cold
+Flu65comp: '/short_form/flu' <-> short_form.flu
+Smells66comp: '/short_form/smells' <-> short_form.smells
+Reduction97: '/short_form/reduction' <-> short_form.reduction
+'/short_form/short_form_dx' <-> short_form.graph2
+
+#dsq
+Viral98: '/viral' <-> viral
+Heavy14comp: '/heavy' <-> expem3
+Mental16comp: '/mentally' <-> expem4
+Drained18comp: '/drained' <-> expem2
+Weakness33comp: '/weakness' <-> weakness
+Nap20comp: '/nap' <-> exsleep2
+Falling21comp: '/falling' <-> exsleep3
+Staying22comp: '/staying' <-> exsleep1
+Early23comp: '/early' <-> early
+Allday24comp: '/allday' <-> exsleep4
+Jointpain26comp: '/jointpain' <-> jointpain
+Eyepain27comp: '/eyepain' <-> eyepain
+Chestpain28comp: '/chestpain' <-> chestpain
+Stomach30comp: '/stomach' <-> stomach
+Headaches31comp: '/headaches' <-> headaches
+Twitches32comp: '/twitches' <-> twitches
+Noise34comp: '/noise' <-> noise
+Lights35comp: '/lights' <-> lights
+Word38comp: '/word' <-> excog2
+Understanding39comp: '/understand' <-> understand
+Focus40comp: '/focus' <-> excog3
+Unable41comp: '/vision' <-> vision
+Depth42comp: '/depth' <-> depth
+Slowness43comp: '/slowness' <-> slowness
+Absent44comp: '/absent' <-> absent
+Bladder45comp: '/bladder' <-> bladder
+Nausea47comp: '/nausea' <-> nausea
+Shortness49comp: '/shortness' <-> shortness
+Dizzy50comp: '/dizzy' <-> dizzy
+Irregular51comp: '/heart' <-> heart
+Weight52comp: '/weight' <-> weight
+Appetite53comp: '/appetite' <-> appetite
+Sweating54comp: '/sweating' <-> sweating
+Night55comp: '/night' <-> night
+Chills57comp: '/chills' <-> chills
+HTemp59comp: '/hitemp' <-> hitemp
+LTemp60comp: '/lotemp' <-> lotemp
+Alcohol61comp: '/alcohol' <-> alcohol
+SoreThroat62comp: '/throat' <-> throat
+LympthNodes63comp: '/lymphnodes' <-> lymphnodes
+Fever64comp: '/fever' <-> fever
+'/dsq_dx' <-> graph3
+
+#other
+'/about' <-> about
+'/aboutmecfs' <-> aboutmecfs
