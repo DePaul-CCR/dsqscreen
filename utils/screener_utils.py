@@ -2,9 +2,7 @@ from flask import render_template, session
 import plotly.graph_objects as go
 import json
 import plotly.utils
-
-# screener: 4 questions
-# fatigue13c, minimum17c, unrefreshed19c, remember36c
+# see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def screener_diagnose():
     # we *25 to scale 4pt scale to 100 pt scale
