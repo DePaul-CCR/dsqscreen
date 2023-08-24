@@ -11,14 +11,14 @@
 #home
 '/' <-> screener_views.home
 
-#screener
+#screener (4 qs)
 Fatigue13comp: '/fatigue' <-> screener_views.page1
 Minimum17comp: '/minimum' <-> screener_views.page2
 Unrefreshed19comp: '/unrefreshed' <-> screener_views.page3
 Remember36comp: '/remember' <-> screener_views.page4
 '/screener_dx' <-> screener_views.graph
 
-#short_form
+#short_form (+11 qs)
 Soreness15comp: '/short_form/soreness' <-> short_form.expem1
 Difficulty37comp: '/short_form/attention' <-> short_form.excog1
 Musclepain25comp: '/short_form/musclepain' <-> short_form.musclepain
@@ -32,7 +32,7 @@ Smells66comp: '/short_form/smells' <-> short_form.smells
 Reduction97: '/short_form/reduction' <-> short_form.reduction
 '/short_form/short_form_dx' <-> short_form.graph2
 
-#dsq
+#dsq (+41 qs)
 Viral98: '/viral' <-> viral
 Heavy14comp: '/heavy' <-> expem3
 Mental16comp: '/mentally' <-> expem4
