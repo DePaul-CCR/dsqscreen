@@ -113,30 +113,10 @@ def expem2():
                 session['pemscores'] = session['draineds']
                 session['pemscore'] = (get_score('drainedf') + get_score('draineds')) / 2
                 pemname = 'drained18'
-                return redirect(url_for("weakness"))
+                return redirect(url_for("exsleep2"))
         else:
             return render_template("dsq/expem2.html", pagenum=session['pagenum'], message=message)
     return render_template("dsq/expem2.html", pagenum=session['pagenum'], message='')
-
-@app.route('/weakness', methods=['post', 'get'])
-def weakness():
-    form = FlaskForm()
-    global pemname
-    if request.method == "POST":
-        weakf = request.form.get("weakf")
-        weaks = request.form.get("weaks")
-        if weakf is not None and weaks is not None:
-            session["weakf"] = weakf
-            session["weaks"] = weaks
-            session['pagenum'] += 1
-            session['pemscoref'] = int(weakf)
-            session['pemscores'] = int(weaks)
-            pemname = 'weakness33'
-            session['pemscore'] = (get_score('weakf') + get_score('weaks')) / 2
-            return redirect(url_for("exsleep2"))
-        else:
-            return render_template("dsq/weakness33.html", message=message, pagenum=session['pagenum'])
-    return render_template("dsq/weakness33.html", message='', pagenum=session['pagenum'])
 
 @app.route('/nap', methods=['post', 'get'])
 def exsleep2():
@@ -340,10 +320,30 @@ def twitches():
             session["twitchesf"] = twitchesf
             session["twitchess"] = twitchess
             session['pagenum'] += 1
-            return redirect(url_for("noise"))
+            return redirect(url_for("weakness"))
         else:
             return render_template("dsq/twitches32.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/twitches32.html", message='', pagenum=session['pagenum'])
+
+@app.route('/weakness', methods=['post', 'get'])
+def weakness():
+    form = FlaskForm()
+    global pemname
+    if request.method == "POST":
+        weakf = request.form.get("weakf")
+        weaks = request.form.get("weaks")
+        if weakf is not None and weaks is not None:
+            session["weakf"] = weakf
+            session["weaks"] = weaks
+            session['pagenum'] += 1
+            session['pemscoref'] = int(weakf)
+            session['pemscores'] = int(weaks)
+            pemname = 'weakness33'
+            session['pemscore'] = (get_score('weakf') + get_score('weaks')) / 2
+            return redirect(url_for("noise"))
+        else:
+            return render_template("dsq/weakness33.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/weakness33.html", message='', pagenum=session['pagenum'])
 
 @app.route('/noise', methods=['post', 'get'])
 def noise():
