@@ -3,12 +3,11 @@ import numpy as np
 import plotly.graph_objects as go
 import json
 import plotly.utils
+import domainScores as ds
 from utils.general_utils import get_score
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def short_form_diagnose():
-    import domainScores as ds
-
     fatiguescore = (get_score("fatiguescoref") + get_score("fatiguescores")) / 2
     pemscore = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores')) / 4
     sleepscore = (get_score("sleepf") + get_score("sleeps")) / 2
