@@ -19,9 +19,9 @@ Remember36comp: '/remember' <-> screener_views.page4
 '/screener_dx' <-> screener_views.graph
 
 #short_form (+11 qs)
-Soreness15comp: '/short_form/soreness' <-> short_form.expem1
-Difficulty37comp: '/short_form/attention' <-> short_form.excog1
-Musclepain25comp: '/short_form/musclepain' <-> short_form.musclepain
+Soreness15comp: '/short_form/soreness' <-> short_form.expem1 | "Next day soreness or fatigue after non-strenuous, everyday activities"
+Difficulty37comp: '/short_form/attention' <-> short_form.excog1 
+Musclepain25comp: '/short_form/musclepain' <-> short_form.musclepain | "Pain or aching in your muscles"
 Bloating29comp: '/short_form/bloating' <-> short_form.bloating
 Bowel46comp: '/short_form/bowel' <-> short_form.bowel
 Unsteady48comp: '/short_form/unsteady' <-> short_form.unsteady
