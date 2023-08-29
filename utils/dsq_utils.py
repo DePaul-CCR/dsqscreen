@@ -9,15 +9,12 @@ from utils.general_utils import get_score
 def dsq_diagnose():
     import domainScores as ds
     pem_domainscore = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores') +
-                       get_score('heavyf') + get_score('heavys') + get_score('drainedf') + int(
-                session['draineds']) +
-                       get_score('mentalf') + get_score('mentals') + get_score('weakf') + int(
-                session['weaks'])) / 12
+                       get_score('heavyf') + get_score('heavys') + get_score('drainedf') + get_score('draineds') +
+                       get_score('mentalf') + get_score('mentals') + get_score('weakf') + get_score('weaks')) / 12
 
     sleep_domainscore = (get_score("sleepf") + get_score("sleeps") + get_score('napf') + get_score('naps') +
                          get_score('fallf') + get_score('falls') + get_score('stayf') + get_score('stays') +
-                         get_score('earlyf') + get_score('earlys') + get_score('alldayf') + int(
-                session['alldays'])) / 12
+                         get_score('earlyf') + get_score('earlys') + get_score('alldayf') + get_score('alldays')) / 12
 
     cog_domainscore = (get_score("rememberf") + get_score("remembers") + get_score('attentionf') +
                        get_score('attentions') + get_score('wordf') + get_score('words') +
