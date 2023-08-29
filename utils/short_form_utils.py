@@ -103,7 +103,6 @@ def short_form_diagnose():
     else:
         ccc_cog = 0
         ccc_cogcheck = "No"
-
     if (get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2) or (
             get_score('bowelf') >= 2 and get_score('bowels') >= 2) or (
             get_score('bloatf') >= 2 and get_score('bloats') >= 2):
