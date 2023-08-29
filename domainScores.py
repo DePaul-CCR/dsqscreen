@@ -3,6 +3,9 @@
 Created on Wed Feb 22 14:10:11 2023
 
 @author: sbenner
+
+DSQ items grouped in domains per https://www.researchgate.net/publication/358982902_Evaluating_case_diagnostic_criteria_for_Myalgic_EncephalomyelitisChronic_Fatigue_Syndrome_MECFS_Toward_an_empirical_case_definition
+-K.E. Conroy et al. 2022
 """
 
 import pandas as pd
