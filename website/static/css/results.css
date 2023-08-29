@@ -241,6 +241,7 @@
 .three-symptom-connector#middle{
   align-items: center;
   display: flex;
+  padding-left: 3px;
   font-size: .9em;
   z-index: 1000;
   border: 0;
