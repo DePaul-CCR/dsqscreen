@@ -74,14 +74,17 @@ def dsq_diagnose():
 
     if get_score('fatiguescoref') >= 2 and get_score('fatiguescores') >= 2:
         iomfatiguecheck = "Yes"
+
     if get_score('reduction') == 1:
         iomreductioncheck = "Yes"
+
     if (get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
         get_score('heavyf') >= 2 and get_score('heavys') >= 2) or (
         get_score('soref') >= 2 and get_score('sores') >= 2) or (
         get_score('mentalf') >= 2 and get_score('mentals') >= 2) or (
         get_score('drainedf') >= 2 and get_score('draineds') >= 2):
         iompemcheck = "Yes"
+
     if (get_score('sleepf') >= 2 and get_score('sleeps') >= 2) or (
         get_score('napf') >= 2 and get_score('naps') >= 2) or (
         get_score('fallf') >= 2 and get_score('falls') >= 2) or (
@@ -89,6 +92,7 @@ def dsq_diagnose():
         get_score('earlyf') >= 2 and get_score('earlys') >= 2) or (
         get_score('alldayf') >= 2 and get_score('alldays') >= 2):
         iomsleepcheck = "Yes"
+
     if (get_score('lightsf') >= 2 and get_score('lightss') >= 2) or (
         get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
         get_score('attentionf') >= 2 and get_score('attentions') >= 2) or (
@@ -100,6 +104,7 @@ def dsq_diagnose():
         get_score('slowf') >= 2 and get_score('slows') >= 2) or (
         get_score('absentf') >= 2 and get_score('absents') >= 2):
         iomcogcheck = "Yes"
+
     if (get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2) or (
         get_score('shortf') >= 2 and get_score('shorts') >= 2) or (
         get_score('dizzyf') >= 2 and get_score('dizzys') >= 2) or (
@@ -109,7 +114,6 @@ def dsq_diagnose():
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and (iomcogcheck == "Yes" or iomorthocheck == "Yes"):
         iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS."
         iomdxcheck = "Met"
-
     else:
         iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS."
         iomdxcheck = "Not met"
@@ -220,7 +224,7 @@ def dsq_diagnose():
 
     ccc_poly = np.sum([ccc_auto, ccc_neuro, ccc_immune])
     # most of the symptoms are required, but there is one polythetic criteria, shown here by ccc_poly
-    if np.sum([ccc_fatigue, ccc_reduction, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 6 and ccc_poly >= 2:
+    if np.sum([ccc_fatigue, ccc_reduction, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) == 6 and ccc_poly >= 2:
         ccc_dx = "Met"
         ccc_msg = "Your responses suggest that you meet the Canadian Consensus Criteria for ME/CFS."
     else:
