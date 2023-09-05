@@ -11,37 +11,43 @@ def dsq_diagnose():
     pem_domainscore = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores') +
                        get_score('heavyf') + get_score('heavys') + get_score('drainedf') + get_score('draineds') +
                        get_score('mentalf') + get_score('mentals') + get_score('weakf') + get_score('weaks')) / 12
-
+    
     sleep_domainscore = (get_score("sleepf") + get_score("sleeps") + get_score('napf') + get_score('naps') +
                          get_score('fallf') + get_score('falls') + get_score('stayf') + get_score('stays') +
                          get_score('earlyf') + get_score('earlys') + get_score('alldayf') + get_score('alldays')) / 12
-
+    
     cog_domainscore = (get_score("rememberf") + get_score("remembers") + get_score('attentionf') +
                        get_score('attentions') + get_score('wordf') + get_score('words') +
                        get_score('understandf') + get_score('understands') + get_score('focusf') +
                        get_score('focuss') + get_score('slowf') + get_score('slows') +
                        get_score('absentf') + get_score('absents') + get_score('visionf') +
                        get_score('visions')) / 16
+    
     pain_domainscore = (get_score('musclef') + get_score('muscles') + get_score('jointpainf') +
                         get_score('jointpains') + get_score('eyepainf') + get_score('eyepains') +
                         get_score('headachesf') + get_score('headachess')) / 8
+    
     gastro_domainscore = (get_score('bloatf') + get_score('bloats') + get_score('bowelf') +
                           get_score('bowels') + get_score('stomachf') + get_score('stomachs') +
                           get_score('bladderf') + get_score('bladders')) / 8
+    
     ortho_domainscore = (get_score('unsteadyf') + get_score('unsteadys') + get_score('chestpainf') +
                          get_score('chestpains') + get_score('shortf') + get_score('shorts') +
                          get_score('dizzyf') + get_score('dizzys') + get_score('heartf') +
                          get_score('hearts') + get_score('nauseaf') + get_score('nauseas')) / 12
+    
     circ_domainscore = (get_score('limbsf') + get_score('limbss') + get_score('hotf') +
                         get_score('hots') + get_score('lotempf') + get_score('lotemps') +
                         get_score('sweatf') + get_score('sweats') + get_score('chillsf') +
                         get_score('chillss') + get_score('weightf') + get_score('weights') +
                         get_score('appetitef') + get_score('appetites') + get_score('nightf') +
                         get_score('nights')) / 16
+    
     immune_domainscore = (get_score('fluf') + get_score('flus') + get_score('feverf') +
                           get_score('fevers') + get_score('lymphnodesf') + get_score('lymphnodess') +
                           get_score('throatf') + get_score('throats') + get_score('hitempf') +
                           get_score('hitemps')) / 10
+    
     neuroen_domainscore = (get_score('smellf') + get_score('smells') + get_score('alcoholf') +
                            get_score('alcohols') + get_score('twitchesf') + get_score('twitchess') +
                            get_score('noisef') + get_score('noises') + get_score('lightsf') +
@@ -71,33 +77,33 @@ def dsq_diagnose():
     if get_score('reduction') == 1:
         iomreductioncheck = "Yes"
     if (get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
-            get_score('heavyf') >= 2 and get_score('heavys') >= 2) or \
-            (get_score('soref') >= 2 and get_score('sores') >= 2) or (
-            get_score('mentalf') >= 2 and get_score('mentals') >= 2) or \
-            (get_score('drainedf') >= 2 and get_score('draineds') >= 2):
+        get_score('heavyf') >= 2 and get_score('heavys') >= 2) or (
+        get_score('soref') >= 2 and get_score('sores') >= 2) or (
+        get_score('mentalf') >= 2 and get_score('mentals') >= 2) or (
+        get_score('drainedf') >= 2 and get_score('draineds') >= 2):
         iompemcheck = "Yes"
     if (get_score('sleepf') >= 2 and get_score('sleeps') >= 2) or (
-            get_score('napf') >= 2 and get_score('naps') >= 2) or \
-            (get_score('fallf') >= 2 and get_score('falls') >= 2) or (
-            get_score('stayf') >= 2 and get_score('stays') >= 2) or \
-            (get_score('earlyf') >= 2 and get_score('earlys') >= 2) or (
-            get_score('alldayf') >= 2 and get_score('alldays') >= 2):
+        get_score('napf') >= 2 and get_score('naps') >= 2) or (
+        get_score('fallf') >= 2 and get_score('falls') >= 2) or (
+        get_score('stayf') >= 2 and get_score('stays') >= 2) or (
+        get_score('earlyf') >= 2 and get_score('earlys') >= 2) or (
+        get_score('alldayf') >= 2 and get_score('alldays') >= 2):
         iomsleepcheck = "Yes"
-    if (get_score('lightsf') >= 2 and get_score('lightss') >= 2) or \
-        (get_score('rememberf') >= 2 and get_score('remembers') >= 2) or \
-        (get_score('attentionf') >= 2 and get_score('attentions') >= 2) or \
-        (get_score('wordf') >= 2 and get_score('words') >= 2) or (
-        get_score('understandf') >= 2 and get_score('understands') >= 2) or \
-        (get_score('focusf') >= 2 and get_score('focuss') >= 2) or (
-        get_score('visionf') >= 2 and get_score('visions') >= 2) or \
-        (get_score('depthf') >= 2 and get_score('depths') >= 2) or (
-        get_score('slowf') >= 2 and get_score('slows') >= 2) or \
-        (get_score('absentf') >= 2 and get_score('absents') >= 2):
+    if (get_score('lightsf') >= 2 and get_score('lightss') >= 2) or (
+        get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
+        get_score('attentionf') >= 2 and get_score('attentions') >= 2) or (
+        get_score('wordf') >= 2 and get_score('words') >= 2) or (
+        get_score('understandf') >= 2 and get_score('understands') >= 2) or (
+        get_score('focusf') >= 2 and get_score('focuss') >= 2) or (
+        get_score('visionf') >= 2 and get_score('visions') >= 2) or (
+        get_score('depthf') >= 2 and get_score('depths') >= 2) or (
+        get_score('slowf') >= 2 and get_score('slows') >= 2) or (
+        get_score('absentf') >= 2 and get_score('absents') >= 2):
         iomcogcheck = "Yes"
-    if (get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2) or \
-        (get_score('shortf') >= 2 and get_score('shorts') >= 2) or \
-        (get_score('dizzyf') >= 2 and get_score('dizzys') >= 2) or \
-        (get_score('heartf') >= 2 and get_score('hearts') >= 2):
+    if (get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2) or (
+        get_score('shortf') >= 2 and get_score('shorts') >= 2) or (
+        get_score('dizzyf') >= 2 and get_score('dizzys') >= 2) or (
+        get_score('heartf') >= 2 and get_score('hearts') >= 2):
         iomorthocheck = "Yes"
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and (iomcogcheck == "Yes" or iomorthocheck == "Yes"):
@@ -117,50 +123,55 @@ def dsq_diagnose():
     else:
         ccc_fatigue = 0
         ccc_fatiguecheck = "No"
+
     if get_score('reduction') == 1:
         ccc_reduction = 1
         ccc_reductioncheck = "Yes"
     else:
         ccc_reduction = 0
         ccc_reductioncheck = "No"
+
     if (get_score('musclef') >= 2 and get_score('muscles') >= 2) or (
-            get_score('jointpainf') >= 2 and get_score('jointpains') >= 2) or \
-            (get_score('eyepainf') >= 2 and get_score('eyepains') >= 2) or (
-            get_score('chestpainf') >= 2 and get_score('chestpains') >= 2) or \
-            (get_score('headachesf') >= 2 and get_score('headachess') >= 2) or (
-            get_score('bloatf') >= 2 and get_score('bloats') >= 2) or \
-            (get_score('stomachf') >= 2 and get_score('stomachs') >= 2):
+        get_score('jointpainf') >= 2 and get_score('jointpains') >= 2) or (
+        get_score('eyepainf') >= 2 and get_score('eyepains') >= 2) or (
+        get_score('chestpainf') >= 2 and get_score('chestpains') >= 2) or (
+        get_score('headachesf') >= 2 and get_score('headachess') >= 2) or (
+        get_score('bloatf') >= 2 and get_score('bloats') >= 2) or (
+        get_score('stomachf') >= 2 and get_score('stomachs') >= 2):
         ccc_pain = 1
         ccc_paincheck = "Yes"
     else:
         ccc_pain = 0
         ccc_paincheck = "No"
+
     if get_score('sleepf') >= 2 and get_score('sleeps') >= 2:
         ccc_sleep = 1
         ccc_sleepcheck = "Yes"
     else:
         ccc_sleep = 0
         ccc_sleepcheck = "No"
+
     if (get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
-            get_score('soref') >= 2 and get_score('sores') >= 2):
+        get_score('soref') >= 2 and get_score('sores') >= 2):
         ccc_pem = 1
         ccc_pemcheck = "Yes"
     else:
         ccc_pem = 0
         ccc_pemcheck = "No"
+
     if (get_score('twitchesf') >= 2 and get_score('twitchess') >= 2) or (
-            get_score('weakf') >= 2 and get_score('weaks') >= 2) or \
-            (get_score('noisef') >= 2 and get_score('noises') >= 2) or (
-            get_score('lightsf') >= 2 and get_score('lightss') >= 2) or \
-            (get_score('rememberf') >= 2 and get_score('remembers') >= 2) or \
-            (get_score('attentionf') >= 2 and get_score('attentions') >= 2) or \
-            (get_score('wordf') >= 2 and get_score('words') >= 2) or (
-            get_score('understandf') >= 2 and get_score('understands') >= 2) or \
-            (get_score('focusf') >= 2 and get_score('focuss') >= 2) or (
-            get_score('visionf') >= 2 and get_score('visions') >= 2) or \
-            (get_score('depthf') >= 2 and get_score('depths') >= 2) or (
-            get_score('slowf') >= 2 and get_score('slows') >= 2) or \
-            (get_score('absentf') >= 2 and get_score('absents') >= 2):
+        get_score('weakf') >= 2 and get_score('weaks') >= 2) or (
+        get_score('noisef') >= 2 and get_score('noises') >= 2) or (
+        get_score('lightsf') >= 2 and get_score('lightss') >= 2) or (
+        get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
+        get_score('attentionf') >= 2 and get_score('attentions') >= 2) or (
+        get_score('wordf') >= 2 and get_score('words') >= 2) or (
+        get_score('understandf') >= 2 and get_score('understands') >= 2) or (
+        get_score('focusf') >= 2 and get_score('focuss') >= 2) or (
+        get_score('visionf') >= 2 and get_score('visions') >= 2) or (
+        get_score('depthf') >= 2 and get_score('depths') >= 2) or (
+        get_score('slowf') >= 2 and get_score('slows') >= 2) or (
+        get_score('absentf') >= 2 and get_score('absents') >= 2):
         ccc_cog = 1
         ccc_cogcheck = "Yes"
     else:
@@ -168,8 +179,8 @@ def dsq_diagnose():
         ccc_cogcheck = "No"
 
     if (get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2) or (
-            get_score('bowelf') >= 2 and get_score('bowels') >= 2) or \
-            (get_score('bladderf') >= 2 and get_score('bladders') >= 2) or (
+            get_score('bowelf') >= 2 and get_score('bowels') >= 2) or (
+            get_score('bladderf') >= 2 and get_score('bladders') >= 2) or (
             get_score('nauseaf') >= 2 and get_score('nauseas') >= 2) or (
             get_score('shortf') >= 2 and get_score('shorts') >= 2) or (
             get_score('dizzyf') >= 2 and get_score('dizzys') >= 2) or (
@@ -179,31 +190,34 @@ def dsq_diagnose():
     else:
         ccc_auto = 0
         ccc_autocheck = "No"
+
     if (get_score('sweatf') >= 2 and get_score('sweats') >= 2) or (
-            get_score('nightf') >= 2 and get_score('nights') >= 2) or \
-            (get_score('limbsf') >= 2 and get_score('limbss') >= 2) or (
-            get_score('chillsf') >= 2 and get_score('chillss') >= 2) or \
-            (get_score('hotf') >= 2 and get_score('hots') >= 2) or (
-            get_score('hitempf') >= 2 and get_score('hitemps') >= 2) or \
-            (get_score('lotempf') >= 2 and get_score('lotemps') >= 2) or (
-            get_score('appetitef') >= 2 and get_score('appetites') >= 2) or (
-            get_score('weightf') >= 2 and get_score('weights') >= 2) or (
-            get_score('alcoholf') >= 2 and get_score('alcohols') >= 2):
+        get_score('nightf') >= 2 and get_score('nights') >= 2) or (
+        get_score('limbsf') >= 2 and get_score('limbss') >= 2) or (
+        get_score('chillsf') >= 2 and get_score('chillss') >= 2) or (
+        get_score('hotf') >= 2 and get_score('hots') >= 2) or (
+        get_score('hitempf') >= 2 and get_score('hitemps') >= 2) or (
+        get_score('lotempf') >= 2 and get_score('lotemps') >= 2) or (
+        get_score('appetitef') >= 2 and get_score('appetites') >= 2) or (
+        get_score('weightf') >= 2 and get_score('weights') >= 2) or (
+        get_score('alcoholf') >= 2 and get_score('alcohols') >= 2):
         ccc_neuro = 1
         ccc_neurocheck = "Yes"
     else:
         ccc_neuro = 0
         ccc_neurocheck = "No"
+
     if (get_score('fluf') >= 2 and get_score('flus') >= 2) or (
-            get_score('smellf') >= 2 and get_score('smells') >= 2) or \
-            (get_score('throatf') >= 2 and get_score('throats') >= 2) or \
-            (get_score('lymphnodesf') >= 2 and get_score('lymphnodess') >= 2) or \
-            (get_score('feverf') >= 2 and get_score('fevers') >= 2):
+        get_score('smellf') >= 2 and get_score('smells') >= 2) or (
+        get_score('throatf') >= 2 and get_score('throats') >= 2) or (
+        get_score('lymphnodesf') >= 2 and get_score('lymphnodess') >= 2) or (
+        get_score('feverf') >= 2 and get_score('fevers') >= 2):
         ccc_immune = 1
         ccc_immunecheck = "Yes"
     else:
         ccc_immune = 0
         ccc_immunecheck = "No"
+
     ccc_poly = np.sum([ccc_auto, ccc_neuro, ccc_immune])
     # most of the symptoms are required, but there is one polythetic criteria, shown here by ccc_poly
     if np.sum([ccc_fatigue, ccc_reduction, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 6 and ccc_poly >= 2:
