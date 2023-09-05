@@ -28,8 +28,7 @@ def short_form_diagnose():
     mecfs = df[(df['dx'] == 1)]
     cfsdomains = np.mean(mecfs.iloc[:, 110:120], axis=0)
 
-    # This assesses the IOM Criteria
-    responses = [fatiguescore, pemscore, sleepscore, cogscore]
+    #Assesses the IOM Criteria
     iomfatiguecheck = "No"
     iomreductioncheck = "No"
     iompemcheck = "No"
@@ -39,16 +38,21 @@ def short_form_diagnose():
 
     if get_score('fatiguescoref') >= 2 and get_score('fatiguescores') >= 2:
         iomfatiguecheck = "Yes"
+
     if get_score('reduction') == 1:
         iomreductioncheck = "Yes"
-    if (get_score('minexf') >= 2 and int(session['minexs'] >= 2) or (
-            get_score('soref') >= 2 and get_score('sores') >= 2)):
+
+    if (get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
+            get_score('soref') >= 2 and get_score('sores') >= 2):
         iompemcheck = "Yes"
+
     if get_score('sleepf') >= 2 and get_score('sleeps') >= 2:
         iomsleepcheck = "Yes"
-    if (get_score('rememberf') >= 2 and get_score('remembers') >= 2 ) or (
+
+    if (get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
             get_score('attentionf') >= 2 and get_score('attentions') >= 2):
         iomcogcheck = "Yes"
+
     if get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2:
         iomorthocheck = "Yes"
 
