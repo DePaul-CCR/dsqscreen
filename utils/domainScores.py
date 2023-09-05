@@ -62,8 +62,9 @@ sf_circdomain = ['limbs56f', 'hot58f', 'limbs56s', 'hot58s']
 sf_immunedomain = ['flu65f','flu65s']
 
 sf_neuroendomain = ['smells66f', 'smells66s']
+
 #Maybe change this to the imputed data:
-df = pd.read_csv('MECFS and Controls F+S Reduction.csv')
+df = pd.read_csv('utils/MECFS and Controls F+S Reduction.csv')
 
 sdf = df
 

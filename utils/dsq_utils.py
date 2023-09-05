@@ -7,7 +7,7 @@ from utils.general_utils import get_score
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def dsq_diagnose():
-    import domainScores as ds
+    import utils.domainScores as ds
     pem_domainscore = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores') +
                        get_score('heavyf') + get_score('heavys') + get_score('drainedf') + get_score('draineds') +
                        get_score('mentalf') + get_score('mentals') + get_score('weakf') + get_score('weaks')) / 12
