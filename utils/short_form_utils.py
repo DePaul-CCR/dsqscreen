@@ -66,30 +66,21 @@ def short_form_diagnose():
 
     # This assesses the Canadian Consensus Criteria, one of the three major case definitions we use
     ccc_dx = False
+    
     if get_score('fatiguescoref') >= 2 and get_score('fatiguescores') >= 2:
         ccc_fatigue = 1
         ccc_fatiguecheck = "Yes"
     else:
         ccc_fatigue = 0
         ccc_fatiguecheck = "No"
+
     if get_score('reduction') == 1:
         ccc_reduction = 1
         ccc_reductioncheck = "Yes"
     else:
         ccc_reduction = 0
         ccc_reductioncheck = "No"
-    if get_score('musclef') >= 2 and get_score('muscles') >= 2:
-        ccc_pain = 1
-        ccc_paincheck = "Yes"
-    else:
-        ccc_pain = 0
-        ccc_paincheck = "No"
-    if get_score('sleepf') >= 2 and get_score('sleeps') >= 2:
-        ccc_sleep = 1
-        ccc_sleepcheck = "Yes"
-    else:
-        ccc_sleep = 0
-        ccc_sleepcheck = "No"
+    
     if (get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
             get_score('soref') >= 2 and get_score('sores') >= 2):
         ccc_pem = 1
@@ -97,6 +88,7 @@ def short_form_diagnose():
     else:
         ccc_pem = 0
         ccc_pemcheck = "No"
+    
     if (get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
             get_score('attentionf') >= 2 and get_score('attentions') >= 2):
         ccc_cog = 1
@@ -104,6 +96,14 @@ def short_form_diagnose():
     else:
         ccc_cog = 0
         ccc_cogcheck = "No"
+
+    if get_score('musclef') >= 2 and get_score('muscles') >= 2:
+        ccc_pain = 1
+        ccc_paincheck = "Yes"
+    else:
+        ccc_pain = 0
+        ccc_paincheck = "No"
+    
     if (get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2) or (
             get_score('bowelf') >= 2 and get_score('bowels') >= 2) or (
             get_score('bloatf') >= 2 and get_score('bloats') >= 2):
@@ -112,6 +112,7 @@ def short_form_diagnose():
     else:
         ccc_auto = 0
         ccc_autocheck = "No"
+    
     if (get_score('limbsf') >= 2 and get_score('limbss') >= 2) or (
             get_score('hotf') >= 2 and get_score('hots') >= 2):
         ccc_neuro = 1
@@ -119,6 +120,7 @@ def short_form_diagnose():
     else:
         ccc_neuro = 0
         ccc_neurocheck = "No"
+    
     if (get_score('fluf') >= 2 and get_score('flus') >= 2) or (
             get_score('smellf') >= 2 and get_score('smells') >= 2):
         ccc_immune = 1
@@ -126,6 +128,14 @@ def short_form_diagnose():
     else:
         ccc_immune = 0
         ccc_immunecheck = "No"
+
+    if get_score('sleepf') >= 2 and get_score('sleeps') >= 2:
+        ccc_sleep = 1
+        ccc_sleepcheck = "Yes"
+    else:
+        ccc_sleep = 0
+        ccc_sleepcheck = "No"
+    
     ccc_poly = np.sum([ccc_auto, ccc_neuro, ccc_immune])
     # most of the symptoms are required, but there is one polythetic criteria, shown here by ccc_poly
     if np.sum([ccc_fatigue, ccc_reduction, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 6 and ccc_poly >= 2:
