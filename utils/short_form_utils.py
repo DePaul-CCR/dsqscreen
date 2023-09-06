@@ -8,25 +8,22 @@ from utils.general_utils import get_score
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def short_form_diagnose():
-    fatiguescore = (get_score("fatiguescoref") + get_score("fatiguescores")) / 2
-    pemscore = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores')) / 4
-    sleepscore = (get_score("sleepf") + get_score("sleeps")) / 2
-    cogscore = (get_score("rememberf") + get_score("remembers") + get_score('attentionf') +
-                get_score('attentions')) / 4
-    painscore = (get_score('musclef') + get_score('muscles')) / 2
-    gastroscore = (get_score('bloatf') + get_score('bloats') + get_score('bowelf') +
-                   get_score('bowels')) / 4
-    orthoscore = (get_score('unsteadyf') + get_score('unsteadys')) / 2
-    circscore = (get_score('limbsf') + get_score('limbss') + get_score('hotf') + get_score('hots')) / 4
-    immunescore = (get_score('fluf') + get_score('flus')) / 2
-    neuroenscore = (get_score('smellf') + get_score('smells')) / 2
+    # we use CCC domains / DSQSF scoring for placing items in this bar chart
+    fatigue_score = (get_score("fatiguescoref") + get_score("fatiguescores")) / 2
+    pem_score = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores')) / 4
+    sleep_score = (get_score("sleepf") + get_score("sleeps")) / 2
+    pain_score = (get_score('musclef') + get_score('muscles') + get_score('bloatf') + get_score('bloats')) / 4
+    cog_score = (get_score("rememberf") + get_score("remembers") + get_score('attentionf') + get_score('attentions')) / 4
+    autonomic_score = (get_score('unsteadyf') + get_score('unsteadys') + get_score('bowelf') + get_score('bowels')) / 4
+    neuro_score = (get_score('limbsf') + get_score('limbss') + get_score('hotf') + get_score('hots')) / 4
+    immune_score = (get_score('fluf') + get_score('flus') + get_score('smellf') + get_score('smells')) / 4
 
-    user_scores = [fatiguescore, pemscore, sleepscore, cogscore, painscore, gastroscore, orthoscore, circscore,
-                   immunescore, neuroenscore]
+    user_scores = [fatigue_score, pem_score, sleep_score, cog_score, pain_score, autonomic_score, neuro_score, immune_score]
 
     df = ds.sdf
     mecfs = df[(df['dx'] == 1)]
-    cfsdomains = np.mean(mecfs.iloc[:, 110:120], axis=0)
+    # takes the symptom domain score means calculated in domainScores.py
+    cfsdomains = np.mean(mecfs.iloc[:, 110:117], axis=0)
 
     #Assesses the IOM Criteria
     iomfatiguecheck = "No"
@@ -82,7 +79,7 @@ def short_form_diagnose():
         ccc_reductioncheck = "No"
     
     if (get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
-            get_score('soref') >= 2 and get_score('sores') >= 2):
+        get_score('soref') >= 2 and get_score('sores') >= 2):
         ccc_pem = 1
         ccc_pemcheck = "Yes"
     else:
@@ -90,7 +87,7 @@ def short_form_diagnose():
         ccc_pemcheck = "No"
     
     if (get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
-            get_score('attentionf') >= 2 and get_score('attentions') >= 2):
+        get_score('attentionf') >= 2 and get_score('attentions') >= 2):
         ccc_cog = 1
         ccc_cogcheck = "Yes"
     else:
@@ -105,8 +102,8 @@ def short_form_diagnose():
         ccc_paincheck = "No"
     
     if (get_score('unsteadyf') >= 2 and get_score('unsteadys') >= 2) or (
-            get_score('bowelf') >= 2 and get_score('bowels') >= 2) or (
-            get_score('bloatf') >= 2 and get_score('bloats') >= 2):
+        get_score('bowelf') >= 2 and get_score('bowels') >= 2) or (
+        get_score('bloatf') >= 2 and get_score('bloats') >= 2):
         ccc_auto = 1
         ccc_autocheck = "Yes"
     else:
@@ -114,7 +111,7 @@ def short_form_diagnose():
         ccc_autocheck = "No"
     
     if (get_score('limbsf') >= 2 and get_score('limbss') >= 2) or (
-            get_score('hotf') >= 2 and get_score('hots') >= 2):
+        get_score('hotf') >= 2 and get_score('hots') >= 2):
         ccc_neuro = 1
         ccc_neurocheck = "Yes"
     else:
@@ -122,7 +119,7 @@ def short_form_diagnose():
         ccc_neurocheck = "No"
     
     if (get_score('fluf') >= 2 and get_score('flus') >= 2) or (
-            get_score('smellf') >= 2 and get_score('smells') >= 2):
+        get_score('smellf') >= 2 and get_score('smells') >= 2):
         ccc_immune = 1
         ccc_immunecheck = "Yes"
     else:
