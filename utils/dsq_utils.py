@@ -4,10 +4,10 @@ import plotly.graph_objects as go
 import json
 import plotly.utils
 from utils.general_utils import get_score
+import utils.domainScores as ds
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def dsq_diagnose():
-    import utils.domainScores as ds
     pem_domainscore = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores') +
                        get_score('heavyf') + get_score('heavys') + get_score('drainedf') + get_score('draineds') +
                        get_score('mentalf') + get_score('mentals') + get_score('weakf') + get_score('weaks')) / 12
@@ -53,13 +53,14 @@ def dsq_diagnose():
                            get_score('noisef') + get_score('noises') + get_score('lightsf') +
                            get_score('lightss') + get_score('depthf') + get_score('depths')) / 12
 
+    # Not currently using control data - PC 09/5/23
+    # control = ds.df[(ds.df['dx'] != 1)]
+    # conDomains = np.mean(control.iloc[:, 110:120], axis=0)
     mecfs = ds.df[(ds.df['dx'] == 1)]
-    control = ds.df[(ds.df['dx'] != 1)]
+    cfsdomains = np.mean(mecfs.iloc[:, 110:120], axis=0)
     user_scores = [(get_score('fatiguescoref') + get_score('fatiguescores')) / 2,
                    pem_domainscore, sleep_domainscore, cog_domainscore, pain_domainscore, gastro_domainscore,
                    ortho_domainscore, circ_domainscore, immune_domainscore, neuroen_domainscore]
-    cfsdomains = np.mean(mecfs.iloc[:, 110:120], axis=0)
-    conDomains = np.mean(control.iloc[:, 110:120], axis=0)
 
     categories = ['Fatigue', 'PEM', 'Sleep', 'Cognitive Problems', 'Pain', 'Gastro Problems',
                   'Orthostatic Intolerance', 'Circulatory Problems', 'Immune System', 'Neuroendocrine Problems']
