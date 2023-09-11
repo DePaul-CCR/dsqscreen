@@ -118,9 +118,9 @@ def short_form_diagnose():
         ccc_sleep = 0
         ccc_sleepcheck = "No"
     
-    ccc_poly = np.sum([ccc_auto, ccc_neuro, ccc_immune])
+    ccc_poly = np.sum([ccc_auto, ccc_neuro, ccc_immune, ccc_pain])
     # most of the domains are required, but there is one polythetic criteria, shown here by ccc_poly
-    if np.sum([ccc_fatigue, ccc_reduction, ccc_pem, ccc_sleep, ccc_pain, ccc_cog]) >= 6 and ccc_poly >= 2:
+    if np.sum([ccc_fatigue, ccc_reduction, ccc_pem, ccc_sleep, ccc_cog]) == 5 and ccc_poly >= 1:
         ccc_dx = "Met"
         ccc_msg = "Your responses suggest that you meet the Canadian Consensus Criteria for ME/CFS. " \
                   "To improve the accuracy of your assessment with more questions continue to the next section."
