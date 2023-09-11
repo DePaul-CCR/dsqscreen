@@ -4,7 +4,7 @@ Created on Wed Feb 22 14:10:11 2023
 
 @author: sbenner
 
-DSQ items grouped mostly according to CCC domains
+DSQ items grouped according to CCC domains
 """
 
 import pandas as pd

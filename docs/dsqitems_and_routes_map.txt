@@ -29,7 +29,7 @@ Unsteady48comp: '/short_form/unsteady' <-> short_form.unsteady
 Limbs56comp: '/short_form/cold_limbs' <-> short_form.cold_limbs
 Hot58comp: '/short_form/hot_cold' <-> short_form.hot_cold | hot | "Feeling hot or cold for no reason"
 Flu65comp: '/short_form/flu' <-> short_form.flu
-Smells66comp: '/short_form/smells' <-> short_form.smells
+Smells66comp: '/short_form/smells' <-> short_form.smells | smell | "Some smells, foods, medications, or chemicals make you feel sick"
 Reduction97: '/short_form/reduction' <-> short_form.reduction
 '/short_form/short_form_dx' <-> short_form.graph2
 
