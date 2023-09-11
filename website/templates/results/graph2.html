@@ -67,12 +67,12 @@
       <div class="symptom-col-1">Pain</div>
       <div class="symptom-col-2" id="top-of-4-symptom" {% if ccc_paincheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_paincheck }}</div>
       <div class="symptom-col-1">Autonomic Dysfunction
-        <div class="four-symptom-connector" id="top" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>↗</div>
-        <div class="four-symptom-connector" id="middle" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>1 of 4&nbsp;&nbsp;&nbsp;&nbsp;
-          <div class="four-symptom-connector" id="middle-right-top" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>→</div>
-          <div class="four-symptom-connector" id="middle-right-bottom" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>→</div>
+        <div class="four-symptom-connector" id="top" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>↗</div>
+        <div class="four-symptom-connector" id="middle" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>1 of 4&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="four-symptom-connector" id="middle-right-top" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>→</div>
+          <div class="four-symptom-connector" id="middle-right-bottom" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>→</div>
         </div>
-        <div class="four-symptom-connector" id="bottom" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>↗</div>
+        <div class="four-symptom-connector" id="bottom" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>↗</div>
       </div>
       <div class="symptom-col-2" id="middle-of-4-symptom" {% if ccc_autocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_autocheck }}</div>
       <div class="symptom-col-1">Neuroendocrine Issues</div>
