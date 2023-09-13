@@ -24,11 +24,9 @@
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
     <div class="symptom-list closed" id="iom">
       <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
-      <div class="symptom-col-2" id="top-of-both" {% if iomfatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
-      <div class="symptom-col-1">50% or more reduction in functioning
-        <div class="symptom-logic-connector" {% if iomfatiguecheck == 'Yes' and iomreductioncheck == 'Yes'%} style="background-color: #FFD580;" {% endif %}>Both{</div>
-      </div>
-      <div class="symptom-col-2" id="bottom-of-both" {% if iomreductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomreductioncheck }}</div>
+      <div class="symptom-col-2" {% if iomfatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
+      <div class="symptom-col-1">50% or more reduction in functioning</div>
+      <div class="symptom-col-2" {% if iomreductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomreductioncheck }}</div>
       <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
       <div class="symptom-col-2" {% if iompemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iompemcheck }}</div>
       <div class="symptom-col-1">Unrefreshing sleep</div>
