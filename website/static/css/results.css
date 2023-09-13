@@ -241,6 +241,38 @@
   font-size: .9em;
 }
 
+.three-symptom-connector {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background-color: white;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.three-symptom-connector#top {
+  top: -17px;
+  z-index: 999;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.three-symptom-connector#middle{
+  align-items: center;
+  display: flex;
+  font-size: .9em;
+  z-index: 1000;
+  border: 0;
+  border-left: 1px solid black;
+}
+
+.three-symptom-connector#bottom {
+  bottom: -17px;
+  border-right: 0;
+  z-index: 999;
+  height: auto;
+}
+
 .four-symptom-connector {
   position: absolute;
   right: 0;
