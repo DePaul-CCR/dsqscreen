@@ -8,8 +8,6 @@ from utils.general_utils import get_score
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def short_form_diagnose():
-    graphJSON = short_form_chart()
-
     #Assesses the IOM Criteria
     iomfatiguecheck = "No"
     iomreductioncheck = "No"
@@ -136,6 +134,8 @@ def short_form_diagnose():
     else:
         short_form_message = "Based on your responses it does not appear you have MECFS."
 
+    graphJSON = short_form_graph()
+
     return render_template("results/graph2.html", graphJSON=graphJSON, ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,
                            ccc_pemcheck=ccc_pemcheck, ccc_paincheck=ccc_paincheck, ccc_sleepcheck=ccc_sleepcheck,
                            ccc_cogcheck=ccc_cogcheck, ccc_autocheck=ccc_autocheck, ccc_immunecheck=ccc_immunecheck,
@@ -146,7 +146,7 @@ def short_form_diagnose():
                            short_form_message=short_form_message,dx_met=dx_met
                            )
 
-def short_form_chart():
+def short_form_graph():
     # we use CCC domains / DSQSF scoring for placing items in this bar chart
     fatigue_score = (get_score("fatiguescoref") + get_score("fatiguescores")) / 2
     pem_score = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores')) / 4
