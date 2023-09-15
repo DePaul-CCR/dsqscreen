@@ -205,13 +205,32 @@
   border-top: 1px dashed black;
   border-bottom: 1px solid black;
 }
+
+.symptom-col-2#top-of-4-symptom {
+  border: 2px solid black;
+  border-bottom: 1px dashed black;
+}
+
+.symptom-col-2#middle-of-4-symptom {
+  border-top: 0;
+  border-right: 2px solid black;
+  border-bottom: 1px dashed black;
+  border-left: 2px solid black;
+}
+
+.symptom-col-2#bottom-of-4-symptom {
+  border: 2px solid black;
+  border-top: 0;
+  border-bottom: 1px solid black;
+}
+
 .symptom-col-2.assessment {
   background-color: #F3CFC6
 }
 
 .symptom-logic-connector {
   position: absolute;
-  top: -.6em;
+  top: -.7em;
   right: 0;
   background-color: white;
   display: inline-block;
@@ -252,6 +271,56 @@
   border-right: 0;
   z-index: 999;
   height: auto;
+}
+
+.four-symptom-connector {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background-color: white;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.four-symptom-connector#top {
+  top: -16px;
+  z-index: 1000;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.four-symptom-connector#middle{
+  align-items: center;
+  display: flex;
+  padding-left: 3px;
+  font-size: .9em;
+  z-index: 999;
+  border-right: 0;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  top: .85em;
+}
+
+.four-symptom-connector#bottom {
+  bottom: -42px;
+  z-index: 1000;
+  border-right: 0;
+  border-bottom: 0;
+  transform: scaleY(-1);
+}
+
+.four-symptom-connector#middle-right-top {
+  border:  0;
+  height: auto;
+  top: -4px;
+  background-color: rgba(0,0,0,0);
+}
+
+.four-symptom-connector#middle-right-bottom {
+  border: 0;
+  height: auto;
+  top: 16px;
+  background-color: rgba(0,0,0,0);
 }
 
 @media screen and (max-width: 1280px) {

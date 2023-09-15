@@ -24,11 +24,9 @@
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
     <div class="symptom-list closed" id="iom">
       <div class="symptom-col-1">Fatigue that persists at least 6 months</div>
-      <div class="symptom-col-2" id="top-of-both" {% if iomfatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
-      <div class="symptom-col-1">50% or more reduction in functioning
-        <div class="symptom-logic-connector" {% if iomfatiguecheck == 'Yes' and iomreductioncheck == 'Yes'%} style="background-color: #FFD580;" {% endif %}>Both{</div>
-      </div>
-      <div class="symptom-col-2" id="bottom-of-both" {% if iomreductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomreductioncheck }}</div>
+      <div class="symptom-col-2" {% if iomfatiguecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomfatiguecheck }}</div>
+      <div class="symptom-col-1">50% or more reduction in functioning</div>
+      <div class="symptom-col-2" {% if iomreductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iomreductioncheck }}</div>
       <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
       <div class="symptom-col-2" {% if iompemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ iompemcheck }}</div>
       <div class="symptom-col-1">Unrefreshing sleep</div>
@@ -64,23 +62,26 @@
       <div class="symptom-col-2" {% if ccc_pemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_pemcheck }}</div>
       <div class="symptom-col-1">Sleep Problems</div>
       <div class="symptom-col-2" {% if ccc_sleepcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_sleepcheck }}</div>
-      <div class="symptom-col-1">Pain</div>
-      <div class="symptom-col-2" {% if ccc_paincheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_paincheck }}</div>
       <div class="symptom-col-1">Neurocognitive Issues</div>
       <div class="symptom-col-2" {% if ccc_cogcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_cogcheck }}</div>
-      <div class="symptom-col-1">Autonomic Dysfunction</div>
-      <div class="symptom-col-2" id="top-of-3-symptom" {% if ccc_autocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_autocheck }}</div>
-      <div class="symptom-col-1">Neuroendocrine Issues
-        <div class="three-symptom-connector" id="top" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>↗</div>
-        <div class="three-symptom-connector" id="middle" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>2 of 3 →</div>
-        <div class="three-symptom-connector" id="bottom" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>↘</div>
+      <div class="symptom-col-1">Pain</div>
+      <div class="symptom-col-2" id="top-of-4-symptom" {% if ccc_paincheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_paincheck }}</div>
+      <div class="symptom-col-1">Autonomic Dysfunction
+        <div class="four-symptom-connector" id="top" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>↗</div>
+        <div class="four-symptom-connector" id="middle" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>1 of 4&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="four-symptom-connector" id="middle-right-top" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>→</div>
+          <div class="four-symptom-connector" id="middle-right-bottom" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>→</div>
+        </div>
+        <div class="four-symptom-connector" id="bottom" {% if ccc_poly >= 1 %} style="background-color: #FFD580;" {% endif %}>↗</div>
       </div>
-      <div class="symptom-col-2" id="middle-of-3-symptom" {% if ccc_neurocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_neurocheck }}</div>
+      <div class="symptom-col-2" id="middle-of-4-symptom" {% if ccc_autocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_autocheck }}</div>
+      <div class="symptom-col-1">Neuroendocrine Issues</div>
+      <div class="symptom-col-2" id="middle-of-4-symptom" {% if ccc_neurocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_neurocheck }}</div>
       <div class="symptom-col-1">Immune Symptoms</div>
-      <div class="symptom-col-2" id="bottom-of-3-symptom"{% if ccc_immunecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</div>
+      <div class="symptom-col-2" id="bottom-of-4-symptom"{% if ccc_immunecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</div>
       <div class="symptom-col-1"><b>Assessment:</b></div>
       <div class="symptom-col-2 assessment">
-        {% if ccc_dx == 'Met' %} 
+        {% if ccc_dx == 'Met' %}
           <b>Possible ME/CFS</b>
         {% else %}
           <b>ME/CFS Unlikely</b>
