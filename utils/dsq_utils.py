@@ -36,14 +36,11 @@ def dsq_diagnose():
         get_score('alldayf') >= 2 and get_score('alldays') >= 2):
         iomsleepcheck = "Yes"
 
-    if (get_score('lightsf') >= 2 and get_score('lightss') >= 2) or (
-        get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
+    if (get_score('rememberf') >= 2 and get_score('remembers') >= 2) or (
         get_score('attentionf') >= 2 and get_score('attentions') >= 2) or (
         get_score('wordf') >= 2 and get_score('words') >= 2) or (
         get_score('understandf') >= 2 and get_score('understands') >= 2) or (
         get_score('focusf') >= 2 and get_score('focuss') >= 2) or (
-        get_score('visionf') >= 2 and get_score('visions') >= 2) or (
-        get_score('depthf') >= 2 and get_score('depths') >= 2) or (
         get_score('slowf') >= 2 and get_score('slows') >= 2) or (
         get_score('absentf') >= 2 and get_score('absents') >= 2):
         iomcogcheck = "Yes"
