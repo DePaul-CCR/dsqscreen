@@ -1,0 +1,447 @@
+*************************************************************************************************************************************************************************************************
+CANADIAN CONSENSUS CRITERIA (CCC)  ----- CASE DEFINITION (Carruthers et al., 2003)
+
+            * • Substantial Reduction in Functioning (i.e., SubstantialReduction.SF36 =1)         
+  *
+              • (i) Fatigue:
+                    - Fatigue frequency and severity >= 2 (i.e., Fatigue_2x2 = 1)
+                    - 6+ months of fatigue, not lifelong, not result of physical exertion (i.e., FatigueSixMonthsNoExertion = 1)
+        
+          *   • (ii) Post-Exertional Malaise (At least 1 symptom (frequency and severity ratings >=2) from questions 14-18)
+          
+          *   • (iii) Sleep Dysfunction (At least 1 symptom (frequency and severity ratings >=2) from questions19-24)
+          
+          *   • (iv) Pain (At least 1 symptom (frequency and severity ratings >=2) from questions 25-31)
+          
+          *   • (v) Neurological / Cognitive Problems (At least 2 symptoms (frequency and severity ratings>=2) from questions 32-44)
+          
+            *• (vi) At least 1 symptom (frequency and severity ratings >=2) from 2 of the 3 following areas:
+                      - Autonomic (Questions 45-51)
+                      - Neuroendocrine (Questions 52-61)
+                      - Immune (Questions 62-66)
+                                
+  *************************************************************************************************************************************************************************************************
+
+  *CCC - Computing criteria (i) thru (vi).
+          
+          *(i) - Fatigue*.
+          COMPUTE CCC.FatigueDomain=0.
+          IF (SUM(Fatigue_2x2, FatigueSixMonthsNoExertion)=2) CCC.FatigueDomain=1.
+          EXECUTE.
+              
+          *(ii) - Post-exertional malaise*.
+          COMPUTE CCC.PEMDomain=0.
+          IF (SUM(Heavy_2x2, Soreness_2x2, Mental_2x2, Minimum_2x2, Drained_2x2) >= 1) CCC.PEMDomain=1.
+          EXECUTE.
+          
+          *(iii) - Sleep*.
+          COMPUTE CCC.SleepDomain=0.
+          IF (SUM(Unrefreshed_2x2, Nap_2x2, Falling_2x2, Staying_2x2, Early_2x2, Allday_2x2)>=1) CCC.SleepDomain=1.
+          EXECUTE.
+          
+          *(iv) - Pain*.
+              *headache score unique to CCC (i.e., 2-2 threshold + feel more severe or in diff place/spot*.
+              COMPUTE CCC_HeadacheScore=0.
+              IF ((Headaches_2x2 = 1) & (Headaches68=1)) CCCHeadacheScore=1.
+              EXECUTE.
+          
+          COMPUTE CCC.PainDomain=0.
+          IF (SUM(Musclepain_2x2, Jointpain_2x2, Eyepain_2x2, Chestpain_2x2, Bloating_2x2, Stomach_2x2, CCC_HeadacheScore)>=1) CCC.PainDomain=1.
+          EXECUTE.
+          
+          *(v) - Neurological/Cognitive*.
+          COMPUTE CCC.NeuroCogDomain=0.
+          IF (SUM(Twitches_2x2, Weakness_2x2, Noise_2x2, Lights_2x2, Remember_2x2, Difficulty_2x2, Word_2x2, Understanding_2x2, Focus_2x2, Unable_2x2, Depth_2x2, Slowness_2x2, Absent_2x2)>=2) CCC.NeuroCogDomain=1.
+          EXECUTE.
+          
+          *(vi) Other*.  
+              *vi - Autonomic*.
+              COMPUTE CCC.OtherAutonomicDomain=0.
+              IF (SUM(Bladder_2x2, Bowel_2x2, Nausea_2x2, Unsteady_2x2, Shortness_2x2, Dizz_2x2, Irregular_2x2)>=1) CCC.OtherAutonomicDomain=1.
+              EXECUTE.
+              
+              *vi - Neurological*.
+              COMPUTE CCC.OtherNeurologicalDomain=0.
+              IF (SUM(Weight_2x2, Appetite_2x2, Sweating_2x2, Night_2x2, Limbs_2x2, Chills_2x2, Hot_2x2, HTemp_2x2, LTemp_2x2, Alcohol_2x2)>=1) CCC.OtherNeurologicalDomain=1.
+              EXECUTE.
+              
+              *vi - Immune*.
+              COMPUTE CCC.OtherImmuneDomain=0.
+              IF (SUM(Sorethroat_2x2, LymphNodes_2x2, Fever_2x2, Flu_2x2, Smells_2x2)>=1) CCC.OtherImmuneDomain=1.
+              EXECUTE.
+          
+          *vi Other Overall*.
+          COMPUTE CCC.OtherCompositeDomain=0.
+          IF (SUM(CCC.OtherAutonomicDomain, CCC.OtherNeurologicalDomain, CCC.OtherImmuneDomain)>=2) CCC.OtherCompositeDomain=1.
+          EXECUTE.
+
+  **CCC Diagnosis**.
+  COMPUTE Canadian.CaseDefinition=0.
+  IF ((SUM(SubstantialReduction.SF36, CCC.FatigueDomain, CCC.PEMDomain, CCC.SleepDomain, CCC.PainDomain, CCC.NeuroCogDomain, CCC.OtherCompositeDomain))=7) Canadian.CaseDefinition =1.
+  VARIABLE LABELS Canadian.CaseDefinition 'Does the participant meet the CCC Case Defininition?'.
+  VALUE LABELS Canadian.CaseDefinition  0 "No"  1 "Yes".
+  EXECUTE.
+
+
+**********************************************************************************************************************************************************************************************************
+INSTITUTE OF MEDICINE ---- CASE DEFINITION (IOM, 2015) 
+
+          * • (1) 
+                    - 6+ months duration; not lifelong; not result of physical exertion (i.e., FatigueSixMonthsNoExertion = 1)
+                    - Substantial Reduction in Functioning (i.e., SubstantialReduction.SF36 =1)
+          
+                    
+          *   • (2) Post-Exertional Malaise (At least 1 symptom (frequency and severity ratings >= 2) from DSQ questions 14-18)
+          *   • (3) Sleep (At least 1 symptom (frequency and severity ratings >= 2) from DSQ questions 19-22; 24)
+          *   • (4)At least 1 symptom (frequency and severity ratings >= 2) from 1 of the following 2 symptom domains:
+                  - (4a) Cognitive Impairment (DSQ questions 36-40; 43-44)
+                  - (4b) Orthostatic Intolerance (DSQ questions 48-51)
+  **********************************************************************************************************************************************************************************************************         
+
+  *IOM - Computing criteria (2) thru (4a-b)
+
+          *(2) - PEM*.
+          COMPUTE IOM.PEMDomain = 0.
+          IF (SUM(Heavy_2x2, Soreness_2x2, Mental_2x2, Minimum_2x2, Drained_2x2) >= 1) IOM.PEMDomain = 1.
+          EXECUTE.
+          
+          *(3) - Sleep*.
+          COMPUTE IOM.SleepDomain = 0.
+          IF (SUM(Unrefreshed_2x2, Nap_2x2, Falling_2x2, Staying_2x2, Allday_2x2) >= 1) IOM.SleepDomain = 1.
+          EXECUTE.
+          
+          *(4)
+          
+              *(4a) - Cognitive Impairment*.
+              COMPUTE IOM.CognitiveDomain = 0.
+              IF (SUM(Remember_2x2, Difficulty_2x2, Word_2x2, Understanding_2x2, Slowness_2x2, Focus_2x2, Absent_2x2) >= 1) IOM.CognitiveDomain = 1.
+              EXECUTE.
+              
+              *(4b) - Orthostatic Intolerance*.
+              COMPUTE IOM.OrthostaticDomain = 0.
+              IF (SUM(Unsteady_2x2, Shortness_2x2, Dizz_2x2, Irregular_2x2) >= 1) IOM.OrthostaticDomain = 1.
+              EXECUTE.
+          
+          *(4summary) Summary of Cognitive Impairment and Orthostatic Intolerance*.
+          COMPUTE IOM.HasCognitiveOrOrthostatic = 0.
+          IF (SUM(IOM.CognitiveDomain, IOM.OrthostaticDomain) >= 1) IOM.HasCognitiveOrOrthostatic = 1.
+          EXECUTE.
+
+  *IOM Case Definition*.
+  COMPUTE IOM.CaseDefinition = 0.
+  IF ((SUM(SubstantialReduction.SF36, FatigueSixMonthsNoExertion, IOM.PEMDomain, IOM.SleepDomain, IOM.HasCognitiveOrOrthostatic)=5)) IOM.CaseDefinition = 1.
+  VARIABLE LABELS IOM.CaseDefinition 'Does the participant meet the IOM case definition?'.
+  VALUE LABELS IOM.CaseDefinition 0 "No"  1 "Yes".
+  EXECUTE.
+
+
+**********************************************************************************************************************************************************************************************************
+
+ME-ICC ------ CASE DEFINITION (Carruthers et al., 2011)
+
+          * • 50% reduction in activity level ("Yes" to question 97)
+          
+          * • Criterion A: Post Exertional Malaise (At least one symptom (frequency and severity ratings >=2) from question 14-18)
+          
+          * • Criterion B: At least 1 symptom (frequency and severity ratings >=2) from 3 of the following 4 symptom domains:
+                  -Neurocognitive: Questions 36-44
+                  -Pain: Questions 25-28; 31
+                  -Sleep Disturbance: Questions 19-24
+                  -Neurosensory, Perceptual, and Motor Disturbance: Questions 32-35; 48
+                  
+          * • Criterion C: At least 1 symptom (frequency and severity ratings >=2; except for Question 98, which requires a response of “Yes”) from 3 of the following 5 symptom domains:
+                  -Flu-like: Questions 62-65
+                  -Gastrointestinal: Questions 29-30; 46-47
+                  -Genitourinary: Question 45
+                  -Sensitivities: Questions 61, 66
+                  -Susceptibility to Viral Infections: Question 98
+                  
+          *• Criterion D: At least 1 symptom (frequency and severity ratings >=2; except for Question 99, whichrequires a response of “Yes”) from 1 of the following 4 symptom domains:
+                  -Cardiovascular: Questions 50-51
+                  -Respiratory: Question 49
+                  -Loss of thermostatic ability: Questions 54-60
+                  -Temperature intolerance: Question 99
+
+  **********************************************************************************************************************************************************************************************************
+        
+        *MEICC Criterion A (PEM).
+          
+          COMPUTE MEICC_MeetsCriterionA=0.
+          IF (SUM(Heavy_2x2, Soreness_2x2, Mental_2x2, Minimum_2x2, Drained_2x2) >= 1) MEICC_MeetsCriterionA=1.
+          EXECUTE.
+          
+          
+          *MEICC Criterion B
+          
+                  COMPUTE MEICC_AtLeast1_Neurocognitive=0.
+                  COMPUTE MEICC_AtLeast1_Pain=0.
+                  COMPUTE MEICC_AtLeast1_Sleep=0.
+                  COMPUTE MEICC_AtLeast1_Neurosensory=0.
+          
+                  IF (SUM(Remember_2x2, Difficulty_2x2, Word_2x2, Understanding_2x2, Focus_2x2, Unable_2x2, Depth_2x2, Slowness_2x2, Absent_2x2)>= 1) MEICC_AtLeast1_Neurocognitive=1.
+                  IF (SUM(Musclepain_2x2,Jointpain_2x2,Eyepain_2x2,Chestpain_2x2,Headaches_2x2)>= 1) MEICC_AtLeast1_Pain=1.
+                  IF (SUM(Unrefreshed_2x2, Nap_2x2, Falling_2x2, Staying_2x2, Early_2x2, Allday_2x2)>= 1) MEICC_AtLeast1_Sleep=1.
+                  IF (SUM(Twitches_2x2,Weakness_2x2,Noise_2x2,Lights_2x2,Unsteady_2x2)>= 1) MEICC_AtLeast1_Neurosensory=1.
+                  EXECUTE.
+          
+          COMPUTE MEICC_MeetsCriterionB=0.
+          IF ((SUM(MEICC_AtLeast1_Neurocognitive,MEICC_AtLeast1_Pain,MEICC_AtLeast1_Sleep,MEICC_AtLeast1_Neurosensory))>= 3) MEICC_MeetsCriterionB=1.
+          EXECUTE.
+          
+          
+          *MEICC: Criterion C:
+          
+                  COMPUTE MEICC_AtLeast1_Flulike=0.
+                  COMPUTE MEICC_AtLeast1_Gastrointestinal=0.
+                  COMPUTE MEICC_AtLeast1_Sensitivities=0.
+          
+                  IF (SUM(SoreThroat_2x2, LymphNodes_2x2, Fever_2x2, Flu_2x2) >= 1) MEICC_AtLeast1_Flulike=1.
+                  IF (SUM(Bloating_2x2, Stomach_2x2, Bowel_2x2, Nausea_2x2) >= 1) MEICC_AtLeast1_Gastrointestinal=1.
+                  IF (SUM(Alcohol_2x2,Smells_2x2)>= 1) MEICC_AtLeast1_Sensitivities=1.
+                  EXECUTE.
+          
+          COMPUTE MEICC_MeetsCriterionC=0.
+          IF ((SUM(MEICC_AtLeast1_Flulike, MEICC_AtLeast1_Gastrointestinal, Bladder_2x2, MEICC_AtLeast1_Sensitivities, Viral98))>= 3) MEICC_MeetsCriterionC=1.
+          EXECUTE.
+          
+          
+          *MEICC: Criterion D
+          
+                  COMPUTE MEICC_AtLeast1_Cardiovascular=0.
+                  COMPUTE MEICC_AtLeast1_IntolerantTemp=0.
+          
+                  IF (SUM(Dizz_2x2,Irregular_2x2)>=1) MEICC_AtLeast1_Cardiovascular=1.
+                  IF (SUM(Sweating_2x2, Night_2x2, Limbs_2x2, Chills_2x2, Hot_2x2, Htemp_2x2, Ltemp_2x2)>=1) MEICC_AtLeast1_IntolerantTemp=1.
+                  EXECUTE.
+                  
+          COMPUTE MEICC_MeetsCriterionD=0.
+          IF ((SUM(MEICC_AtLeast1_Cardiovascular, MEICC_AtLeast1_IntolerantTemp, Shortness_2x2, Intolerant99))>=1) MEICC_MeetsCriterionD=1.
+          EXECUTE.
+          
+          
+  *MEICC Case Definition*.
+  COMPUTE MEICC.CaseDefinition=0.
+  IF (SUM(Reduction97, MEICC_MeetsCriterionA, MEICC_MeetsCriterionB,MEICC_MeetsCriterionC, MEICC_MeetsCriterionD)=5) MEICC.CaseDefinition=1.
+  VARIABLE LABELS MEICC.CaseDefinition 'Does the participant meet the MEICC case definition?'.
+  VALUE LABELS MEICC.CaseDefinition 0 "No"  1 "Yes".
+  EXECUTE.
+
+  ****
+
+***DSQ: 2 by 2 thresholds.
+
+  IF ((Fatigue13f >= 2) & (Fatigue13s >= 2)) Fatigue_2x2 = 1.
+  IF ((Fatigue13f < 2) | (Fatigue13s < 2)) Fatigue_2x2 = 0.
+  EXECUTE.
+
+  IF ((Heavy14f >= 2) & (Heavy14s >= 2)) Heavy_2x2 = 1.
+  IF ((Heavy14f < 2) | (Heavy14s < 2)) Heavy_2x2 = 0.
+  EXECUTE.
+
+  IF ((Soreness15f >= 2) & (Soreness15s >= 2)) Soreness_2x2 = 1.
+  IF ((Soreness15f < 2) | (Soreness15s < 2)) Soreness_2x2 = 0.
+  EXECUTE.
+
+  IF ((Mental16f >= 2) & (Mental16s >= 2)) Mental_2x2 = 1.
+  IF ((Mental16f < 2) | (Mental16s < 2)) Mental_2x2 = 0.
+  EXECUTE.
+
+  IF ((Minimum17f >= 2) & (Minimum17s >= 2)) Minimum_2x2 = 1.
+  IF ((Minimum17f < 2) | (Minimum17s < 2)) Minimum_2x2 = 0.
+  EXECUTE.
+
+  IF ((Drained18f >= 2) & (Drained18s >= 2)) Drained_2x2 = 1.
+  IF ((Drained18f < 2) | (Drained18s < 2)) Drained_2x2 = 0.
+  EXECUTE.
+
+  IF ((Unrefreshed19f >= 2) & (Unrefreshed19s >= 2)) Unrefreshed_2x2 = 1.
+  IF ((Unrefreshed19f < 2) | (Unrefreshed19s < 2)) Unrefreshed_2x2 = 0.
+  EXECUTE.
+
+  IF ((Nap20f >= 2) & (Nap20s >= 2)) Nap_2x2 = 1.
+  IF ((Nap20f < 2) | (Nap20s < 2)) Nap_2x2 = 0.
+  EXECUTE.
+
+  IF ((Falling21f >= 2) & (Falling21s >= 2)) Falling_2x2 = 1.
+  IF ((Falling21f < 2) | (Falling21s < 2)) Falling_2x2 = 0.
+  EXECUTE.
+
+  IF ((Staying22f >= 2) & (Staying22s >= 2)) Staying_2x2 = 1.
+  IF ((Staying22f < 2) | (Staying22s< 2)) Staying_2x2 = 0.
+  EXECUTE.
+
+  IF ((Early23f >= 2) & (Early23s >= 2)) Early_2x2 = 1.
+  IF ((Early23f < 2) | (Early23s < 2)) Early_2x2 = 0.
+  EXECUTE.
+
+  IF ((Allday24f >= 2) & (Allday24s >= 2)) Allday_2x2 = 1.
+  IF ((Allday24f < 2) | (Allday24s < 2)) Allday_2x2 = 0.
+  EXECUTE.
+
+  IF ((Musclepain25f >= 2) & (Musclepain25s >= 2)) Musclepain_2x2 = 1.
+  IF ((Musclepain25f < 2) | (Musclepain25s < 2)) Musclepain_2x2 = 0.
+  EXECUTE.
+
+  IF ((Jointpain26f >= 2) & (Jointpain26s >= 2)) Jointpain_2x2 = 1.
+  IF ((Jointpain26f < 2) | (Jointpain26s < 2)) Jointpain_2x2 = 0.
+  EXECUTE.
+
+  IF ((Eyepain27f >= 2) & (Eyepain27s >= 2)) Eyepain_2x2 = 1.
+  IF ((Eyepain27f < 2) | (Eyepain27s < 2)) Eyepain_2x2 = 0.
+  EXECUTE.
+
+  IF ((Chestpain28f >= 2) & (Chestpain28s >= 2)) Chestpain_2x2 = 1.
+  IF ((Chestpain28f < 2) | (Chestpain28s < 2)) Chestpain_2x2 = 0.
+  EXECUTE.
+
+  IF ((Bloating29f >= 2) & (Bloating29s >= 2)) Bloating_2x2 = 1.
+  IF ((Bloating29f < 2) | (Bloating29s < 2)) Bloating_2x2 = 0.
+  EXECUTE.
+
+  IF ((Stomach30f >= 2) & (Stomach30s >= 2)) Stomach_2x2 = 1.
+  IF ((Stomach30f < 2) | (Stomach30s < 2)) Stomach_2x2 = 0.
+  EXECUTE.
+
+  IF ((Headaches31f >= 2) & (Headaches31s >= 2)) Headaches_2x2 = 1.
+  IF ((Headaches31f < 2) | (Headaches31s < 2)) Headaches_2x2 = 0.
+  EXECUTE.
+
+  IF ((Twitches32f >= 2) & (Twitches32s >= 2)) Twitches_2x2 = 1.
+  IF ((Twitches32f < 2) | (Twitches32s < 2)) Twitches_2x2 = 0.
+  EXECUTE.
+
+  IF ((Weakness33f >= 2) & (Weakness33s >= 2)) Weakness_2x2 = 1.
+  IF ((Weakness33f < 2) | (Weakness33s < 2)) Weakness_2x2 = 0.
+  EXECUTE.
+
+  IF ((Noise34f >= 2) & (Noise34s >= 2)) Noise_2x2 = 1.
+  IF ((Noise34f < 2) | (Noise34s < 2)) Noise_2x2 = 0.
+  EXECUTE.
+
+  IF ((Lights35f >= 2) & (Lights35s >= 2)) Lights_2x2 = 1.
+  IF ((Lights35f < 2) | (Lights35s < 2)) Lights_2x2 = 0.
+  EXECUTE.
+
+  IF ((Remember36f >= 2) & (Remember36s >= 2)) Remember_2x2 = 1.
+  IF ((Remember36f < 2) | (Remember36s < 2)) Remember_2x2 = 0.
+  EXECUTE.
+
+  IF ((Difficulty37f >= 2) & (Difficulty37s >= 2)) Difficulty_2x2 = 1.
+  IF ((Difficulty37f < 2) | (Difficulty37s < 2)) Difficulty_2x2 = 0.
+  EXECUTE.
+
+  IF ((Word38f >= 2) & (Word38s >= 2)) Word_2x2 = 1.
+  IF ((Word38f < 2) | (Word38s < 2)) Word_2x2 = 0.
+  EXECUTE.
+
+  IF ((Understanding39f >= 2) & (Understanding39s >= 2)) Understanding_2x2 = 1.
+  IF ((Understanding39f < 2) | (Understanding39s < 2)) Understanding_2x2 = 0.
+  EXECUTE.
+
+  IF ((Focus40f >= 2) & (Focus40s >= 2)) Focus_2x2 = 1.
+  IF ((Focus40f < 2) | (Focus40s < 2)) Focus_2x2 = 0.
+  EXECUTE.
+
+  IF ((Unable41f >= 2) & (Unable41s >= 2)) Unable_2x2 = 1.
+  IF ((Unable41f < 2) | (Unable41s < 2)) Unable_2x2 = 0.
+  EXECUTE.
+
+  IF ((Depth42f >= 2) & (Depth42s >= 2)) Depth_2x2 = 1.
+  IF ((Depth42f < 2) | (Depth42s < 2)) Depth_2x2 = 0.
+  EXECUTE.
+
+  IF ((Slowness43f >= 2) & (Slowness43s >= 2)) Slowness_2x2 = 1.
+  IF ((Slowness43f < 2) | (Slowness43s < 2)) Slowness_2x2 = 0.
+  EXECUTE.
+
+  IF ((Absent44f >= 2) & (Absent44s >= 2)) Absent_2x2 = 1.
+  IF ((Absent44f < 2) | (Absent44s < 2)) Absent_2x2 = 0.
+  EXECUTE.
+
+  IF ((Bladder45f >= 2) & (Bladder45s >= 2)) Bladder_2x2 = 1.
+  IF ((Bladder45f < 2) | (Bladder45s < 2)) Bladder_2x2 = 0.
+  EXECUTE.
+
+  IF ((Bowel46f >= 2) & (Bowel46s >= 2)) Bowel_2x2 = 1.
+  IF ((Bowel46f < 2) | (Bowel46s < 2)) Bowel_2x2 = 0.
+  EXECUTE.
+
+  IF ((Nausea47f >= 2) & (Nausea47s >= 2)) Nausea_2x2 = 1.
+  IF ((Nausea47f < 2) | (Nausea47s < 2)) Nausea_2x2 = 0.
+  EXECUTE.
+
+  IF ((Unsteady48f >= 2) & (Unsteady48s >= 2)) Unsteady_2x2 = 1.
+  IF ((Unsteady48f < 2) | (Unsteady48s < 2)) Unsteady_2x2 = 0.
+  EXECUTE.
+
+  IF ((Shortness49f >= 2) & (Shortness49s >= 2)) Shortness_2x2 = 1.
+  IF ((Shortness49f < 2) | (Shortness49s < 2)) Shortness_2x2 = 0.
+  EXECUTE.
+
+  IF ((Dizz50f >= 2) & (Dizz50s >= 2)) Dizz_2x2 = 1.
+  IF ((Dizz50f < 2) | (Dizz50s < 2)) Dizz_2x2 = 0.
+  EXECUTE.
+
+  IF ((Irregular51f >= 2) & (Irregular51s >= 2)) Irregular_2x2 = 1.
+  IF ((Irregular51f < 2) | (Irregular51s < 2)) Irregular_2x2 = 0.
+  EXECUTE.
+
+  IF ((Weight52f >= 2) & (Weight52s >= 2)) Weight_2x2 = 1.
+  IF ((Weight52f < 2) | (Weight52s < 2)) Weight_2x2 = 0.
+  EXECUTE.
+
+  IF ((Appetite53f >= 2) & (Appetite53s >= 2)) Appetite_2x2 = 1.
+  IF ((Appetite53f < 2) | (Appetite53s < 2)) Appetite_2x2 = 0.
+  EXECUTE.
+
+  IF ((Sweating54f >= 2) & (Sweating54s >= 2)) Sweating_2x2 = 1.
+  IF ((Sweating54f < 2) | (Sweating54s < 2)) Sweating_2x2 = 0.
+  EXECUTE.
+
+  IF ((Night55f >= 2) & (Night55s >= 2)) Night_2x2 = 1.
+  IF ((Night55f < 2) | (Night55s < 2)) Night_2x2 = 0.
+  EXECUTE.
+
+  IF ((Limbs56f >= 2) & (Limbs56s >= 2)) Limbs_2x2 = 1.
+  IF ((Limbs56f < 2) | (Limbs56s < 2)) Limbs_2x2 = 0.
+  EXECUTE.
+
+  IF ((Chills57f >= 2) & (Chills57s >= 2)) Chills_2x2 = 1.
+  IF ((Chills57f < 2) | (Chills57s < 2)) Chills_2x2 = 0.
+  EXECUTE.
+
+  IF ((Hot58f >= 2) & (Hot58s >= 2)) Hot_2x2 = 1.
+  IF ((Hot58f < 2) | (Hot58s < 2)) Hot_2x2 = 0.
+  EXECUTE.
+
+  IF ((HTemp59f >= 2) & (HTemp59s >= 2)) HTemp_2x2 = 1.
+  IF ((HTemp59f < 2) | (HTemp59s < 2)) HTemp_2x2 = 0.
+  EXECUTE.
+
+  IF ((LTemp60f >= 2) & (LTemp60s >= 2)) LTemp_2x2 = 1.
+  IF ((LTemp60f < 2) | (LTemp60s < 2)) LTemp_2x2 = 0.
+  EXECUTE.
+
+  IF ((Alcohol61f >= 2) & (Alcohol61s >= 2)) Alcohol_2x2 = 1.
+  IF ((Alcohol61f < 2) | (Alcohol61s < 2)) Alcohol_2x2 = 0.
+  EXECUTE.
+
+  IF ((SoreThroat62f >= 2) & (SoreThroat62s >= 2)) SoreThroat_2x2 = 1.
+  IF ((SoreThroat62f < 2) | (SoreThroat62s < 2)) SoreThroat_2x2 = 0.
+  EXECUTE.
+
+  IF ((LymphNodes63f >= 2) & (LymphNodes63s >= 2)) LymphNodes_2x2 = 1.
+  IF ((LymphNodes63f < 2) | (LymphNodes63s < 2)) LymphNodes_2x2 = 0.
+  EXECUTE.
+
+  IF ((Fever64f >= 2) & (Fever64s >= 2)) Fever_2x2 = 1.
+  IF ((Fever64f < 2) | (Fever64s < 2)) Fever_2x2 = 0.
+  EXECUTE.
+
+  IF ((Flu65f >= 2) & (Flu65s >= 2)) Flu_2x2 = 1.
+  IF ((Flu65f < 2) | (Flu65s < 2)) Flu_2x2 = 0.
+  EXECUTE.
+
+  IF ((Smells66f >= 2) & (Smells66s >= 2)) Smells_2x2 = 1.
+  IF ((Smells66f < 2) | (Smells66s < 2)) Smells_2x2 = 0.
+  EXECUTE.

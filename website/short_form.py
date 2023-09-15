@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
 import utils.short_form_utils as short_form_utils
+from utils.general_utils import get_score
 
 short_form = Blueprint('short_form', __name__)
 
@@ -15,10 +16,10 @@ def expem1():
             session["soref"] = soref
             session["sores"] = sores
             session['pagenum'] += 1
-            if int(session["soref"]) >= 0 and int(session["sores"]) >= 0:
+            if get_score("soref") >= 0 and get_score("sores") >= 0:
                 session['pemscoref'] = session['soref']
                 session['pemscores'] = session['sores']
-                session['pemscore'] = (int(session['soref']) + int(session['sores'])) / 2
+                session['pemscore'] = (get_score('soref') + get_score('sores')) / 2
                 pemname = 'soreness15'
                 return redirect(url_for("short_form.excog1"))
         else:
@@ -35,11 +36,11 @@ def excog1():
             session["attentionf"] = attentionf
             session["attentions"] = attentions
             session['pagenum'] += 1
-            if int(session["attentionf"]) >= 0 and int(session["attentions"]) >= 0:
+            if get_score("attentionf") >= 0 and get_score("attentions") >= 0:
                 session['cogscoref'] = int(attentionf)
                 session['cogscores'] = int(attentions)
                 cogname = 'difficulty37'
-                session['cogscore'] = (int(session['attentionf']) + int(session['attentions'])) / 2
+                session['cogscore'] = (get_score('attentionf') + get_score('attentions')) / 2
                 end = True
                 return redirect(url_for("short_form.musclepain"))
         else:

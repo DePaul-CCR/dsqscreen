@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, url_for, session
 from flask_wtf import FlaskForm
 import utils.dsq_utils as dsq_utils
 import utils.back_function as back_function
+from utils.general_utils import get_score
 # commented out unused imports, can probably delete soon -- PC 7/31/23
 # import plotly.utils
 # import plotly.graph_objects as go
@@ -65,10 +66,10 @@ def expem3():
             session["heavyf"] = heavyf
             session["heavys"] = heavys
             session['pagenum'] += 1
-            if int(session["heavyf"]) >= 0 and int(session["heavys"]) >= 0:
+            if get_score("heavyf") >= 0 and get_score("heavys") >= 0:
                 session['pemscoref'] = session['heavyf']
                 session['pemscores'] = session['heavys']
-                session['pemscore'] = (int(session['heavyf']) + int(session['heavys'])) / 2
+                session['pemscore'] = (get_score('heavyf') + get_score('heavys')) / 2
                 pemname = 'heavy14'
                 return redirect(url_for("expem4"))
         else:
@@ -86,10 +87,10 @@ def expem4():
             session["mentalf"] = mentalf
             session["mentals"] = mentals
             session['pagenum'] += 1
-            if int(session["mentalf"]) >= 0 and int(session["mentals"]) >= 0:
+            if get_score("mentalf") >= 0 and get_score("mentals") >= 0:
                 session['pemscoref'] = int(mentalf)
                 session['pemscores'] = int(mentals)
-                session['pemscore'] = (int(session['mentalf']) + int(session['mentals'])) / 2
+                session['pemscore'] = (get_score('mentalf') + get_score('mentals')) / 2
                 pemname = 'mental16'
                 return redirect(url_for("expem2"))
         else:
@@ -107,35 +108,15 @@ def expem2():
             session["drainedf"] = drainedf
             session["draineds"] = draineds
             session['pagenum'] += 1
-            if int(session["drainedf"]) >= 0 and int(session["draineds"]) >= 0:
+            if get_score("drainedf") >= 0 and get_score("draineds") >= 0:
                 session['pemscoref'] = session['drainedf']
                 session['pemscores'] = session['draineds']
-                session['pemscore'] = (int(session['drainedf']) + int(session['draineds'])) / 2
+                session['pemscore'] = (get_score('drainedf') + get_score('draineds')) / 2
                 pemname = 'drained18'
-                return redirect(url_for("weakness"))
+                return redirect(url_for("exsleep2"))
         else:
             return render_template("dsq/expem2.html", pagenum=session['pagenum'], message=message)
     return render_template("dsq/expem2.html", pagenum=session['pagenum'], message='')
-
-@app.route('/weakness', methods=['post', 'get'])
-def weakness():
-    form = FlaskForm()
-    global pemname
-    if request.method == "POST":
-        weakf = request.form.get("weakf")
-        weaks = request.form.get("weaks")
-        if weakf is not None and weaks is not None:
-            session["weakf"] = weakf
-            session["weaks"] = weaks
-            session['pagenum'] += 1
-            session['pemscoref'] = int(weakf)
-            session['pemscores'] = int(weaks)
-            pemname = 'weakness33'
-            session['pemscore'] = (int(session['weakf']) + int(session['weaks'])) / 2
-            return redirect(url_for("exsleep2"))
-        else:
-            return render_template("dsq/weakness33.html", message=message, pagenum=session['pagenum'])
-    return render_template("dsq/weakness33.html", message='', pagenum=session['pagenum'])
 
 @app.route('/nap', methods=['post', 'get'])
 def exsleep2():
@@ -151,7 +132,7 @@ def exsleep2():
 
             session['sleepscoref'] = int(napf)
             session['sleepscores'] = int(naps)
-            session['sleepscore'] = (int(session['napf']) + int(session['naps'])) / 2
+            session['sleepscore'] = (get_score('napf') + get_score('naps')) / 2
             sleepname = 'nap20'
             return redirect(url_for("exsleep3"))
         else:
@@ -169,10 +150,10 @@ def exsleep3():
             session["fallf"] = fallf
             session["falls"] = falls
             session['pagenum'] += 1
-            if int(session["fallf"]) >= 0 and int(session["falls"]) >= 0:
+            if get_score("fallf") >= 0 and get_score("falls") >= 0:
                 session['sleepscoref'] = int(fallf)
                 session['sleepscores'] = int(falls)
-                session['sleepscore'] = (int(session['fallf']) + int(session['falls'])) / 2
+                session['sleepscore'] = (get_score('fallf') + get_score('falls')) / 2
                 sleepname = 'falling21'
                 return redirect(url_for("exsleep1"))
         else:
@@ -190,10 +171,10 @@ def exsleep1():
             session["stayf"] = stayf
             session["stays"] = stays
             session['pagenum'] += 1
-            if int(session["stayf"]) >= 0 and int(session["stays"]) >= 0:
+            if get_score("stayf") >= 0 and get_score("stays") >= 0:
                 session['sleepscoref'] = int(stayf)
                 session['sleepscores'] = int(stays)
-                session['sleepscore'] = (int(session['stayf']) + int(session['stays'])) / 2
+                session['sleepscore'] = (get_score('stayf') + get_score('stays')) / 2
                 sleepname = 'staying22'
                 return redirect(url_for("early"))
         else:
@@ -211,10 +192,10 @@ def early():
             session["earlyf"] = earlyf
             session["earlys"] = earlys
             session['pagenum'] += 1
-            if int(session["earlyf"]) >= 0 and int(session["earlys"]) >= 0:
+            if get_score("earlyf") >= 0 and get_score("earlys") >= 0:
                 session['sleepscoref'] = int(earlyf)
                 session['sleepscores'] = int(earlys)
-                session['sleepscore'] = (int(session['earlyf']) + int(session['earlys'])) / 2
+                session['sleepscore'] = (get_score('earlyf') + get_score('earlys')) / 2
                 sleepname = 'falling21'
                 return redirect(url_for("exsleep4"))
         else:
@@ -232,17 +213,17 @@ def exsleep4():
             session["alldayf"] = alldayf
             session["alldays"] = alldays
             session['pagenum'] += 1
-            if int(session["alldayf"]) >= 0 and int(session["alldays"]) >= 0:
+            if get_score("alldayf") >= 0 and get_score("alldays") >= 0:
                 session['sleepscoref'] = int(alldayf)
                 session['sleepscores'] = int(alldays)
-                session['sleepscore'] = (int(session['alldayf']) + int(session['alldays'])) / 2
+                session['sleepscore'] = (get_score('alldayf') + get_score('alldays')) / 2
                 sleepname = 'allday24'
                 return redirect(url_for("jointpain"))
             else:
                 sleepname = 'allday24'
                 session['sleepscoref'] = int(alldayf)
                 session['sleepscores'] = int(alldays)
-                session['sleepscore'] = (int(session['jointpain']) + int(session['alldays'])) / 2
+                session['sleepscore'] = (get_score('jointpain') + get_score('alldays')) / 2
                 return redirect(url_for("jointpain"))
         else:
             return render_template("dsq/exsleep4.html", message=message, pagenum=session['pagenum'])
@@ -339,10 +320,30 @@ def twitches():
             session["twitchesf"] = twitchesf
             session["twitchess"] = twitchess
             session['pagenum'] += 1
-            return redirect(url_for("noise"))
+            return redirect(url_for("weakness"))
         else:
             return render_template("dsq/twitches32.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/twitches32.html", message='', pagenum=session['pagenum'])
+
+@app.route('/weakness', methods=['post', 'get'])
+def weakness():
+    form = FlaskForm()
+    global pemname
+    if request.method == "POST":
+        weakf = request.form.get("weakf")
+        weaks = request.form.get("weaks")
+        if weakf is not None and weaks is not None:
+            session["weakf"] = weakf
+            session["weaks"] = weaks
+            session['pagenum'] += 1
+            session['pemscoref'] = int(weakf)
+            session['pemscores'] = int(weaks)
+            pemname = 'weakness33'
+            session['pemscore'] = (get_score('weakf') + get_score('weaks')) / 2
+            return redirect(url_for("noise"))
+        else:
+            return render_template("dsq/weakness33.html", message=message, pagenum=session['pagenum'])
+    return render_template("dsq/weakness33.html", message='', pagenum=session['pagenum'])
 
 @app.route('/noise', methods=['post', 'get'])
 def noise():
@@ -389,10 +390,10 @@ def excog2():
             session["wordf"] = wordf
             session["words"] = words
             session['pagenum'] += 1
-            if int(session["wordf"]) >= 0 and int(session["words"]) >= 0:
+            if get_score("wordf") >= 0 and get_score("words") >= 0:
                 session['cogscoref'] = int(wordf)
                 session['cogscores'] = int(words)
-                session['cogscore'] = (int(session['wordf']) + int(session['words'])) / 2
+                session['cogscore'] = (get_score('wordf') + get_score('words')) / 2
                 return redirect(url_for("understand"))
         else:
             return render_template("dsq/excog2.html", message=message, pagenum=session['pagenum'])
@@ -410,10 +411,10 @@ def understand():
             session["understandf"] = understandf
             session["understands"] = understands
             session['pagenum'] += 1
-            if int(session["understandf"]) >= 0 and int(session["understands"]) >= 0:
+            if get_score("understandf") >= 0 and get_score("understands") >= 0:
                 session['cogscoref'] = int(understandf)
                 session['cogscores'] = int(understands)
-                session['cogscore'] = (int(session['understandf']) + int(session['understands'])) / 2
+                session['cogscore'] = (get_score('understandf') + get_score('understands')) / 2
                 # end = True
                 cogname = 'understand39'
                 return redirect(url_for("excog3"))
@@ -433,10 +434,10 @@ def excog3():
             session["focusf"] = focusf
             session["focuss"] = focuss
             session['pagenum'] += 1
-            if int(session["focusf"]) >= 0 and int(session["focuss"]) >= 0:
+            if get_score("focusf") >= 0 and get_score("focuss") >= 0:
                 session['cogscoref'] = int(focusf)
                 session['cogscores'] = int(focuss)
-                session['cogscore'] = (int(session['focusf']) + int(session['focuss'])) / 2
+                session['cogscore'] = (get_score('focusf') + get_score('focuss')) / 2
                 # end = True
                 cogname = 'focus40'
                 return redirect(url_for('vision'))
@@ -456,10 +457,10 @@ def vision():
             session["visionf"] = visionf
             session["visions"] = visions
             session['pagenum'] += 1
-            if int(session["visionf"]) >= 0 and int(session["visions"]) >= 0:
+            if get_score("visionf") >= 0 and get_score("visions") >= 0:
                 session['cogscoref'] = int(visionf)
                 session['cogscores'] = int(visions)
-                session['cogscore'] = (int(session['visionf']) + int(session['visions'])) / 2
+                session['cogscore'] = (get_score('visionf') + get_score('visions')) / 2
                 # end = True
                 cogname = 'unable41'
                 return redirect(url_for('depth'))
@@ -496,10 +497,10 @@ def slowness():
             session["slowf"] = slowf
             session["slows"] = slows
             session['pagenum'] += 1
-            if int(session["slowf"]) >= 0 and int(session["slows"]) >= 0:
+            if get_score("slowf") >= 0 and get_score("slows") >= 0:
                 session['cogscoref'] = int(slowf)
                 session['cogscores'] = int(slows)
-                session['cogscore'] = (int(session['slowf']) + int(session['slowf'])) / 2
+                session['cogscore'] = (get_score('slowf') + get_score('slowf')) / 2
                 # end = True
                 cogname = 'slowness43'
                 return redirect(url_for("absent"))
@@ -521,10 +522,10 @@ def absent():
             session["absentf"] = absentf
             session["absents"] = absents
             session['pagenum'] += 1
-            if int(session["absentf"]) >= 0 and int(session["absents"]) >= 0:
+            if get_score("absentf") >= 0 and get_score("absents") >= 0:
                 session['cogscoref'] = int(absentf)
                 session['cogscores'] = int(absents)
-                session['cogscore'] = (int(session['absentf']) + int(session['absents'])) / 2
+                session['cogscore'] = (get_score('absentf') + get_score('absents')) / 2
                 # end = True
                 cogname = 'absent44'
                 return redirect(url_for("bladder"))

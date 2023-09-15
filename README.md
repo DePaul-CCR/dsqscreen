@@ -33,7 +33,7 @@ MacOS:
 `gunicorn main:app prod`
 
 ###NB
-If you change the routes please update the route-order "page_flow" tuple in 'utils/back_function.py' so the back button works correctly 
-+ the routes.txt file which shows the route function and paired route
+-If you change the routes please update the route-order "page_flow" tuple in 'utils/back_function.py' so the back button works correctly 
++ the docs/dsqitems_and_routes_map.txt file, which shows the DSQ item var names mapped to routes, should be updated also. 
 
-To make changes to question pages there is one partial for all the F/S questions and then the single-question items are less templated so need to be modified directly (dsq/viral.html and short_form/reduction.html)
+-To make changes to question pages there is one partial for all the F/S questions and then the single-question items are less templated so need to be modified directly (dsq/viral.html and short_form/reduction.html)
