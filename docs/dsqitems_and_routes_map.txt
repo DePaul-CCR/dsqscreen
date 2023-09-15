@@ -51,20 +51,20 @@ Headaches31comp: '/headaches' <-> headaches
 Twitches32comp: '/twitches' <-> twitches
 Weakness33comp: '/weakness' <-> weakness | weak | "Muscle weakness"
 Noise34comp: '/noise' <-> noise | noise | "Sensitivity to noise"
-Lights35comp: '/lights' <-> lights
-Word38comp: '/word' <-> excog2
-Understanding39comp: '/understand' <-> understand
-Focus40comp: '/focus' <-> excog3
+Lights35comp: '/lights' <-> lights | lights | "Sensitivity to bright lights"
+Word38comp: '/word' <-> excog2 | word | "Difficulty finding the right word to say or expressing thoughts"
+Understanding39comp: '/understand' <-> understand | understand | "Difficulty understanding things"
+Focus40comp: '/focus' <-> excog3 | focus | "Difficulty focusing on one thing at a time"
 Unable41comp: '/vision' <-> vision | vision | "Unable to focus vision and/or attention"
 Depth42comp: '/depth' <-> depth | depth | "Loss of depth perception"
-Slowness43comp: '/slowness' <-> slowness
-Absent44comp: '/absent' <-> absent
+Slowness43comp: '/slowness' <-> slowness | slow | "Slowness of thought"
+Absent44comp: '/absent' <-> absent | absent | "Absent-mindedness or forgetfulness"
 Bladder45comp: '/bladder' <-> bladder
 Nausea47comp: '/nausea' <-> nausea
-Shortness49comp: '/shortness' <-> shortness
+Shortness49comp: '/shortness' <-> shortness | short | "Shortness of breath or trouble catching your breath"
 Dizzy50comp: '/dizzy' <-> dizzy
 Irregular51comp: '/heart' <-> heart | heart | "Irregular heart beats"
-Weight52comp: '/weight' <-> weight
+Weight52comp: '/weight' <-> weight | weight | "Losing or gaining weight without trying"
 Appetite53comp: '/appetite' <-> appetite
 Sweating54comp: '/sweating' <-> sweating
 Night55comp: '/night' <-> night
