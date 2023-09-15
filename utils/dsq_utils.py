@@ -92,7 +92,12 @@ def dsq_diagnose():
         ccc_pain = 0
         ccc_paincheck = "No"
 
-    if get_score('sleepf') >= 2 and get_score('sleeps') >= 2:
+    if (get_score('sleepf') >= 2 and get_score('sleeps') >= 2) or (
+        get_score('napf') >= 2 and get_score('naps') >= 2) or (
+        get_score('fallf') >= 2 and get_score('falls') >= 2) or (
+        get_score('stayf') >= 2 and get_score('stays') >= 2) or (
+        get_score('earlyf') >= 2 and get_score('earlys') >= 2) or (
+        get_score('alldayf') >= 2 and get_score('alldays') >= 2):
         ccc_sleep = 1
         ccc_sleepcheck = "Yes"
     else:
