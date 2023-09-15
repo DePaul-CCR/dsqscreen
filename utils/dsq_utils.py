@@ -104,8 +104,11 @@ def dsq_diagnose():
         ccc_sleep = 0
         ccc_sleepcheck = "No"
 
-    if (get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
-        get_score('soref') >= 2 and get_score('sores') >= 2):
+    if (get_score('heavyf') >= 2 and get_score('heavys') >= 2) or (
+        get_score('soref') >= 2 and get_score('sores') >= 2) or (
+        get_score('mentalf') >= 2 and get_score('mentals') >= 2) or (
+        get_score('minexf') >= 2 and get_score('minexs') >= 2) or (
+        get_score('drainedf') >= 2 and get_score('draineds') >= 2):
         ccc_pem = 1
         ccc_pemcheck = "Yes"
     else:
