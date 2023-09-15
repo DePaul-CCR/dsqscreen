@@ -193,62 +193,52 @@ def dsq_diagnose():
                            iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck, dsq_message=dsq_message)
 
 def dsq_graph():
-    pem_domainscore = (get_score("minexf") + get_score("minexs") + get_score('soref') + get_score('sores') +
-                       get_score('heavyf') + get_score('heavys') + get_score('drainedf') + get_score('draineds') +
-                       get_score('mentalf') + get_score('mentals') + get_score('weakf') + get_score('weaks')) / 12
+    fatigue_score = (get_score("fatiguescoref") + get_score("fatiguescores")) / 2
+
+    pem_score = (get_score('heavyf') + get_score('heavys') + get_score('soref') + get_score('sores') +
+                 get_score('mentalf') + get_score('mentals') + get_score("minexf") + get_score("minexs") + 
+                 get_score('drainedf') + get_score('draineds')) / 10
     
-    sleep_domainscore = (get_score("sleepf") + get_score("sleeps") + get_score('napf') + get_score('naps') +
-                         get_score('fallf') + get_score('falls') + get_score('stayf') + get_score('stays') +
-                         get_score('earlyf') + get_score('earlys') + get_score('alldayf') + get_score('alldays')) / 12
+    sleep_score = (get_score("sleepf") + get_score("sleeps") + get_score('napf') + get_score('naps') +
+                   get_score('fallf') + get_score('falls') + get_score('stayf') + get_score('stays') +
+                   get_score('earlyf') + get_score('earlys') + get_score('alldayf') + get_score('alldays')) / 12
     
-    cog_domainscore = (get_score("rememberf") + get_score("remembers") + get_score('attentionf') +
-                       get_score('attentions') + get_score('wordf') + get_score('words') +
-                       get_score('understandf') + get_score('understands') + get_score('focusf') +
-                       get_score('focuss') + get_score('slowf') + get_score('slows') +
-                       get_score('absentf') + get_score('absents') + get_score('visionf') +
-                       get_score('visions')) / 16
+    pain_score = (get_score('musclef') + get_score('muscles') + get_score('jointpainf') + get_score('jointpains') + 
+                  get_score('eyepainf') + get_score('eyepains') + get_score('chestpainf') + get_score('chestpains') +
+                  get_score('bloatf') + get_score('bloats') + get_score('stomachf') + get_score('stomachs') +
+                  get_score('headachesf') + get_score('headachess')) / 14
     
-    pain_domainscore = (get_score('musclef') + get_score('muscles') + get_score('jointpainf') +
-                        get_score('jointpains') + get_score('eyepainf') + get_score('eyepains') +
-                        get_score('headachesf') + get_score('headachess')) / 8
+    cog_score = (get_score('twitchesf') + get_score('twitchess') + get_score('weakf') + get_score('weaks') + 
+                 get_score('noisef') + get_score('noises') + get_score('lightsf') + get_score('lightss') + 
+                 get_score("rememberf") + get_score("remembers") + get_score('attentionf') + get_score('attentions') +
+                 get_score('wordf') + get_score('words') + get_score('understandf') + get_score('understands') +
+                 get_score('focusf') + get_score('focuss') + get_score('visionf') + get_score('visions') +
+                 get_score('depthf') + get_score('depths') + get_score('slowf') + get_score('slows') +
+                 get_score('absentf') + get_score('absents')) / 26
     
-    gastro_domainscore = (get_score('bloatf') + get_score('bloats') + get_score('bowelf') +
-                          get_score('bowels') + get_score('stomachf') + get_score('stomachs') +
-                          get_score('bladderf') + get_score('bladders')) / 8
+    autonomic_score = (get_score('bladderf') + get_score('bladders') + get_score('bowelf') + get_score('bowels') +
+                       get_score('nauseaf') + get_score('nauseas') + get_score('unsteadyf') + get_score('unsteadys') + 
+                       get_score('shortf') + get_score('shorts') + get_score('dizzyf') + get_score('dizzys') + 
+                       get_score('heartf') + get_score('hearts')) / 14
     
-    ortho_domainscore = (get_score('unsteadyf') + get_score('unsteadys') + get_score('chestpainf') +
-                         get_score('chestpains') + get_score('shortf') + get_score('shorts') +
-                         get_score('dizzyf') + get_score('dizzys') + get_score('heartf') +
-                         get_score('hearts') + get_score('nauseaf') + get_score('nauseas')) / 12
+    neuro_score = (get_score('weightf') + get_score('weights') + get_score('appetitef') + get_score('appetites') +
+                   get_score('sweatf') + get_score('sweats') + get_score('nightf') + get_score('nights') +
+                   get_score('limbsf') + get_score('limbss') + get_score('chillsf') + get_score('chillss') +
+                   get_score('hotf') + get_score('hots') + get_score('hitempf') + get_score('hitemps') +
+                   get_score('lotempf') + get_score('lotemps') + get_score('alcoholf') + get_score('alcohols')) / 20
     
-    circ_domainscore = (get_score('limbsf') + get_score('limbss') + get_score('hotf') +
-                        get_score('hots') + get_score('lotempf') + get_score('lotemps') +
-                        get_score('sweatf') + get_score('sweats') + get_score('chillsf') +
-                        get_score('chillss') + get_score('weightf') + get_score('weights') +
-                        get_score('appetitef') + get_score('appetites') + get_score('nightf') +
-                        get_score('nights')) / 16
-    
-    immune_domainscore = (get_score('fluf') + get_score('flus') + get_score('feverf') +
-                          get_score('fevers') + get_score('lymphnodesf') + get_score('lymphnodess') +
-                          get_score('throatf') + get_score('throats') + get_score('hitempf') +
-                          get_score('hitemps')) / 10
-    
-    neuroen_domainscore = (get_score('smellf') + get_score('smells') + get_score('alcoholf') +
-                           get_score('alcohols') + get_score('twitchesf') + get_score('twitchess') +
-                           get_score('noisef') + get_score('noises') + get_score('lightsf') +
-                           get_score('lightss') + get_score('depthf') + get_score('depths')) / 12
+    immune_score = (get_score('throatf') + get_score('throats') + get_score('lymphnodesf') + get_score('lymphnodess') +
+                    get_score('feverf') + get_score('fevers') + get_score('fluf') + get_score('flus') +
+                    get_score('smellf') + get_score('smells')) / 10
 
     # Not currently using control data - PC 09/5/23
     # control = ds.df[(ds.df['dx'] != 1)]
     # conDomains = np.mean(control.iloc[:, 110:120], axis=0)
     mecfs = ds.df[(ds.df['dx'] == 1)]
-    cfsdomains = np.mean(mecfs.iloc[:, 110:120], axis=0)
-    user_scores = [(get_score('fatiguescoref') + get_score('fatiguescores')) / 2,
-                   pem_domainscore, sleep_domainscore, cog_domainscore, pain_domainscore, gastro_domainscore,
-                   ortho_domainscore, circ_domainscore, immune_domainscore, neuroen_domainscore]
+    cfsdomains = np.mean(mecfs.iloc[:, 110:118], axis=0)
+    user_scores = [fatigue_score, pem_score, sleep_score, pain_score, cog_score, autonomic_score, neuro_score, immune_score]
 
-    categories = ['Fatigue', 'PEM', 'Sleep', 'Cognitive Problems', 'Pain', 'Gastro Problems',
-                  'Orthostatic Intolerance', 'Circulatory Problems', 'Immune System', 'Neuroendocrine Problems']
+    categories = ['Fatigue', 'PEM', 'Sleep Issues', 'Pain', 'Cognitive Problems', 'Autonomic Problems', 'Neurological Problems', 'Immune System']
 
     # converts scores to 100pt scale
     user_scores = np.multiply(user_scores, 25).tolist()
