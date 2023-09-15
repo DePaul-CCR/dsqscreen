@@ -1,14 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Feb 22 14:10:11 2023
-
-@author: sbenner
-
-DSQ items grouped according to CCC domains
-"""
-
 import pandas as pd
 import numpy as np
+
+# DSQ items grouped according to CCC domains and scoring syntax @ https://www.leonardjason.com/cfsme_measures-2/
+fatigue_domain = ['fatigue13f', 'fatigue13s']
 
 pem_domain = ['heavy14f', 'soreness15f', 'mental16f', 'minimum17f', 'drained18f',
               'heavy14s', 'soreness15s', 'mental16s', 'minimum17s', 'drained18s']
@@ -16,8 +10,8 @@ pem_domain = ['heavy14f', 'soreness15f', 'mental16f', 'minimum17f', 'drained18f'
 sleep_domain = ['unrefreshed19f', 'nap20f', 'falling21f', 'staying22f', 'early23f', 'allday24f',
                 'unrefreshed19s', 'nap20s', 'falling21s', 'staying22s', 'early23s', 'allday24s']
 
-pain_domain = ['musclepain25f', 'jointpain26f', 'eyepain27f', 'chestpain28f', 'bloating29f', 'stomach30f', 'headaches31s',
-               'musclepain25s', 'jointpain26s', 'eyepain27s', 'chestpain28s', 'bloating29s', 'stomach30s', 'headaches31f']
+pain_domain = ['musclepain25f', 'jointpain26f', 'eyepain27f', 'chestpain28f', 'bloating29f', 'stomach30f', 'headaches31f',
+               'musclepain25s', 'jointpain26s', 'eyepain27s', 'chestpain28s', 'bloating29s', 'stomach30s', 'headaches31s']
 
 cog_domain = ['twitches32f', 'weakness33f', 'noise34f', 'lights35f', 'remember36f', 'difficulty37f', 'word38f', 'understanding39f', 'focus40f', 'unable41f', 'depth42f', 'slowness43f', 'absent44f',
               'twitches32s', 'weakness33s', 'noise34s', 'lights35s', 'remember36s', 'difficulty37s', 'word38s', 'understanding39s', 'focus40s', 'unable41s', 'depth42s', 'slowness43s', 'absent44s']
@@ -32,6 +26,7 @@ immune_domain = ['sorethroat62f', 'lymphnodes63f', 'fever64f', 'flu65f', 'smells
                 'sorethroat62s', 'lymphnodes63s', 'fever64s', 'flu65s', 'smells66s']
 
 # domains for the short form:
+sf_fatigue_domain = ['fatigue13f', 'fatigue13s']
 sf_pem_domain = ['soreness15f', 'soreness15s', 'minimum17f', 'minimum17s']
 sf_sleep_domain = ['unrefreshed19f', 'unrefreshed19s']
 sf_pain_domain = ['musclepain25f', 'musclepain25s', 'bloating29f', 'bloating29s']
@@ -44,7 +39,7 @@ sf_immune_domain = ['flu65f', 'flu65s', 'smells66f', 'smells66s']
 df = pd.read_csv('utils/MECFS and Controls F+S Reduction.csv')
 sdf = df
 
-df['fatigue_mean'] = np.mean(df[['fatigue13f', 'fatigue13s']], axis=1)
+df['fatigue_mean'] = np.mean(df[fatigue_domain], axis=1)
 df['pem_mean'] = np.mean(df[pem_domain], axis=1)
 df['sleep_mean'] = np.mean(df[sleep_domain], axis=1)
 df['pain_mean'] = np.mean(df[pain_domain], axis=1)
@@ -53,7 +48,7 @@ df['auto_mean'] = np.mean(df[autonomic_domain], axis=1)
 df['neuro_mean'] = np.mean(df[neuro_domain], axis=1)
 df['immune_mean'] = np.mean(df[immune_domain], axis=1)
 
-sdf['fatigue_mean'] = np.mean(sdf[['fatigue13f', 'fatigue13s']], axis=1)
+sdf['fatigue_mean'] = np.mean(df[sf_fatigue_domain], axis=1)
 sdf['pem_mean'] = np.mean(sdf[sf_pem_domain], axis=1)
 sdf['sleep_mean'] = np.mean(sdf[sf_sleep_domain], axis=1)
 sdf['pain_mean'] = np.mean(sdf[sf_pain_domain], axis=1)
@@ -61,23 +56,3 @@ sdf['cog_mean'] = np.mean(sdf[sf_cog_domain], axis=1)
 sdf['auto_mean'] = np.mean(sdf[sf_autonomic_domain], axis=1)
 sdf['neuro_mean'] = np.mean(sdf[sf_neuro_domain], axis=1)
 sdf['immune_mean'] = np.mean(sdf[sf_immune_domain], axis=1)
-
-
-'''
-test = df.iloc[:, 110:119]
-test2 = np.mean(test, axis=0)
-
-cfs = df[(df['dx']==1)]
-cfsdomain = np.mean(cfs.iloc[:, 110:120], axis=0)
-
-test3 = np.array(cfsdomain[:])
-
-categories = ['Fatigue', 'PEM', 'Sleep', 'Cognitive Problems', 'Pain', 'Gastro Problems',
-                  'Orthostatic Intolerance', 'Circulatory Problems', 'Immune System', 'Neuroendocrine Problems']
-
-fig = go.Figure(
-        data=[
-            go.Bar(y=cfsdomain)])
-
-pyo.plot(fig)
-'''
