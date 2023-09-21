@@ -8,7 +8,7 @@ import utils.domainScores as ds
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def dsq_diagnose():
-    # IOM assessment
+    #---IOM Scoring----------------------------
     iomfatiguecheck = "No"
     iomreductioncheck = "No"
     iompemcheck = "No"
@@ -52,13 +52,13 @@ def dsq_diagnose():
         iomorthocheck = "Yes"
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and (iomcogcheck == "Yes" or iomorthocheck == "Yes"):
-        iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS."
+        iom_msg = "Your responses suggest that you meet the IOM criteria for ME/CFS."
         iomdxcheck = "Met"
     else:
-        iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS."
+        iom_msg = "Your responses do not meet the IOM criteria for ME/CFS."
         iomdxcheck = "Not met"
 
-    # Canadian criteria assessment
+    #---CCC Scoring----------------------------
     ccc_dx = False
 
     if get_score('fatiguescoref') >= 2 and get_score('fatiguescores') >= 2:
@@ -178,23 +178,156 @@ def dsq_diagnose():
     else:
         ccc_dx = "Not met"
         ccc_msg = "Your responses do not meet the Canadian Consensus Criteria for ME/CFS."
+
+    #---ME-ICC Scoring----------------------------
+    meicc_sr = "No"
+    meicc_pene = "No"
+    meicc_cognitive = "No"
+    meicc_pain = "No"
+    meicc_sleep = "No"
+    meicc_sensory = "No"
+    meicc_flu = "No"
+    meicc_gastro = "No"
+    meicc_urinary = "No"
+    meicc_sensitivity = "No"
+    meicc_viral = "No"
+    meicc_cardio = "No"
+    meicc_respiratory = "No"
+    meicc_thermo = "No"
+    meicc_temp = "No"
+
+    # substantial reduction in functioning: dsq 97
+    if get_score('reduction') == 1:
+        meicc_sr = "Yes"
+
+    # PENE/PEM: 14-18
+    if (get_score("heavyf") >= 2 and get_score("heavys") >= 2) or (
+        get_score("soref") >= 2 and get_score("sores") >= 2) or (
+        get_score("mentalf") >= 2 and get_score("mentals") >= 2) or (
+        get_score("minexf") >= 2 and get_score("minexs") >= 2) or (
+        get_score("drainedf") >= 2 and get_score("draineds") >= 2):
+        meicc_pene = "Yes"
+
+    # neurcognitive: 36-44
+    if (get_score("rememberf") >= 2 and get_score("remembers") >= 2) or (
+        get_score("attentionf") >= 2 and get_score("attentions") >= 2) or (
+        get_score("wordf") >= 2 and get_score("words") >= 2) or (
+        get_score("understandf") >= 2 and get_score("understands") >= 2) or (
+        get_score("focusf") >= 2 and get_score("focuss") >= 2) or (
+        get_score("visionf") >= 2 and get_score("visions") >= 2) or (
+        get_score("depthf") >= 2 and get_score("depths") >= 2) or (
+        get_score("slowf") >= 2 and get_score("slows") >= 2) or (
+        get_score("absentf") >= 2 and get_score("absents") >= 2):
+        meicc_cognitive = "Yes"
+
+    # pain: 25-28; 31
+    if (get_score("musclef") >= 2 and get_score("muscles") >= 2) or (
+        get_score("jointpainf") >= 2 and get_score("jointpains") >= 2) or (
+        get_score("eyepainf") >= 2 and get_score("eyepains") >= 2) or (
+        get_score("chestpainf") >= 2 and get_score("chestpains") >= 2) or (
+        get_score("headachesf") >= 2 and get_score("headachess") >= 2):
+        meicc_pain = "Yes"
     
-    # diagnostic message true if ccc OR iom
-    if ccc_dx == "Met" or iomdxcheck == "Met":
+    # sleep: 19-24
+    if (get_score("sleepf") >= 2 and get_score("sleeps") >= 2) or (
+        get_score("napf") >= 2 and get_score("naps") >= 2) or (
+        get_score("fallf") >= 2 and get_score("falls") >= 2) or (
+        get_score("stayf") >= 2 and get_score("stays") >= 2) or (
+        get_score("earlyf") >= 2 and get_score("earlys") >= 2) or (
+        get_score("alldayf") >= 2 and get_score("alldays") >= 2):
+        meicc_sleep = "Yes"
+
+    # neurosensory, perceptual, motor: 32-35; 48
+    if (get_score("twitchesf") >= 2 and get_score("twitchess") >= 2) or (
+        get_score("weakf") >= 2 and get_score("weaks") >= 2) or (
+        get_score("noisef") >= 2 and get_score("noises") >= 2) or (
+        get_score("lightsf") >= 2 and get_score("lightss") >= 2) or (
+        get_score("unsteadyf") >= 2 and get_score("unsteadys") >= 2):
+        meicc_sensory = "Yes"
+
+    # flu-like: 62-65
+    if (get_score("throatf") >= 2 and get_score("throats") >= 2) or (
+        get_score("lymphnodesf") >= 2 and get_score("lymphnodess") >= 2) or (
+        get_score("feverf") >= 2 and get_score("fevers") >= 2) or (
+        get_score("fluf") >= 2 and get_score("flus") >= 2):
+        meicc_flu = "Yes"
+
+    # gastrointestinal: 29-30; 46-47
+    if (get_score("bloatf") >= 2 and get_score("bloats") >= 2) or (
+        get_score("stomachf") >= 2 and get_score("stomachs") >= 2) or (
+        get_score("bowelf") >= 2 and get_score("bowels") >= 2) or (
+        get_score("nauseaf") >= 2 and get_score("nauseas") >= 2):
+        meicc_gastro = "Yes"
+
+    # genitourinary: 45
+    if get_score("bladderf") >= 2 and get_score("bladders") >= 2:
+        meicc_urinary = "Yes"
+
+    # sensitivities: 61, 66
+    if (get_score("alcoholf") >= 2 and get_score("alcohols") >= 2) or (
+        get_score("smellf") >= 2 and get_score("smells") >= 2):
+        meicc_sensitivity = "Yes"
+
+    # viral: 98
+    if get_score("viral") == 1:
+        meicc_viral = "Yes"
+
+    # cardio: 50-51
+    if (get_score("dizzyf") >= 2 and get_score("dizzys") >= 2) or (
+        get_score("heartf") >= 2 and get_score("hearts") >= 2):
+        meicc_cardio = "Yes"
+
+    # respiratory: 49
+    if get_score("shortf") >= 2 and get_score("shorts") >= 2:
+        meicc_respiratory = "Yes"
+
+    # thermostatic: 54-60
+    if (get_score("sweatf") >= 2 and get_score("sweats") >= 2) or (
+        get_score("nightf") >= 2 and get_score("nights") >= 2) or (
+        get_score("limbsf") >= 2 and get_score("limbss") >= 2) or (
+        get_score("chillsf") >= 2 and get_score("chillss") >= 2) or (
+        get_score("hotf") >= 2 and get_score("hots") >= 2) or (
+        get_score("hitempf") >= 2 and get_score("hitemps") >= 2) or (
+        get_score("lotempf") >= 2 and get_score("lotemps") >= 2):
+        meicc_thermo = "Yes"
+
+    # temp intollerance: 99
+    if (get_score("intolerant")) == 1:
+        meicc_temp = "Yes"
+
+    meicc_neuro = np.sum([yes_to_one(meicc_cognitive), yes_to_one(meicc_pain), yes_to_one(meicc_sleep), yes_to_one(meicc_sensory)]) >= 3
+    meicc_igg = np.sum([yes_to_one(meicc_flu), yes_to_one(meicc_gastro), yes_to_one(meicc_urinary), yes_to_one(meicc_sensitivity), yes_to_one(meicc_viral)]) >= 3
+    meicc_energy = np.sum([yes_to_one(meicc_cardio), yes_to_one(meicc_respiratory), yes_to_one(meicc_thermo), yes_to_one(meicc_temp)]) >= 1
+
+    if np.sum([yes_to_one(meicc_sr), yes_to_one(meicc_pene), meicc_neuro, meicc_igg, meicc_energy]) == 5:
+        meicc_dx = "Met"
+        meicc_msg = "Your responses suggest that you meet the ME-ICC criteria for ME/CFS."
+    else:
+        meicc_dx = "Not Met"
+        meicc_msg = "Your responses do not meet the ME-ICC criteria for ME/CFS."
+    
+    # diagnostic message True if ccc OR iom OR meicc
+    if ccc_dx == "Met" or iomdxcheck == "Met" or meicc_dx == "Met":
         dsq_message = "Based on your responses there is a chance you might have MECFS. <br> Please consult with your doctor for next steps."
     else:
         dsq_message = "Based on your responses it does not appear you have MECFS."
 
     graphJSON = dsq_graph()
 
-    return render_template("results/graph3.html", graphJSON=graphJSON,
+    return render_template("results/graph3.html", graphJSON=graphJSON, dsq_message=dsq_message, 
                            ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,
                            ccc_pemcheck=ccc_pemcheck, ccc_paincheck=ccc_paincheck, ccc_sleepcheck=ccc_sleepcheck,
                            ccc_cogcheck=ccc_cogcheck, ccc_autocheck=ccc_autocheck, ccc_immunecheck=ccc_immunecheck,
                            ccc_neurocheck=ccc_neurocheck, ccc_dx=ccc_dx, ccc_reductioncheck=ccc_reductioncheck, ccc_poly=ccc_poly,
                            iomfatiguecheck=iomfatiguecheck, iomreductioncheck=iomreductioncheck,
                            iompemcheck=iompemcheck, iomdxcheck=iomdxcheck, iom_msg=iom_msg,
-                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck, dsq_message=dsq_message)
+                           iomsleepcheck=iomsleepcheck, iomcogcheck=iomcogcheck, iomorthocheck=iomorthocheck,
+                           meicc_sr=meicc_sr, meicc_pene=meicc_pene, meicc_cognitive=meicc_cognitive, meicc_pain=meicc_pain, 
+                           meicc_sleep=meicc_sleep, meicc_sensory=meicc_sensory, meicc_flu=meicc_flu,
+                           meicc_gastro=meicc_gastro, meicc_urinary=meicc_urinary, meicc_sensitivity=meicc_sensitivity, 
+                           meicc_viral=meicc_viral, meicc_cardio=meicc_cardio, meicc_respiratory=meicc_respiratory,
+                           meicc_thermo=meicc_thermo, meicc_temp=meicc_temp, meicc_energy=meicc_energy,  meicc_msg=meicc_msg,
+                           meicc_igg=meicc_igg, meicc_neuro=meicc_neuro, meicc_dx=meicc_dx)
 
 def dsq_graph():
     fatigue_score = (get_score("fatiguescoref") + get_score("fatiguescores")) / 2
@@ -265,3 +398,8 @@ def dsq_graph():
                       xaxis_title='Symptom Domains')
     fig.update_yaxes(range=[0, 100], dtick=25)
     return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+def yes_to_one(domain_result):
+    if domain_result == "Yes":
+        return 1
+    return 0
