@@ -705,7 +705,6 @@ def chills():
 @app.route('/hitemp', methods=['post', 'get'])
 def hitemp():
     global end
-
     form = FlaskForm()
     if request.method == "POST":
         hitempf = request.form.get("hitempf")
@@ -723,7 +722,6 @@ def hitemp():
 @app.route('/lotemp', methods=['post', 'get'])
 def lotemp():
     global end
-
     form = FlaskForm()
     if request.method == "POST":
         lotempf = request.form.get("lotempf")
@@ -741,7 +739,6 @@ def lotemp():
 @app.route('/alcohol', methods=['post', 'get'])
 def alcohol():
     global end
-
     form = FlaskForm()
     if request.method == "POST":
         alcoholf = request.form.get("alcoholf")
@@ -800,11 +797,22 @@ def fever():
         if feverf is not None and fevers is not None:
             session["feverf"] = feverf
             session["fevers"] = fevers
-            session['pagenum'] += 1
-            return redirect(url_for("graph3"))
+            return redirect(url_for("intolerant"))
         else:
             return render_template("dsq/fever64.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/fever64.html", message='', pagenum=session['pagenum'])
+
+@app.route('/intolerant', methods=['post', 'get'])
+def intolerant():
+    msg_intolerant = "Please select one of the options before continuing"
+    if request.method == 'POST':
+        intolerant = request.form.get('intolerant')
+        if intolerant is not None:
+            session['intolerant'] = intolerant
+            return redirect(url_for('graph3'))
+        else:
+            return render_template("dsq/intolerant99.html", message=msg_intolerant, pagenum=session['pagenum'])
+    return render_template('dsq/intolerant99.html', message='', pagenum=session['pagenum'])
 
 @app.route('/dsq_dx', methods=['get'])
 def graph3():
