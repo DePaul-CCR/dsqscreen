@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="question-form-wrapper">
+  <form method="post" class="single-question">
+    <div class="question-header">
+      <h3 class="question-title">Are you intolerant of extremes of temperatures (when it is extremeley hot or cold)?
+      </h3>
+    </div>
+    <div class="single-question-container">
+      <fieldset>
+        <legend>
+          Please select the choice that best fits your experience:
+        </legend>
+        <ol class="radio-button-list">
+          <li>
+            <input type="radio" id="f1" name="intolerant" value="1" />
+            <label for="f1">Yes</label>
+          </li>
+          <li>
+            <input type="radio" id="f0" name="intolerant" value="0" />
+            <label for="f0">No</label>
+          </li>
+        </ol>
+      </fieldset>
+    </div>
+<!-- <form> element closes in /_f_s_question template -->
+{% set single_question = True %}
+{% set next_button_text = "Submit" %}
+{% set meter_id = "meter3span" %}
+{% set meter_style = "--start: 99%; width: 100%" %}
+{% include "partials/_f_s_question.html" %}
+{% endblock %}
