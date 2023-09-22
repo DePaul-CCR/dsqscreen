@@ -22,19 +22,19 @@ Remember36comp: '/remember' <-> screener_views.page4 | remember | "Problems reme
 #short_form (+11 qs)
 Soreness15comp: '/short_form/soreness' <-> short_form.expem1 | sore | "Next day soreness or fatigue after non-strenuous, everyday activities"
 Difficulty37comp: '/short_form/attention' <-> short_form.excog1 | attention | "Difficulty paying attention for a long period of time"
-Musclepain25comp: '/short_form/musclepain' <-> short_form.musclepain | "Pain or aching in your muscles"
-Bloating29comp: '/short_form/bloating' <-> short_form.bloating
-Bowel46comp: '/short_form/bowel' <-> short_form.bowel
-Unsteady48comp: '/short_form/unsteady' <-> short_form.unsteady
-Limbs56comp: '/short_form/cold_limbs' <-> short_form.cold_limbs
+Musclepain25comp: '/short_form/musclepain' <-> short_form.musclepain | muscle | "Pain or aching in your muscles"
+Bloating29comp: '/short_form/bloating' <-> short_form.bloating | bloat | "Bloating"
+Bowel46comp: '/short_form/bowel' <-> short_form.bowel | bowel | "Irritable bowel problems"
+Unsteady48comp: '/short_form/unsteady' <-> short_form.unsteady | unsteady | "Feeling unsteady on your feet, like you might fall"
+Limbs56comp: '/short_form/cold_limbs' <-> short_form.cold_limbs | limbs | "Cold limbs (e.g., arms, legs, hands)"
 Hot58comp: '/short_form/hot_cold' <-> short_form.hot_cold | hot | "Feeling hot or cold for no reason"
-Flu65comp: '/short_form/flu' <-> short_form.flu
+Flu65comp: '/short_form/flu' <-> short_form.flu | flu | "Flu-like symptoms"
 Smells66comp: '/short_form/smells' <-> short_form.smells | smell | "Some smells, foods, medications, or chemicals make you feel sick"
 Reduction97: '/short_form/reduction' <-> short_form.reduction
 '/short_form/short_form_dx' <-> short_form.graph2
 
-#dsq (+41 qs)
-Viral98: '/viral' <-> viral
+#dsq (+42 qs)
+Viral98: '/viral' <-> viral | viral |  Do you experience frequent viral infections with prolonged recovery periods?
 Heavy14comp: '/heavy' <-> expem3 | heavy | "Dead, heavy feeling after starting to exercise"
 Mental16comp: '/mentally' <-> expem4 | mental | "Mentally tired after the slightest effort"
 Drained18comp: '/drained' <-> expem2 | drained | "Physically drained or sick after mild activity"
@@ -43,12 +43,12 @@ Falling21comp: '/falling' <-> exsleep3 | fall | "Problems falling asleep"
 Staying22comp: '/staying' <-> exsleep1 | stay | "Problems staying asleep"
 Early23comp: '/early' <-> early | early | "Waking up early in the morning (e.g. 3am)"
 Allday24comp: '/allday' <-> exsleep4 | allday | "Sleep all day and stay awake all night"
-Jointpain26comp: '/jointpain' <-> jointpain
-Eyepain27comp: '/eyepain' <-> eyepain
-Chestpain28comp: '/chestpain' <-> chestpain
-Stomach30comp: '/stomach' <-> stomach
-Headaches31comp: '/headaches' <-> headaches
-Twitches32comp: '/twitches' <-> twitches
+Jointpain26comp: '/jointpain' <-> jointpain | jointpain | "Pain/stiffness/tenderness in more than one joint without swelling or redness"
+Eyepain27comp: '/eyepain' <-> eyepain | eyepain | "Eye pain"
+Chestpain28comp: '/chestpain' <-> chestpain | chestpain | "Chest pain"
+Stomach30comp: '/stomach' <-> stomach | stomach | "Abdomen/stomach pain"
+Headaches31comp: '/headaches' <-> headaches | headaches | "Headaches"
+Twitches32comp: '/twitches' <-> twitches | twitches | "Muscle twitches"
 Weakness33comp: '/weakness' <-> weakness | weak | "Muscle weakness"
 Noise34comp: '/noise' <-> noise | noise | "Sensitivity to noise"
 Lights35comp: '/lights' <-> lights | lights | "Sensitivity to bright lights"
@@ -59,22 +59,23 @@ Unable41comp: '/vision' <-> vision | vision | "Unable to focus vision and/or att
 Depth42comp: '/depth' <-> depth | depth | "Loss of depth perception"
 Slowness43comp: '/slowness' <-> slowness | slow | "Slowness of thought"
 Absent44comp: '/absent' <-> absent | absent | "Absent-mindedness or forgetfulness"
-Bladder45comp: '/bladder' <-> bladder
-Nausea47comp: '/nausea' <-> nausea
+Bladder45comp: '/bladder' <-> bladder | bladder | "Bladder problems"
+Nausea47comp: '/nausea' <-> nausea | nausea | "Nausea"
 Shortness49comp: '/shortness' <-> shortness | short | "Shortness of breath or trouble catching your breath"
-Dizzy50comp: '/dizzy' <-> dizzy
+Dizzy50comp: '/dizzy' <-> dizzy | dizzy | "Dizziness or fainting"
 Irregular51comp: '/heart' <-> heart | heart | "Irregular heart beats"
 Weight52comp: '/weight' <-> weight | weight | "Losing or gaining weight without trying"
 Appetite53comp: '/appetite' <-> appetite
-Sweating54comp: '/sweating' <-> sweating
-Night55comp: '/night' <-> night
-Chills57comp: '/chills' <-> chills
-HTemp59comp: '/hitemp' <-> hitemp
-LTemp60comp: '/lotemp' <-> lotemp
-Alcohol61comp: '/alcohol' <-> alcohol
-SoreThroat62comp: '/throat' <-> throat
-LympthNodes63comp: '/lymphnodes' <-> lymphnodes
-Fever64comp: '/fever' <-> fever
+Sweating54comp: '/sweating' <-> sweating | sweat | "Sweating hands"
+Night55comp: '/night' <-> night | night | "Night sweats"
+Chills57comp: '/chills' <-> chills | chills | "Feeling chills or shivers"
+HTemp59comp: '/hitemp' <-> hitemp | hitemp | "Feeling like you have a high temperature"
+LTemp60comp: '/lotemp' <-> lotemp | lotemp | "Feeling like you have a low temperature"
+Alcohol61comp: '/alcohol' <-> alcohol | alcohol | "Alcohol intolerance"
+SoreThroat62comp: '/throat' <-> throat | throat | "Sore throat"
+LympthNodes63comp: '/lymphnodes' <-> lymphnodes | lymphnodes | "Tender/sore lymph nodes"
+Fever64comp: '/fever' <-> fever | fever | "Fever"
+Intolerant99: '/intolerant' <-> intolerant | intolerant | "Are you intolerant of extremes of temperatures (when it is extremeley hot or cold)?
 '/dsq_dx' <-> graph3
 
 #other

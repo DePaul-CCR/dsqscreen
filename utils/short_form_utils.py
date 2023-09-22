@@ -37,11 +37,11 @@ def short_form_diagnose():
         iomorthocheck = "Yes"
 
     if iomfatiguecheck == "Yes" and iomreductioncheck == "Yes" and iompemcheck == "Yes" and iomsleepcheck == "Yes" and (iomcogcheck == "Yes" or iomorthocheck == "Yes"):
-        iom_msg = "Your responses suggest you meet the IOM Criteria for ME/CFS. To improve the accuracy" \
+        iom_msg = "Your responses suggest you meet the IOM criteria for ME/CFS. To improve the accuracy" \
                   " of your assessment with more questions continue to the next section."
         iomdxcheck = "Met"
     else:
-        iom_msg = "Your responses do not meet the IOM Criteria for ME/CFS."
+        iom_msg = "Your responses do not meet the IOM criteria for ME/CFS."
         iomdxcheck = "Not met"
 
     # This assesses the Canadian Consensus Criteria, one of the three major case definitions we use

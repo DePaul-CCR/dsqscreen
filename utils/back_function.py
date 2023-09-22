@@ -65,6 +65,7 @@ page_flow = (
 '/throat',
 '/lymphnodes',
 '/fever',
+'/intolerant',
 '/dsq_dx',
 '/about',
 '/aboutmecfs'

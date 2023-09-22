@@ -50,7 +50,7 @@
   </div>
 
   <div class="case-results">
-    <h4 class="case-results-title">Canadian 2003 ME/CFS Case Definition</h4>
+    <h4 class="case-results-title">Canadian Consensus Criteria (CCC) Case Definition</h4>
     <div class="case-results-diagnosis">{{ ccc_msg }}</div>
     <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
     <div class="symptom-list closed" id="ccc">
@@ -60,22 +60,22 @@
       <div class="symptom-col-2" {% if ccc_reductioncheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_reductioncheck }}</div>
       <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
       <div class="symptom-col-2" {% if ccc_pemcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_pemcheck }}</div>
-      <div class="symptom-col-1">Sleep Problems</div>
+      <div class="symptom-col-1">Sleep problems</div>
       <div class="symptom-col-2" {% if ccc_sleepcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_sleepcheck }}</div>
       <div class="symptom-col-1">Pain</div>
       <div class="symptom-col-2" {% if ccc_paincheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_paincheck }}</div>
-      <div class="symptom-col-1">Neurocognitive Issues</div>
+      <div class="symptom-col-1">Neurocognitive issues</div>
       <div class="symptom-col-2" {% if ccc_cogcheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_cogcheck }}</div>
-      <div class="symptom-col-1">Autonomic Dysfunction</div>
+      <div class="symptom-col-1">Autonomic dysfunction</div>
       <div class="symptom-col-2" id="top-of-3-symptom" {% if ccc_autocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_autocheck }}</div>
-      <div class="symptom-col-1">Neuroendocrine Issues
+      <div class="symptom-col-1">Neuroendocrine issues
         <div class="three-symptom-connector" id="top" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>↗</div>
         <div class="three-symptom-connector" id="middle" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>2 of 3 →</div>
         <div class="three-symptom-connector" id="bottom" {% if ccc_poly >= 2 %} style="background-color: #FFD580;" {% endif %}>↘</div>
       </div>
       <div class="symptom-col-2" id="middle-of-3-symptom" {% if ccc_neurocheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_neurocheck }}</div>
-      <div class="symptom-col-1">Immune Symptoms</div>
-      <div class="symptom-col-2" id="bottom-of-3-symptom"{% if ccc_immunecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</div>
+      <div class="symptom-col-1">Immune symptoms</div>
+      <div class="symptom-col-2" id="bottom-of-3-symptom" {% if ccc_immunecheck == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ ccc_immunecheck }}</div>
       <div class="symptom-col-1"><b>Assessment:</b></div>
       <div class="symptom-col-2 assessment">
         {% if ccc_dx == 'Met' %} 
@@ -86,6 +86,81 @@
       </div>
     </div>
     <div class="symptom-expand-button closed" id="ccc">Click here to see more...</div>
+  </div>
+
+  <div class="case-results">
+    <h4 class="case-results-title">ME International Consensus Criteria (ME-ICC) Case Definition</h4>
+    <div class="case-results-diagnosis">{{ meicc_msg }}</div>
+    <div class="case-results-symptom-header">Case Definition Requirements Met: </div>
+    <div class="symptom-list closed" id="meicc">
+      <div class="symptom-col-1">50% or more reduction in functioning</div>
+      <div class="symptom-col-2" {% if meicc_sr == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_sr }}</div>
+      <div class="symptom-col-1">Post-exertional malaise (PEM)</div>
+      <div class="symptom-col-2" {% if meicc_pene == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_pene }}</div>
+      
+      <!-- neuro domain group req: 3/4 -->
+      <div class="symptom-col-1">Neurocognitive issues</div>
+      <div class="symptom-col-2" id="top-of-4-symptom" {% if meicc_cognitive == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_cognitive }}</div>
+      <div class="symptom-col-1">Pain
+        <div class="four-symptom-connector" id="top" {% if meicc_neuro %} style="background-color: #FFD580;" {% endif %}>↗</div>
+        <div class="four-symptom-connector" id="middle" {% if meicc_neuro %} style="background-color: #FFD580;" {% endif %}>3 of 4&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="four-symptom-connector" id="middle-right-top" {% if meicc_neuro %} style="background-color: #FFD580;" {% endif %}>→</div>
+          <div class="four-symptom-connector" id="middle-right-bottom" {% if meicc_neuro %} style="background-color: #FFD580;" {% endif %}>→</div>
+        </div>
+        <div class="four-symptom-connector" id="bottom" {% if meicc_neuro %} style="background-color: #FFD580;" {% endif %}>↗</div>
+      </div>
+      <div class="symptom-col-2" id="middle-of-4-symptom" {% if meicc_pain == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_pain }}</div>
+      <div class="symptom-col-1">Sleep disturbance</div>
+      <div class="symptom-col-2" id="middle-of-4-symptom" {% if meicc_sleep == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_sleep }}</div>
+      <div class="symptom-col-1">Sensory issues</div>
+      <div class="symptom-col-2" id="bottom-of-4-symptom" {% if meicc_sensory == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_sensory }}</div>
+      
+      <!-- IGG domain group req: 3/5 -->
+      <div class="symptom-col-1">Flu-like symptoms </div>
+      <div class="symptom-col-2" id="top-of-5-symptom" {% if meicc_flu == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_flu }}</div>
+      <div class="symptom-col-1">Gastrointestinal issues </div>
+      <div class="symptom-col-2" id="middle-of-5-symptom" {% if meicc_gastro == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_gastro }}</div>
+      <div class="symptom-col-1">Urinary issues
+        <div class="five-symptom-connector" id="top" {% if meicc_igg %} style="background-color: #FFD580;" {% endif %}>↗</div>
+        <div class="five-symptom-connector" id="middle" {% if meicc_igg %} style="background-color: #FFD580;" {% endif %}>3 of 5 &nbsp;&nbsp;&nbsp;&nbsp;→
+          <div class="five-symptom-connector" id="middle-right-top" {% if meicc_igg %} style="background-color: #FFD580;" {% endif %}>→</div>
+          <div class="five-symptom-connector" id="middle-right-bottom" {% if meicc_igg %} style="background-color: #FFD580;" {% endif %}>→</div>
+        </div>
+        <div class="five-symptom-connector" id="bottom" {% if meicc_igg %} style="background-color: #FFD580;" {% endif %}>↗</div>
+      </div>
+      <div class="symptom-col-2" id="middle-of-5-symptom" {% if meicc_urinary == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_urinary }}</div>
+      <div class="symptom-col-1">Sensitivities</div>
+      <div class="symptom-col-2" id="middle-of-5-symptom" {% if meicc_sensitivity == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_sensitivity }}</div>
+      <div class="symptom-col-1">Viral susceptibility</div>
+      <div class="symptom-col-2" id="bottom-of-5-symptom" {% if meicc_viral == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_viral }}</div>
+      
+      <!-- Energy domain group req: 1/4 -->
+      <div class="symptom-col-1">Cardiovascular issues</div>
+      <div class="symptom-col-2" id="top-of-4-symptom" {% if meicc_cardio == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_cardio }}</div>
+      <div class="symptom-col-1">Respiratory issues
+        <div class="four-symptom-connector" id="top" {% if meicc_energy %} style="background-color: #FFD580;" {% endif %}>↗</div>
+        <div class="four-symptom-connector" id="middle" {% if meicc_energy %} style="background-color: #FFD580;" {% endif %}>1 of 4&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="four-symptom-connector" id="middle-right-top" {% if meicc_energy %} style="background-color: #FFD580;" {% endif %}>→</div>
+          <div class="four-symptom-connector" id="middle-right-bottom" {% if meicc_energy %} style="background-color: #FFD580;" {% endif %}>→</div>
+        </div>
+        <div class="four-symptom-connector" id="bottom" {% if meicc_energy %} style="background-color: #FFD580;" {% endif %}>↗</div>
+      </div>
+      <div class="symptom-col-2" id="middle-of-4-symptom" {% if meicc_respiratory == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_respiratory }}</div>
+      <div class="symptom-col-1">Thermostatic ability issues</div>
+      <div class="symptom-col-2" id="middle-of-4-symptom" {% if meicc_thermo == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_thermo }}</div>
+      <div class="symptom-col-1">Temperature intolerance</div>
+      <div class="symptom-col-2" id="bottom-of-4-symptom" {% if meicc_temp == 'Yes' %} style="background-color: #FFD580;" {% endif %}>{{ meicc_temp }}</div>
+
+      <div class="symptom-col-1"><b>Assessment:</b></div>
+      <div class="symptom-col-2 assessment">
+        {% if meicc_dx == 'Met' %} 
+          <b>Possible ME/CFS</b>
+        {% else %}
+          <b>ME/CFS Unlikely</b>
+        {% endif %}
+      </div>
+    </div>
+    <div class="symptom-expand-button closed" id="meicc">Click here to see more...</div>
   </div>
 </div>
 
