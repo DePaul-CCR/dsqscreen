@@ -167,17 +167,6 @@
   border-right: 1px solid black;
 }
 
-.symptom-col-2#top-of-both {
-  border: 2px solid black;
-  border-bottom: 0;
-}
-
-.symptom-col-2#bottom-of-both {
-  border: 2px solid black;
-  border-top: 1px dashed black;
-  border-bottom: 1px solid black;
-}
-
 .symptom-col-2#top-of-either {
   border: 2px solid black;
   border-bottom: 0;
@@ -208,24 +197,43 @@
 
 .symptom-col-2#top-of-4-symptom {
   border: 2px solid black;
-  border-bottom: 1px dashed black;
+  border-bottom: 0;
 }
 
 .symptom-col-2#middle-of-4-symptom {
-  border-top: 0;
+  border-top: 1px dashed black;
   border-right: 2px solid black;
-  border-bottom: 1px dashed black;
   border-left: 2px solid black;
 }
 
 .symptom-col-2#bottom-of-4-symptom {
   border: 2px solid black;
-  border-top: 0;
-  border-bottom: 1px solid black;
+  border-top: 1px dashed black;
+  border-bottom: 0;
+}
+
+.symptom-col-2#top-of-5-symptom {
+  border: 2px solid black;
+  border-bottom: 0;
+  border-top: 2px solid black;
+}
+
+.symptom-col-2#middle-of-5-symptom {
+  border-top: 1px dashed black;
+  border-right: 2px solid black;
+  border-bottom: 0;
+  border-left: 2px solid black;
+}
+
+.symptom-col-2#bottom-of-5-symptom {
+  border: 2px solid black;
+  border-top: 1px dashed black;
+  border-bottom: 0;
 }
 
 .symptom-col-2.assessment {
-  background-color: #F3CFC6
+  background-color: #F3CFC6;
+  border-top: 2px solid black;
 }
 
 .symptom-logic-connector {
@@ -302,7 +310,7 @@
 }
 
 .four-symptom-connector#bottom {
-  bottom: -42px;
+  bottom: -43px;
   z-index: 1000;
   border-right: 0;
   border-bottom: 0;
@@ -319,8 +327,63 @@
 .four-symptom-connector#middle-right-bottom {
   border: 0;
   height: auto;
-  top: 16px;
-  background-color: rgba(0,0,0,0);
+  top: 14px;
+  width: 15.5px;
+}
+
+.five-symptom-connector {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background-color: white;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.five-symptom-connector#top {
+  top: -39px;
+  z-index: 999;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.five-symptom-connector#middle{
+  align-items: center;
+  display: flex;
+  padding-left: 3px;
+  font-size: .9em;
+  z-index: 999;
+  border-right: 0;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.five-symptom-connector#bottom {
+  bottom: -40px;
+  z-index: 998;
+  border-right: 0;
+  border-bottom: 0;
+  transform: scaleY(-1);
+}
+
+.five-symptom-connector#middle-right-top {
+  border:  0;
+  height: auto;
+  top: -17.5px;
+  /* background-color: rgba(0,0,0,0); */
+  z-index: 1001;
+  border-left: 1px solid black;
+  width: 16px;
+}
+
+.five-symptom-connector#middle-right-bottom {
+  border: 0;
+  height: auto;
+  top: 28.1px;
+  z-index: 1001;
+  /* background-color: rgba(0,0,0,0); */
+  border-left: 1px solid black;
+  width: 16px;
 }
 
 @media screen and (max-width: 1280px) {
