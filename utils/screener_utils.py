@@ -2,6 +2,7 @@ from flask import render_template, session
 import plotly.graph_objects as go
 import json
 import plotly.utils
+from utils.general_utils import get_score
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def screener_diagnose():
@@ -18,13 +19,13 @@ def screener_diagnose():
     iomcogcheck = "No"
     dx_met = False
 
-    if session['fatiguescoref'] >= 2 and session['fatiguescores'] >= 2:
+    if get_score('fatiguescoref') >= 2 and get_score('fatiguescores') >= 2:
         iomfatiguecheck = "Yes"
-    if session['minexf'] >= 2 and session['minexs'] >= 2:
+    if get_score('minexf') >= 2 and get_score('minexs') >= 2:
         iompemcheck = "Yes"
-    if session['sleepf'] >= 2 and session['sleeps'] >= 2:
+    if get_score('sleepf') >= 2 and get_score('sleeps') >= 2:
         iomsleepcheck = "Yes"
-    if session['rememberf'] >= 2 and session['remembers'] >= 2:
+    if get_score('rememberf') >= 2 and get_score('remembers') >= 2:
         iomcogcheck = "Yes"
 
     screen_message = 'Your responses to the screener questions are scored below. <br> Scores range from 0 to 100, with higher scores indicate more frequent and severe problems.'
