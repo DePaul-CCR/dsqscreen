@@ -8,7 +8,6 @@ message = "Please enter a response for both frequency and severity before contin
 
 @short_form.route('/soreness', methods=['post', 'get'])
 def expem1():
-    global pemname
     if request.method == "POST":
         soref = request.form.get("soref")
         sores = request.form.get("sores")
@@ -20,8 +19,7 @@ def expem1():
                 session['pemscoref'] = session['soref']
                 session['pemscores'] = session['sores']
                 session['pemscore'] = (get_score('soref') + get_score('sores')) / 2
-                pemname = 'soreness15'
-                return redirect(url_for("short_form.excog1"))
+            return redirect(url_for("short_form.excog1"))
         else:
             return render_template("short_form/expem1.html", pagenum=session['pagenum'], message=message)
     return render_template("short_form/expem1.html", pagenum=session['pagenum'], message='')
@@ -154,8 +152,6 @@ def flu():
 
 @short_form.route('/smells', methods=['post', 'get'])
 def smells():
-    global end
-    global survey
     if request.method == "POST":
         smellf = request.form.get("smellf")
         smells = request.form.get("smells")
@@ -163,7 +159,6 @@ def smells():
             session["smellf"] = smellf
             session["smells"] = smells
             session['pagenum'] += 1
-            survey='rf14'
             return redirect(url_for('short_form.reduction'))
         else:
             return render_template("short_form/smells.html", message=message, pagenum=session['pagenum'])

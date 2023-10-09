@@ -9,10 +9,8 @@ message = "Please enter a response for both frequency and severity before contin
 
 @screener_views.route('/', methods=['post', 'get'])
 def home():
-    session["pagenum"] = 0
     survey = 'classic'
     if request.method == "POST":
-        session["pagenum"] += 1
         return redirect(url_for("screener_views.page1"))
     return render_template("home.html", session=session)
 
@@ -24,9 +22,9 @@ def page1():
         fatiguescoref = request.form.get("fatigue")
         fatiguescores = request.form.get("severity")
         if fatiguescores is not None and fatiguescoref is not None:
-            session['fatiguescoref'] = int(fatiguescoref)
-            session['fatiguescores'] = int(fatiguescores)
-            session['fatiguescore'] = (session['fatiguescoref'] + session['fatiguescores']) / 2
+            session['fatiguescoref'] = fatiguescoref
+            session['fatiguescores'] = fatiguescores
+            session['fatiguescore'] = (get_score('fatiguescoref') + get_score('fatiguescores')) / 2
             session['pagenum'] += 1
             return redirect(url_for("screener_views.page2"))
         else:
@@ -40,9 +38,9 @@ def page2():
         minexf = request.form.get("minex")
         minexs = request.form.get("minex_s")
         if minexs is not None and minexf is not None:
-            session["minexf"] = int(minexf)
-            session["minexs"] = int(minexs)
-            session["pemscore"] = (int(minexf) + int(minexs)) / 2
+            session["minexf"] = minexf
+            session["minexs"] = minexs
+            session["pemscore"] = (get_score('minexf') + get_score('minexs')) / 2
             session["pemname"] = "minimum17"
             session['pagenum'] += 1
             return redirect(url_for("screener_views.page3"))
@@ -52,20 +50,14 @@ def page2():
 
 @screener_views.route('/unrefreshed', methods=['post', 'get'])
 def page3():
-    global sleepname
     if request.method == "POST":
         sleepf = request.form.get("sleepf")
         sleeps = request.form.get("sleeps")
         if sleeps is not None and sleepf is not None:
-            session["sleepf"] = int(sleepf)
-            session["sleeps"] = int(sleeps)
-            session['pagenum'] += 1
-            if get_score("sleepf") >= 0 and get_score("sleeps") >= 0:
-                session['sleepscoref'] = int(sleepf)
-                session['sleepscores'] = int(sleeps)
-                session['sleepscore'] = (get_score('sleepf') + get_score('sleeps')) / 2
-                session["sleepname"] = 'unrefreshed19'
-                return redirect(url_for("screener_views.page4"))
+            session["sleepf"] = sleepf
+            session["sleeps"] = sleeps
+            session['sleepscore'] = (get_score('sleepf') + get_score('sleeps')) / 2
+            return redirect(url_for("screener_views.page4"))
         else:
             return render_template("screener/page3.html", pagenum=session['pagenum'], message=message, sleepf=sleepf, sleeps=sleeps)
     return render_template("screener/page3.html", pagenum=session['pagenum'], message='')
@@ -77,11 +69,11 @@ def page4():
         rememberf = request.form.get("rememberf")
         remembers = request.form.get("remembers")
         if remembers is not None and rememberf is not None:
-            session["rememberf"] = int(rememberf)
-            session["remembers"] = int(remembers)
+            session["rememberf"] = rememberf
+            session["remembers"] = remembers
             session['pagenum'] += 1
-            session['cogscoref'] = int(rememberf)
-            session['cogscores'] = int(remembers)
+            session['cogscoref'] = get_score('rememberf')
+            session['cogscores'] = get_score('remembers')
             session["cogname"] = 'remember36'
             session['cogscore'] = (get_score('rememberf') + get_score('remembers')) / 2
             return redirect(url_for('screener_views.graph'))

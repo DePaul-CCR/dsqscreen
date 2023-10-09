@@ -213,18 +213,9 @@ def exsleep4():
             session["alldayf"] = alldayf
             session["alldays"] = alldays
             session['pagenum'] += 1
-            if get_score("alldayf") >= 0 and get_score("alldays") >= 0:
-                session['sleepscoref'] = int(alldayf)
-                session['sleepscores'] = int(alldays)
-                session['sleepscore'] = (get_score('alldayf') + get_score('alldays')) / 2
-                sleepname = 'allday24'
-                return redirect(url_for("jointpain"))
-            else:
-                sleepname = 'allday24'
-                session['sleepscoref'] = int(alldayf)
-                session['sleepscores'] = int(alldays)
-                session['sleepscore'] = (get_score('jointpain') + get_score('alldays')) / 2
-                return redirect(url_for("jointpain"))
+            session['sleepscore'] = (get_score('alldayf') + get_score('alldays')) / 2
+            sleepname = 'allday24'
+            return redirect(url_for("jointpain"))
         else:
             return render_template("dsq/exsleep4.html", message=message, pagenum=session['pagenum'])
     return render_template("dsq/exsleep4.html", message='', pagenum=session['pagenum'])
