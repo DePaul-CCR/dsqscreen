@@ -816,6 +816,8 @@ def intolerant():
 
 @app.route('/dsq_dx', methods=['get'])
 def graph3():
+    # store IP for response data export
+    session['ip'] = request.remote_addr
     return dsq_utils.dsq_diagnose()
 
 @app.route('/about', methods=['post', 'get'])
