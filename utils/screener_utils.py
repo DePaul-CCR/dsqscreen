@@ -64,7 +64,7 @@ def screener_diagnose():
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
     # dump to Google Sheets
-    df = build_dataframe_for_export(session)
+    df = build_dataframe_for_export(session, "screener")
     dump_collected_data_to_sheet(df)
 
     return render_template("results/graph.html",

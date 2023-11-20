@@ -2,7 +2,7 @@ import pandas as pd
 import pygsheets
 import datetime
 
-def build_dataframe_for_export (session):
+def build_dataframe_for_export (session, stage = "dsq"):
   df = pd.DataFrame()
   df['sid'] = [session.sid]
   # stores UTC time timestamp
@@ -10,34 +10,47 @@ def build_dataframe_for_export (session):
   df['time'] = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M:%S")
   df['ip'] = session['ip']
   # add all items currently collected to the data frame
-  for item in session:
-    if item in dsq_columns:
+  for item in get_columns_for_stage(stage):
+    if session[item]:
       df[item] = [session[item]]
+    else:
+      df[item] = None
   return df
 
 def dump_collected_data_to_sheet(df):
-  gc = pygsheets.authorize(service_file='utils/dsqscreen-401016-0e6db07e3d56.json')
+  gc = pygsheets.authorize(service_file='etc/secrets/dsqscreen-401016-0e6db07e3d56.json')
   sh = gc.open('DSQScreen Output')
   wks=sh[0]
-  session_row = wks.find(df['sid'][0])
-  if bool(session_row):
-    wks.update_values(session_row[0].label, values=df.values.tolist())
+  # finds if session_id already exists in the sheet and replaced values if so
+  # session_row = wks.find(df['sid'][0])
+  # if bool(session_row):
+  #   wks.update_values(session_row[0].label, values=df.values.tolist())
+  # else:
+  wks.update_values("A" + get_next_row(wks), df.values.tolist())
+
+def get_next_row(wks):
+  # returns a string of length of column 1 + 1
+  return str(len(wks.get_col(1,include_tailing_empty=False)) + 1)
+
+def get_columns_for_stage(stage):
+  if stage == "screener":
+    return screener_columns
+  elif stage == "short_form":
+    return screener_columns + sf_columns
   else:
-    next_row = next_available_row(wks)
-    wks.update_values("A" + next_row, df.values.tolist())
+    return screener_columns + sf_columns + dsq_columns
 
-def next_available_row(wks):
-    # returns a string of length of column 1 + 1
-    return str(len(wks.get_col(1,include_tailing_empty=False)) + 1)
-
-dsq_columns = ["fatiguescoref",
+screener_columns = [
+"fatiguescoref",
 "fatiguescores",
 "minexf",
 "minexs",
 "sleepf",
 "sleeps",
 "rememberf",
-"remembers",
+"remembers"]
+
+sf_columns = [
 "soref",
 "sores",
 "attentionf",
@@ -58,7 +71,9 @@ dsq_columns = ["fatiguescoref",
 "flus",
 "smellf",
 "smells",
-"reduction",
+"reduction"]
+
+dsq_columns = [
 "viral",
 "heavyf",
 "heavys",
