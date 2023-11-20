@@ -7,7 +7,6 @@ if(document.querySelector('.single-question-container')) {
     if (radios.some(checked)) {
       nextButton.classList.remove('disabled')
     } else {
-      debugger
       nextButton.classList.add('disabled')
     }
   })
@@ -25,3 +24,9 @@ if(document.querySelector('.single-question-container')) {
     }
   })
 }
+
+nextButton.addEventListener('click', (e) => {
+  setTimeout(function () {
+    e.target.disabled = true;
+}, 0);
+});
