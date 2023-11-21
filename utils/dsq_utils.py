@@ -5,6 +5,7 @@ import json
 import plotly.utils
 from utils.general_utils import get_score
 import utils.domainScores as ds
+from utils.export_columns_util import build_dataframe_for_export, dump_collected_data_to_sheet
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def dsq_diagnose():
@@ -313,6 +314,11 @@ def dsq_diagnose():
         dsq_message = "Based on your responses it does not appear you have MECFS."
 
     graphJSON = dsq_graph()
+
+    # dump to Google Sheets
+    df = build_dataframe_for_export(session)
+    dump_collected_data_to_sheet(df)
+
 
     return render_template("results/graph3.html", graphJSON=graphJSON, dsq_message=dsq_message, 
                            ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,

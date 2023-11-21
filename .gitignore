@@ -8,3 +8,5 @@ flask_session/
 .DS_Store
 .vscode/
 fs_q_regx.html
+# ignores the Google Sheets API credential file
+dsqscreen-*.json

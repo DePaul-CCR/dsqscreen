@@ -184,4 +184,6 @@ def reduction():
 
 @short_form.route('/short_form_dx', methods=['post', 'get'])
 def graph2():
+    # store IP for response data export
+    session['ip'] = request.remote_addr
     return short_form_utils.short_form_diagnose()

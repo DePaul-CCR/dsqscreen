@@ -37,7 +37,7 @@ sf_immune_domain = ['flu65f', 'flu65s', 'smells66f', 'smells66s']
 
 #Maybe change this to the imputed data:
 df = pd.read_csv('utils/MECFS and Controls F+S Reduction.csv')
-sdf = df
+sdf = pd.read_csv('utils/MECFS and Controls F+S Reduction.csv')
 
 df['fatigue_mean'] = np.mean(df[fatigue_domain], axis=1)
 df['pem_mean'] = np.mean(df[pem_domain], axis=1)
@@ -48,7 +48,7 @@ df['auto_mean'] = np.mean(df[autonomic_domain], axis=1)
 df['neuro_mean'] = np.mean(df[neuro_domain], axis=1)
 df['immune_mean'] = np.mean(df[immune_domain], axis=1)
 
-sdf['fatigue_mean'] = np.mean(df[sf_fatigue_domain], axis=1)
+sdf['fatigue_mean'] = np.mean(sdf[sf_fatigue_domain], axis=1)
 sdf['pem_mean'] = np.mean(sdf[sf_pem_domain], axis=1)
 sdf['sleep_mean'] = np.mean(sdf[sf_sleep_domain], axis=1)
 sdf['pain_mean'] = np.mean(sdf[sf_pain_domain], axis=1)
