@@ -17,8 +17,15 @@ def build_dataframe_for_export (session, stage = "dsq"):
       df[item] = None
   return df
 
+# def get_service_file_path():
+
 def dump_collected_data_to_sheet(df):
-  gc = pygsheets.authorize(service_file='etc/secrets/dsqscreen-401016-0e6db07e3d56.json')
+  # TODO: fix this to use environment for prod / debug
+  try: 
+    gc = pygsheets.authorize(service_file='/etc/secrets/dsqscreen-401016-0e6db07e3d56.json')
+  except:
+    gc = pygsheets.authorize(service_file='etc/secrets/dsqscreen-401016-0e6db07e3d56.json')
+
   sh = gc.open('DSQScreen Output')
   wks=sh[0]
   # finds if session_id already exists in the sheet and replaced values if so
