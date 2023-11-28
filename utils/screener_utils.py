@@ -2,6 +2,7 @@ from flask import render_template, session
 import plotly.graph_objects as go
 import json
 import plotly.utils
+from utils.export_columns_util import build_dataframe_for_export, dump_collected_data_to_sheet
 # see dsqitems_and_routes_map.txt for info on each section of the screener
 
 def screener_diagnose():
@@ -61,6 +62,11 @@ def screener_diagnose():
     fig.update_yaxes(range=[0, 100], dtick=25, titlefont=dict(size=15))
     fig.update_xaxes(tickfont=dict(size=13), titlefont=dict(size=15))
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # dump to Google Sheets
+    df = build_dataframe_for_export(session, "screener")
+    dump_collected_data_to_sheet(df)
+
     return render_template("results/graph.html",
                            graphJSON = graphJSON, 
                            screen_message = screen_message,

@@ -10,3 +10,4 @@ mysqlclient
 gunicorn
 imblearn
 seaborn
+pygsheets

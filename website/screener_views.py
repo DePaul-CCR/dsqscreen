@@ -92,6 +92,8 @@ def page4():
 
 @screener_views.route('/screener_dx')
 def graph():
+    # store IP for response data export
+    session['ip'] = request.remote_addr
     return screener_utils.screener_diagnose()
 
 # not currently in use since we disabled users - PC 7/21/23
