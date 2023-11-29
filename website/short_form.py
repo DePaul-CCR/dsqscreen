@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
 import utils.short_form_utils as short_form_utils
-from utils.general_utils import get_score
+from utils.general_utils import get_score, get_client_ip
 
 short_form = Blueprint('short_form', __name__)
 
@@ -185,5 +185,5 @@ def reduction():
 @short_form.route('/short_form_dx', methods=['post', 'get'])
 def graph2():
     # store IP for response data export
-    session['ip'] = request.remote_addr
+    session['ip'] = get_client_ip()
     return short_form_utils.short_form_diagnose()
