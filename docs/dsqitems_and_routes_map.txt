@@ -30,11 +30,11 @@ Limbs56comp: '/short_form/cold_limbs' <-> short_form.cold_limbs | limbs | "Cold 
 Hot58comp: '/short_form/hot_cold' <-> short_form.hot_cold | hot | "Feeling hot or cold for no reason"
 Flu65comp: '/short_form/flu' <-> short_form.flu | flu | "Flu-like symptoms"
 Smells66comp: '/short_form/smells' <-> short_form.smells | smell | "Some smells, foods, medications, or chemicals make you feel sick"
-Reduction97: '/short_form/reduction' <-> short_form.reduction
+Reduction97: '/short_form/reduction' <-> short_form.reduction | reduction | "Since the onset of your problems with fatigue / energy, have your symptoms caused a 50% or greater reduction in your activity level?"
 '/short_form/short_form_dx' <-> short_form.graph2
 
 #dsq (+42 qs)
-Viral98: '/viral' <-> viral | viral |  Do you experience frequent viral infections with prolonged recovery periods?
+Viral98: '/viral' <-> viral | viral |  "Do you experience frequent viral infections with prolonged recovery periods?"
 Heavy14comp: '/heavy' <-> expem3 | heavy | "Dead, heavy feeling after starting to exercise"
 Mental16comp: '/mentally' <-> expem4 | mental | "Mentally tired after the slightest effort"
 Drained18comp: '/drained' <-> expem2 | drained | "Physically drained or sick after mild activity"

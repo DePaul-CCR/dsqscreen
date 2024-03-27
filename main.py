@@ -40,6 +40,7 @@ pemname = str
 sleepname = str
 cogname = str
 
+# these are the routes for the full dsq questions following the Brief and Short Form 
 @app.route('/viral', methods=['post', 'get'])
 def viral():
     form = FlaskForm()
