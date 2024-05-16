@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, url_for, session
 from flask_wtf import FlaskForm
 import utils.dsq_utils as dsq_utils
 import utils.back_function as back_function
-from utils.general_utils import get_score
+from utils.general_utils import get_score, get_client_ip
 # commented out unused imports, can probably delete soon -- PC 7/31/23
 # import plotly.utils
 # import plotly.graph_objects as go
@@ -817,7 +817,7 @@ def intolerant():
 @app.route('/dsq_dx', methods=['get'])
 def graph3():
     # store IP for response data export
-    session['ip'] = request.remote_addr
+    session['ip'] = get_client_ip()
     return dsq_utils.dsq_diagnose()
 
 @app.route('/about', methods=['post', 'get'])

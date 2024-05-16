@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
 import utils.screener_utils as screener_utils
-from utils.general_utils import get_score
+from utils.general_utils import get_score, get_client_ip
 # used for /scores which is currently not in use - PC 7/21/23
 # import numpy as np
 
@@ -93,7 +93,7 @@ def page4():
 @screener_views.route('/screener_dx')
 def graph():
     # store IP for response data export
-    session['ip'] = request.remote_addr
+    session['ip'] = get_client_ip()
     return screener_utils.screener_diagnose()
 
 # not currently in use since we disabled users - PC 7/21/23
