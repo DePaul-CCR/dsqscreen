@@ -58,14 +58,34 @@ def screener_diagnose():
     fig.update_layout(
         yaxis_title='Combined Frequency and Severity Scores',
         xaxis_title='Symptom Domains'
+        
     )
     fig.update_yaxes(range=[0, 100], dtick=25, titlefont=dict(size=15))
+    fig.add_hline(
+        y=49, 
+        line_color='black', 
+        line_dash="dot",
+        annotation_text="Threshold for possible ME/CFS",
+        annotation_position="bottom right"
+    )
+    # var thresholdValue = 50; 
+    # var thresholdLine = {
+    #     x: [graphs[0].x[0], graphs[0].x[graphs[0].x.length - 1]], // assuming x is sorted
+    #     y: [thresholdValue, thresholdValue],
+    #     mode: 'lines',
+    #     name: 'Threshold',
+    #     line: {
+    #     color: 'red',
+    #     width: 2,
+    #     dash: 'dash'
+    #     }
+    # };
     fig.update_xaxes(tickfont=dict(size=13), titlefont=dict(size=15))
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
     # dump to Google Sheets
-    df = build_dataframe_for_export(session, "screener")
-    dump_collected_data_to_sheet(df)
+    # df = build_dataframe_for_export(session, "screener")
+    # dump_collected_data_to_sheet(df)
 
     return render_template("results/graph.html",
                            graphJSON = graphJSON, 
