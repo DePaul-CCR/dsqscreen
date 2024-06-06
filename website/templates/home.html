@@ -17,8 +17,14 @@
 <br />
 <div id="begin-screener-grid">
 
+  {% set stage=0 %}
+  {% include "partials/_form_previews.html" %}
+  
   <div class="screener-description">
-    Fill out this brief screener to find out if you have typical symptoms of Myalgic-Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS).
+      This online screener is based on the DePaul Symptom Questionnaire (DSQ), a validated instrument for assessing
+        ME/CFS symptoms. <br> <br> You'll be asked 4 questions which will indicate whether you may have ME/CFS. You may
+        continue to the more in-depth questionnaires for more a more accurate assessment.
+        For more information, follow one of the links above in the about menu.<br>
   </div><br>
 
   <form method="post" id="begin-screener">
