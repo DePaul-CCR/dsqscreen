@@ -1,0 +1,16 @@
+name: Create diagram
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - pc_visualize_repo_gh_actions_test
+jobs:
+  get_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@pc_visualize_repo_gh_actions_test
+      - name: Update diagram
+        uses: githubocto/repo-visualizer@pc_visualize_repo_gh_actions_test
+        with:
+          excluded_paths: "ignore,.github"
