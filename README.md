@@ -49,3 +49,7 @@ np.array(df.columns.to_list()) == gs_arr
 ```
 
 -To make changes to question pages there is one partial for all the F/S questions and then the single-question items are less templated so need to be modified directly (dsq/viral.html and short_form/reduction.html)
+
+
+
+![Visualization of the codebase](./diagram.svg)
