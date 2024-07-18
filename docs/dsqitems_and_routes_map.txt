@@ -64,6 +64,7 @@ Absent44comp: '/absent' <-> absent | absent | "Absent-mindedness or forgetfulnes
 Bladder45comp: '/bladder' <-> bladder | bladder | "Bladder problems"
 Nausea47comp: '/nausea' <-> nausea | nausea | "Nausea"
 Shortness49comp: '/shortness' <-> shortness | short | "Shortness of breath or trouble catching your breath"
+#this is dizz50 in aggregate data set
 Dizzy50comp: '/dizzy' <-> dizzy | dizzy | "Dizziness or fainting"
 Irregular51comp: '/heart' <-> heart | heart | "Irregular heart beats"
 Weight52comp: '/weight' <-> weight | weight | "Losing or gaining weight without trying"
@@ -77,7 +78,7 @@ Alcohol61comp: '/alcohol' <-> alcohol | alcohol | "Alcohol intolerance"
 SoreThroat62comp: '/throat' <-> throat | throat | "Sore throat"
 LymphNodes63comp: '/lymphnodes' <-> lymphnodes | lymphnodes | "Tender/sore lymph nodes"
 Fever64comp: '/fever' <-> fever | fever | "Fever"
-#this is intolerant122 in aggregate data set
+#This is intolerant122 in aggregate data set
 Intolerant99: '/intolerant' <-> intolerant | intolerant | "Are you intolerant of extremes of temperatures (when it is extremeley hot or cold)?
 '/dsq_dx' <-> graph3
 
