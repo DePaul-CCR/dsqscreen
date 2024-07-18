@@ -73,7 +73,7 @@ HTemp59comp: '/hitemp' <-> hitemp | hitemp | "Feeling like you have a high tempe
 LTemp60comp: '/lotemp' <-> lotemp | lotemp | "Feeling like you have a low temperature"
 Alcohol61comp: '/alcohol' <-> alcohol | alcohol | "Alcohol intolerance"
 SoreThroat62comp: '/throat' <-> throat | throat | "Sore throat"
-LympthNodes63comp: '/lymphnodes' <-> lymphnodes | lymphnodes | "Tender/sore lymph nodes"
+LymphNodes63comp: '/lymphnodes' <-> lymphnodes | lymphnodes | "Tender/sore lymph nodes"
 Fever64comp: '/fever' <-> fever | fever | "Fever"
 Intolerant99: '/intolerant' <-> intolerant | intolerant | "Are you intolerant of extremes of temperatures (when it is extremeley hot or cold)?
 '/dsq_dx' <-> graph3
