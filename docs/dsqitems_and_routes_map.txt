@@ -30,10 +30,12 @@ Limbs56comp: '/short_form/cold_limbs' <-> short_form.cold_limbs | limbs | "Cold 
 Hot58comp: '/short_form/hot_cold' <-> short_form.hot_cold | hot | "Feeling hot or cold for no reason"
 Flu65comp: '/short_form/flu' <-> short_form.flu | flu | "Flu-like symptoms"
 Smells66comp: '/short_form/smells' <-> short_form.smells | smell | "Some smells, foods, medications, or chemicals make you feel sick"
+#this is reduction120 in aggregate data set
 Reduction97: '/short_form/reduction' <-> short_form.reduction
 '/short_form/short_form_dx' <-> short_form.graph2
 
 #dsq (+42 qs)
+#this is viral121 in aggregate data set
 Viral98: '/viral' <-> viral | viral |  Do you experience frequent viral infections with prolonged recovery periods?
 Heavy14comp: '/heavy' <-> expem3 | heavy | "Dead, heavy feeling after starting to exercise"
 Mental16comp: '/mentally' <-> expem4 | mental | "Mentally tired after the slightest effort"
@@ -75,6 +77,7 @@ Alcohol61comp: '/alcohol' <-> alcohol | alcohol | "Alcohol intolerance"
 SoreThroat62comp: '/throat' <-> throat | throat | "Sore throat"
 LymphNodes63comp: '/lymphnodes' <-> lymphnodes | lymphnodes | "Tender/sore lymph nodes"
 Fever64comp: '/fever' <-> fever | fever | "Fever"
+#This is intolerant122 in aggregate data set
 Intolerant99: '/intolerant' <-> intolerant | intolerant | "Are you intolerant of extremes of temperatures (when it is extremeley hot or cold)?
 '/dsq_dx' <-> graph3
 
