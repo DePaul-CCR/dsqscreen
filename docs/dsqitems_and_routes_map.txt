@@ -30,10 +30,12 @@ Limbs56comp: '/short_form/cold_limbs' <-> short_form.cold_limbs | limbs | "Cold 
 Hot58comp: '/short_form/hot_cold' <-> short_form.hot_cold | hot | "Feeling hot or cold for no reason"
 Flu65comp: '/short_form/flu' <-> short_form.flu | flu | "Flu-like symptoms"
 Smells66comp: '/short_form/smells' <-> short_form.smells | smell | "Some smells, foods, medications, or chemicals make you feel sick"
+#this is reduction120 in aggregate data set
 Reduction97: '/short_form/reduction' <-> short_form.reduction
 '/short_form/short_form_dx' <-> short_form.graph2
 
 #dsq (+42 qs)
+#this is viral121 in aggregate data set
 Viral98: '/viral' <-> viral | viral |  Do you experience frequent viral infections with prolonged recovery periods?
 Heavy14comp: '/heavy' <-> expem3 | heavy | "Dead, heavy feeling after starting to exercise"
 Mental16comp: '/mentally' <-> expem4 | mental | "Mentally tired after the slightest effort"
@@ -62,6 +64,7 @@ Absent44comp: '/absent' <-> absent | absent | "Absent-mindedness or forgetfulnes
 Bladder45comp: '/bladder' <-> bladder | bladder | "Bladder problems"
 Nausea47comp: '/nausea' <-> nausea | nausea | "Nausea"
 Shortness49comp: '/shortness' <-> shortness | short | "Shortness of breath or trouble catching your breath"
+#this is dizz50 in aggregate data set
 Dizzy50comp: '/dizzy' <-> dizzy | dizzy | "Dizziness or fainting"
 Irregular51comp: '/heart' <-> heart | heart | "Irregular heart beats"
 Weight52comp: '/weight' <-> weight | weight | "Losing or gaining weight without trying"
@@ -73,8 +76,9 @@ HTemp59comp: '/hitemp' <-> hitemp | hitemp | "Feeling like you have a high tempe
 LTemp60comp: '/lotemp' <-> lotemp | lotemp | "Feeling like you have a low temperature"
 Alcohol61comp: '/alcohol' <-> alcohol | alcohol | "Alcohol intolerance"
 SoreThroat62comp: '/throat' <-> throat | throat | "Sore throat"
-LympthNodes63comp: '/lymphnodes' <-> lymphnodes | lymphnodes | "Tender/sore lymph nodes"
+LymphNodes63comp: '/lymphnodes' <-> lymphnodes | lymphnodes | "Tender/sore lymph nodes"
 Fever64comp: '/fever' <-> fever | fever | "Fever"
+#This is intolerant122 in aggregate data set
 Intolerant99: '/intolerant' <-> intolerant | intolerant | "Are you intolerant of extremes of temperatures (when it is extremeley hot or cold)?
 '/dsq_dx' <-> graph3
 

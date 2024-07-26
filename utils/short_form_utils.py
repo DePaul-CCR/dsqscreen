@@ -137,9 +137,9 @@ def short_form_diagnose():
 
     graphJSON = short_form_graph()
 
-    # dump to Google Sheets
-    df = build_dataframe_for_export(session, "short_form")
-    dump_collected_data_to_sheet(df)
+    # dump to Google Sheets [Disabled until approved & needed -PC 7/26/24]
+    # df = build_dataframe_for_export(session, "short_form")
+    # dump_collected_data_to_sheet(df)
 
     return render_template("results/graph2.html", graphJSON=graphJSON, ccc_msg=ccc_msg, ccc_fatiguecheck=ccc_fatiguecheck,
                            ccc_pemcheck=ccc_pemcheck, ccc_paincheck=ccc_paincheck, ccc_sleepcheck=ccc_sleepcheck,
