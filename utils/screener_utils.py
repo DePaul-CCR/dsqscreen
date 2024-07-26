@@ -63,9 +63,9 @@ def screener_diagnose():
     fig.update_xaxes(tickfont=dict(size=13), titlefont=dict(size=15))
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    # dump to Google Sheets
-    df = build_dataframe_for_export(session, "screener")
-    dump_collected_data_to_sheet(df)
+    # dump to Google Sheets [Disabled until approved & needed -PC 7/26/24]
+    # df = build_dataframe_for_export(session, "screener")
+    # dump_collected_data_to_sheet(df)
 
     return render_template("results/graph.html",
                            graphJSON = graphJSON, 
