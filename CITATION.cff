@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it using these metadata.""
+message: "If you use this software, please cite it using these metadata."
 title: "DSQ Screen"
 abstract: "First online research-backed screener for assessing multiple case definitions for ME/CFS. Easy-to-use and consumer friendly. Built in Flask and implementing PlotlyJS."
 authors:
@@ -11,5 +11,5 @@ authors:
     given-names: "Shanjali"
 version: 0.0.84
 date-released: 2024-07-26
-license: "GNU General Public License v3.0"
+license: GNU General Public License v3.0
 repository-code: "https://github.com/DePaul-CCR/dsqscreen"
