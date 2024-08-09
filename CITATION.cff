@@ -7,7 +7,7 @@ authors:
     given-names: "Paul"
   - family-names: "Brenner"
     given-names: "Sage"
-  -family-names: "Arulmozhi Arasu"
+  - family-names: "Arulmozhi Arasu"
     given-names: "Shanjali"
 version: 0.0.84
 date-released: 2024-07-26
