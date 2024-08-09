@@ -9,7 +9,7 @@ authors:
     given-names: "Sage"
   - family-names: "Arulmozhi Arasu"
     given-names: "Shanjali"
-version: 0.84
+version: 0.85
 date-released: 2024-07-26
 license: GNU General Public License v3.0
 repository-code: "https://github.com/DePaul-CCR/dsqscreen"
