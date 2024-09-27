@@ -28,7 +28,7 @@ def screener_diagnose():
     if session['rememberf'] >= 2 and session['remembers'] >= 2:
         iomcogcheck = "Yes"
 
-    screen_message = 'Your responses to the screener questions are scored below. <br> Scores range from 0 to 100, with higher scores indicate more frequent and severe problems.'
+    screen_message = 'Your responses to the screener questions are scored below. <br> Scores range from 0 to 100, with higher scores indicating more frequent and severe problems.'
     if iomfatiguecheck == "Yes" or iompemcheck == "Yes" or iomsleepcheck == "Yes" or iomcogcheck == "Yes":
         dx_met = True
 
